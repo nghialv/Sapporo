@@ -16,7 +16,7 @@ protocol SACellModelDelegate: class {
 public class SACellModel {
     weak var delegate               : SACellModelDelegate?
     public let reuseIdentifier      : String
-    internal(set) var indexPath     = NSIndexPath(forRow: 0, inSection: 0)
+    public internal(set) var indexPath     = NSIndexPath(forRow: 0, inSection: 0)
     
     public var size                 = CGSize.zeroSize
     public var selectionHandler     : SASelectionHandler?

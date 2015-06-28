@@ -9,26 +9,26 @@
 import UIKit
 
 public class SACell: UICollectionViewCell {
-    weak var cellmodel: SACellModel?
+    public internal(set) weak var cellmodel: SACellModel?
     
     public var shouldSelect         = true
     public var shouldDeselect       = true
     public var shouldHighlight      = true
     public var shouldUnhighlight    = true
     
-    func configure(cellmodel: SACellModel) {
+    public func configure(cellmodel: SACellModel) {
         self.cellmodel = cellmodel
     }
     
-    func willDisplay() {
+    public func willDisplay() {
     }
     
-    func didEndDisplaying() {
+    public func didEndDisplaying() {
     }
     
-    func didHighlight() {
+    public func didHighlight() {
     }
     
-    func didUnhighlight() {
+    public func didUnhighlight() {
     }
 }

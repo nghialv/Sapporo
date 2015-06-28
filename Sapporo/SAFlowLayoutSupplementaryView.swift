@@ -11,7 +11,7 @@ import UIKit
 public class SAFlowLayoutSupplementaryView: UICollectionReusableView {
     weak var viewmodel: SAFlowLayoutSupplementaryViewModel?
     
-    func configure(viewmodel: SAFlowLayoutSupplementaryViewModel) {
+    public func configure(viewmodel: SAFlowLayoutSupplementaryViewModel) {
         self.viewmodel = viewmodel
     }
 }
