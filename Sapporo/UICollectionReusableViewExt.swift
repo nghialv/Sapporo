@@ -9,11 +9,11 @@
 import UIKit
 
 extension UICollectionReusableView {
-    static var nibName: String {
+    public static var nibName: String {
         return classNameOf(self)
     }
     
-    static var reuseIdentifier: String {
+    public static var reuseIdentifier: String {
         return classNameOf(self)
     }
 }

@@ -90,10 +90,10 @@
             </objects>
             <point key="canvasLocation" x="1946" y="-476"/>
         </scene>
-        <!--View Controller-->
+        <!--Calendar View Controller-->
         <scene sceneID="n3O-jo-UI9">
             <objects>
-                <viewController id="rmo-Lk-QBd" sceneMemberID="viewController">
+                <viewController id="rmo-Lk-QBd" customClass="CalendarViewController" customModule="Example" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8sb-Hp-xq8"/>
                         <viewControllerLayoutGuide type="bottom" id="L2N-9K-I7Q"/>
@@ -122,6 +122,9 @@
                             <constraint firstItem="L2N-9K-I7Q" firstAttribute="top" secondItem="9QC-Yx-Qg3" secondAttribute="bottom" id="Z2b-Lz-vBr"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="collectionView" destination="9QC-Yx-Qg3" id="icD-ON-bUA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EA0-eX-hKq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
