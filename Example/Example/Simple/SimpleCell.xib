@@ -28,6 +28,7 @@
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
+            <color key="backgroundColor" red="0.64461620269999997" green="0.84125071760000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="zou-ZG-Vbe" secondAttribute="trailing" constant="12" id="8d7-SS-Lm0"/>
                 <constraint firstItem="AaT-qf-Ysl" firstAttribute="leading" secondItem="E3S-xk-YPv" secondAttribute="leading" constant="12" id="Axk-3v-ZxY"/>

@@ -27,7 +27,6 @@ class SimpleCell: SACell {
     
     override func configure(cellmodel: SACellModel) {
         super.configure(cellmodel)
-        contentView.backgroundColor = UIColor.purpleColor()
         
         if let cellmodel = cellmodel as? SimpleCellModel {
             titleLabel.text = cellmodel.title

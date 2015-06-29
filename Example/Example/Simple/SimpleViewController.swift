@@ -53,7 +53,7 @@ class SimpleViewController: UIViewController {
         }
         
         delay(6) {
-            cellmodels[0].des = "new des"
+            cellmodels[0].des = "changed"
             cellmodels[0].bump()
             println("bump")
         }
