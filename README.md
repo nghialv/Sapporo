@@ -2,13 +2,13 @@
 
 [![Language](http://img.shields.io/badge/language-swift-brightgreen.svg?style=flat
 )](https://developer.apple.com/swift)
-[![CocoaPods](https://img.shields.io/cocoapods/v/Future.svg)]()
+[![CocoaPods](https://img.shields.io/cocoapods/v/Sapporo.svg)]()
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)]
 (https://github.com/Carthage/Carthage)
 [![License](http://img.shields.io/badge/license-MIT-lightgrey.svg?style=flat
 )](http://mit-license.org)
-[![Issues](https://img.shields.io/github/issues/nghialv/Future.svg?style=flat
-)](https://github.com/nghialv/Future/issues?state=open)
+[![Issues](https://img.shields.io/github/issues/nghialv/Sapporo.svg?style=flat
+)](https://github.com/nghialv/Sapporo/issues?state=open)
 
 cellmodel-driven collectionview manager
 
