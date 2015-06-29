@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 Le Van Nghia. All rights reserved.
 //
 
+// http://www.objc.io/issues/3-views/collection-view-layouts
+
 import UIKit
 import Sapporo
 
