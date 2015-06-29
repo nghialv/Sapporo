@@ -193,8 +193,17 @@ In case you want to customize the layout of collection view, just create a subcl
 Demo apps
 -----
 
+<p align="center">
+<img style="-webkit-user-select: none;" src="https://dl.dropboxusercontent.com/u/8556646/managing.gif" width="368" height="664">
+</p>
+
 Do you worry about the customizability when using `Sapporo`?
 This is the answer for you, a calendar app implemented by using `Sapporo`.
+
+<p align="center">
+<img style="-webkit-user-select: none;" src="https://dl.dropboxusercontent.com/u/8556646/calendar.gif" width="737" height="554">
+</p>
+
 
 Installation
 -----
