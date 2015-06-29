@@ -10,16 +10,16 @@
 [![Issues](https://img.shields.io/github/issues/nghialv/Future.svg?style=flat
 )](https://github.com/nghialv/Future/issues?state=open)
 
-cellmodel-driven collectionview manager.
+cellmodel-driven collectionview manager
 
 Features
 -----
-* Easy to manage your sections and cells (reset/insert/append/remove/update)
+* Easily manage your sections and cells (reset/insert/append/remove/update)
 * Don't have to write the code for `UICollectionViewDelegate` and `UICollectionViewDataSource` protocols
-* Don't have to worry about cell identifier
-* Handling cell selection by trailing closure
-* Method chaining
-* Subscript
+* Don't need to care about cell identifier
+* Handle cell selection by trailing closure
+* Supports method chaining
+* Supports subscript
 * Complete example
 
 ##### Quick example
@@ -106,6 +106,7 @@ Usage
 			return self.rawValue
     	}
 	}
+	
 	let topSection = sapporo[Section.Top]
 ```
 
@@ -114,9 +115,9 @@ Usage
 ``` swift
 	// appending
 	sapporo[0].append(cellmodel)				// append a cellmodel
-		      .bump()							// and slide with `Fade` animation
+		      .bump()							// and bump to show the cell in the collection view
 
-	sapporo[TopSection].append(cellmodels)		// append a list of cellmodes
+	sapporo[TopSection].append(cellmodels)		// append a list of cellmodels
 		  			   .bump()					
 	
 	// by using section
@@ -127,6 +128,9 @@ Usage
 
 	// 2. inserting
 	section.insert(cellmodels, atIndex: 1)
+		   .bump()
+		   
+	section.insertBeforeLast(cellmodels)
 		   .bump()
 	
 	
@@ -158,7 +162,10 @@ Usage
 	// updating cell
 	let cellmodel = section[1]
 	cellmodel.property = newData
-	cellmodel.bump()		
+	cellmodel.bump()
+	
+	// able to retrieve a cellmodel by indexpath
+	let cellmodel = sapporo[indexpath]
 ```
 
 
@@ -172,7 +179,7 @@ Usage
 
 * Customizing layout
 
-In the case you want to customize the layout of collection view, just create the subclass of SALayout and set the new layout to Sapporo object.
+In case you want to customize the layout of collection view, just create a subclass of SALayout and call `setLayout` method to set the new layout instance.
 
 ``` swift
 	class CustomLayout: SALayout {
@@ -183,9 +190,11 @@ In the case you want to customize the layout of collection view, just create the
 	sapporo.setLayout(layout)
 ```
 
-Examples
+Demo apps
 -----
 
+Do you worry about the customizability when using `Sapporo`?
+This is the answer for you, a calendar app implemented by using `Sapporo`.
 
 Installation
 -----
@@ -203,9 +212,9 @@ Installation
 Requirements
 -----
 - iOS 8.0+
-- Xcode 6.1
+- Swift 1.2
 
 License
 -----
 
-Sapporo is released under the MIT license. See LICENSE for details.
+Sapporo is released under the [MIT License](https://github.com/nghialv/Sapporo/blob/master/LICENSE).
