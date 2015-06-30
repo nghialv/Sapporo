@@ -62,7 +62,7 @@ Features
 	class YourCell : SACell {
 		@IBOutlet weak var titleLabel: UILabel!
     
-		override func configureCell(cellmodel: SACellModel) {
+		override func configure(cellmodel: SACellModel) {
 			super.configure(cellmodel)
 			if let cellmodel = cellmodel as? YourCellModel {
 				titleLabel.text = cellmodel.title
