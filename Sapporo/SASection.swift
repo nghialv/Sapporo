@@ -15,7 +15,7 @@ protocol SASectionDelegate: class {
 
 public class SASection {
     weak var delegate                   : SASectionDelegate?
-    var cellmodels                      : [SACellModel] = []
+    public private(set) var cellmodels  : [SACellModel] = []
     private let bumpTracker             = SABumpTracker()
     
     internal(set) var index             : Int = 0

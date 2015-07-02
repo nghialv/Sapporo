@@ -10,7 +10,7 @@ import UIKit
 
 final public class Sapporo: NSObject {
     private let bumpTracker     = SABumpTracker()
-    private var sections        : [SASection] = []
+    public private(set) var sections: [SASection] = []
     
     public let collectionView   : UICollectionView
     public weak var delegate    : SapporoDelegate?
