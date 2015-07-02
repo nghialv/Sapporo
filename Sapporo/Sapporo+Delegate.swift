@@ -47,7 +47,7 @@ extension Sapporo: UICollectionViewDelegate {
     
     // Displaying
     public func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
-        cellAtIndexPath(indexPath)?.willDisplay()
+		(cell as? SACell)?.willDisplay()
     }
     
     public func collectionView(collectionView: UICollectionView, willDisplaySupplementaryView view: UICollectionReusableView, forElementKind elementKind: String, atIndexPath indexPath: NSIndexPath) {
@@ -55,7 +55,7 @@ extension Sapporo: UICollectionViewDelegate {
     }
     
     public func collectionView(collectionView: UICollectionView, didEndDisplayingCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
-        cellAtIndexPath(indexPath)?.didEndDisplaying()
+		(cell as? SACell)?.didEndDisplaying()
     }
     
     public func collectionView(collectionView: UICollectionView, didEndDisplayingSupplementaryView view: UICollectionReusableView, forElementOfKind elementKind: String, atIndexPath indexPath: NSIndexPath) {
