@@ -202,6 +202,8 @@ public extension Sapporo {
 // UIScrollViewDelegate
 extension Sapporo {
     public func scrollViewDidScroll(scrollView: UIScrollView) {
+		delegate?.scrollViewDidScroll?(scrollView)
+		
 		if !loadmoreEnabled {
 			return
 		}
@@ -213,8 +215,6 @@ extension Sapporo {
 			loadmoreEnabled = false
 			loadmoreHandler?()
 		}
-		
-        delegate?.scrollViewDidScroll?(scrollView)
     }
     
     public func scrollViewWillBeginDragging(scrollView: UIScrollView) {
