@@ -9,12 +9,15 @@
 import UIKit
 
 final public class Sapporo: NSObject {
-    private let bumpTracker     = SABumpTracker()
-    public private(set) var sections: [SASection] = []
+    private let bumpTracker				= SABumpTracker()
+    public private(set) var sections	: [SASection] = []
     
-    public let collectionView   : UICollectionView
-    public weak var delegate    : SapporoDelegate?
-    
+    public let collectionView		: UICollectionView
+    public weak var delegate		: SapporoDelegate?
+	public var loadmoreHandler		: (() -> Void)?
+	public var loadmoreEnabled		= false
+	public var loadmoreThreshold	: CGFloat = 25
+ 
     public var sectionsCount: Int {
         return sections.count
     }
@@ -199,6 +202,18 @@ public extension Sapporo {
 // UIScrollViewDelegate
 extension Sapporo {
     public func scrollViewDidScroll(scrollView: UIScrollView) {
+		if !loadmoreEnabled {
+			return
+		}
+		
+		let offset = scrollView.contentOffset
+		let y = offset.y + scrollView.bounds.height - scrollView.contentInset.bottom
+		let h = scrollView.contentSize.height
+		if y > h - loadmoreThreshold {
+			loadmoreEnabled = false
+			loadmoreHandler?()
+		}
+		
         delegate?.scrollViewDidScroll?(scrollView)
     }
     

@@ -24,7 +24,11 @@ class SimpleViewController: UIViewController {
         let layout = SAFlowLayout()
         //layout.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
         sapporo.setLayout(layout)
-        
+		sapporo.loadmoreEnabled = true
+		sapporo.loadmoreHandler = {
+			println("Loadmore")
+		}
+		
         let section = sapporo[0]
         section.inset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         section.minimumLineSpacing = 10
