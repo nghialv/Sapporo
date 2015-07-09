@@ -79,7 +79,7 @@ class SimpleViewController: UIViewController {
         newSection.minimumLineSpacing = 10
         newSection.headerViewModel = SimpleHeaderViewModel(title: "Section 1 header", height: 45)
         
-        let newCellmodels = (0...6).map { index -> SimpleCellModel in
+        let newCellmodels = (0...16).map { index -> SimpleCellModel in
             let cm = SimpleCellModel(title: "cell \(index)", des: "section 1") { cell in
                 let indexPath = cell.cellmodel?.indexPath
                 println("Selected: indexPath: \(indexPath?.section), \(indexPath?.row)")

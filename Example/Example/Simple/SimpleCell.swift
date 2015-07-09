@@ -33,4 +33,8 @@ class SimpleCell: SACell {
             desLabel.text   = cellmodel.des
         }
     }
+	
+	override func willDisplay(collectionView: UICollectionView) {
+		super.willDisplay(collectionView)
+	}
 }

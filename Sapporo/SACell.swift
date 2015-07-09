@@ -20,15 +20,15 @@ public class SACell: UICollectionViewCell {
         self.cellmodel = cellmodel
     }
     
-    public func willDisplay() {
+	public func willDisplay(collectionView: UICollectionView) {
     }
     
-    public func didEndDisplaying() {
+	public func didEndDisplaying(collectionView: UICollectionView) {
     }
     
-    public func didHighlight() {
+	public func didHighlight(collectionView: UICollectionView) {
     }
     
-    public func didUnhighlight() {
+	public func didUnhighlight(collectionView: UICollectionView) {
     }
 }

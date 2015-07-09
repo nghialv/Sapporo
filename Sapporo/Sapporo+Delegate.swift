@@ -37,17 +37,17 @@ extension Sapporo: UICollectionViewDelegate {
     }
     
     public func collectionView(collectionView: UICollectionView, didHighlightItemAtIndexPath indexPath: NSIndexPath) {
-        cellAtIndexPath(indexPath)?.didHighlight()
+        cellAtIndexPath(indexPath)?.didHighlight(collectionView)
     }
     
     public func collectionView(collectionView: UICollectionView, didUnhighlightItemAtIndexPath indexPath: NSIndexPath) {
-        cellAtIndexPath(indexPath)?.didUnhighlight()
+        cellAtIndexPath(indexPath)?.didUnhighlight(collectionView)
     }
     
     
     // Displaying
     public func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
-		(cell as? SACell)?.willDisplay()
+		(cell as? SACell)?.willDisplay(collectionView)
     }
     
     public func collectionView(collectionView: UICollectionView, willDisplaySupplementaryView view: UICollectionReusableView, forElementKind elementKind: String, atIndexPath indexPath: NSIndexPath) {
@@ -55,7 +55,7 @@ extension Sapporo: UICollectionViewDelegate {
     }
     
     public func collectionView(collectionView: UICollectionView, didEndDisplayingCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
-		(cell as? SACell)?.didEndDisplaying()
+		(cell as? SACell)?.didEndDisplaying(collectionView)
     }
     
     public func collectionView(collectionView: UICollectionView, didEndDisplayingSupplementaryView view: UICollectionReusableView, forElementOfKind elementKind: String, atIndexPath indexPath: NSIndexPath) {
