@@ -10,7 +10,9 @@ import UIKit
 
 public class SAFlowLayout: UICollectionViewFlowLayout {
     public func collectionView(collectionView: UICollectionView, sizeForCellModel cellmodel: SACellModel) -> CGSize {
-        return cellmodel.size
+		let size = cellmodel.size
+		println("final size: \(size)")
+        return size
     }
     
     public func collectionView(collectionView: UICollectionView, insetForSection section: SASection) -> UIEdgeInsets {

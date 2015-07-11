@@ -10,6 +10,7 @@ import UIKit
 
 final public class Sapporo: NSObject {
     private let bumpTracker				= SABumpTracker()
+	private var offscreenCells: [String: SACell] = [:]
     public private(set) var sections	: [SASection] = []
     
     public let collectionView		: UICollectionView
@@ -80,6 +81,15 @@ extension Sapporo: SACellModelDelegate, SASectionDelegate {
         case .Delete(let indexPaths): collectionView.deleteItemsAtIndexPaths(indexPaths)
         }
     }
+
+	func getOffscreenCell(identifier: String) -> SACell {
+		if let cell = offscreenCells[identifier] {
+			return cell
+		}
+		let cell = UINib(nibName: identifier, bundle: nil).instantiateWithOwner(nil, options: nil).first as! SACell
+		offscreenCells[identifier] = cell
+		return cell
+	}
 }
 
 // Reset, Insert, Move, Remove

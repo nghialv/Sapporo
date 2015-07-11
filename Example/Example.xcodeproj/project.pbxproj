@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C0EAFA21B4EB7A60052557D /* DynamicSizeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0EAFA11B4EB7A60052557D /* DynamicSizeViewController.swift */; };
+		8C0EAFA41B4EB7B40052557D /* DynamicSizeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0EAFA31B4EB7B40052557D /* DynamicSizeCell.swift */; };
+		8C0EAFA61B4EB7C00052557D /* DynamicSizeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C0EAFA51B4EB7C00052557D /* DynamicSizeCell.xib */; };
 		8C547C8A1B4047EC009F6C71 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C547C891B4047EC009F6C71 /* AppDelegate.swift */; };
 		8C547C8C1B4047EC009F6C71 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C547C8B1B4047EC009F6C71 /* ViewController.swift */; };
 		8C547C8F1B4047EC009F6C71 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C547C8D1B4047EC009F6C71 /* Main.storyboard */; };
@@ -48,6 +51,8 @@
 		8C547D0E1B405155009F6C71 /* CalendarEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C547D0D1B405155009F6C71 /* CalendarEvent.swift */; };
 		8C547D101B405165009F6C71 /* CalendarHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C547D0F1B405165009F6C71 /* CalendarHeaderView.xib */; };
 		8C547D121B405178009F6C71 /* CalendarEventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C547D111B405178009F6C71 /* CalendarEventCell.xib */; };
+		8CCA36CA1B4ED5100053DB94 /* DynamicImageSizeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCA36C91B4ED5100053DB94 /* DynamicImageSizeCell.swift */; };
+		8CCA36CC1B4ED5210053DB94 /* DynamicImageSizeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CCA36CB1B4ED5210053DB94 /* DynamicImageSizeCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +101,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8C0EAFA11B4EB7A60052557D /* DynamicSizeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicSizeViewController.swift; sourceTree = "<group>"; };
+		8C0EAFA31B4EB7B40052557D /* DynamicSizeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicSizeCell.swift; sourceTree = "<group>"; };
+		8C0EAFA51B4EB7C00052557D /* DynamicSizeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DynamicSizeCell.xib; sourceTree = "<group>"; };
 		8C547C841B4047EC009F6C71 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C547C881B4047EC009F6C71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8C547C891B4047EC009F6C71 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -142,6 +150,8 @@
 		8C547D0D1B405155009F6C71 /* CalendarEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarEvent.swift; sourceTree = "<group>"; };
 		8C547D0F1B405165009F6C71 /* CalendarHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarHeaderView.xib; sourceTree = "<group>"; };
 		8C547D111B405178009F6C71 /* CalendarEventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarEventCell.xib; sourceTree = "<group>"; };
+		8CCA36C91B4ED5100053DB94 /* DynamicImageSizeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicImageSizeCell.swift; sourceTree = "<group>"; };
+		8CCA36CB1B4ED5210053DB94 /* DynamicImageSizeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DynamicImageSizeCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +188,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8C0EAFA01B4EB7950052557D /* DynamicSize */ = {
+			isa = PBXGroup;
+			children = (
+				8C0EAFA11B4EB7A60052557D /* DynamicSizeViewController.swift */,
+				8C0EAFA31B4EB7B40052557D /* DynamicSizeCell.swift */,
+				8C0EAFA51B4EB7C00052557D /* DynamicSizeCell.xib */,
+				8CCA36C91B4ED5100053DB94 /* DynamicImageSizeCell.swift */,
+				8CCA36CB1B4ED5210053DB94 /* DynamicImageSizeCell.xib */,
+			);
+			path = DynamicSize;
+			sourceTree = "<group>";
+		};
 		8C547C7B1B4047EC009F6C71 = {
 			isa = PBXGroup;
 			children = (
@@ -204,6 +226,7 @@
 		8C547C861B4047EC009F6C71 /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				8C0EAFA01B4EB7950052557D /* DynamicSize */,
 				8C547CF91B404C4B009F6C71 /* Calendar */,
 				8C547CFA1B404C4B009F6C71 /* Simple */,
 				8C547C891B4047EC009F6C71 /* AppDelegate.swift */,
@@ -466,10 +489,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CCA36CC1B4ED5210053DB94 /* DynamicImageSizeCell.xib in Resources */,
 				8C547D061B404DDF009F6C71 /* SimpleHeaderView.xib in Resources */,
 				8C547C8F1B4047EC009F6C71 /* Main.storyboard in Resources */,
 				8C547D021B404CE1009F6C71 /* SimpleCell.xib in Resources */,
 				8C547C941B4047EC009F6C71 /* LaunchScreen.xib in Resources */,
+				8C0EAFA61B4EB7C00052557D /* DynamicSizeCell.xib in Resources */,
 				8C547C911B4047EC009F6C71 /* Images.xcassets in Resources */,
 				8C547D101B405165009F6C71 /* CalendarHeaderView.xib in Resources */,
 				8C547D121B405178009F6C71 /* CalendarEventCell.xib in Resources */,
@@ -504,6 +529,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C0EAFA41B4EB7B40052557D /* DynamicSizeCell.swift in Sources */,
+				8CCA36CA1B4ED5100053DB94 /* DynamicImageSizeCell.swift in Sources */,
 				8C547D0E1B405155009F6C71 /* CalendarEvent.swift in Sources */,
 				8C547CFE1B404C63009F6C71 /* CalendarViewController.swift in Sources */,
 				8C547C8C1B4047EC009F6C71 /* ViewController.swift in Sources */,
@@ -511,6 +538,7 @@
 				8C547C8A1B4047EC009F6C71 /* AppDelegate.swift in Sources */,
 				8C547D0C1B4050EC009F6C71 /* CalendarLayout.swift in Sources */,
 				8C547CFC1B404C57009F6C71 /* SimpleViewController.swift in Sources */,
+				8C0EAFA21B4EB7A60052557D /* DynamicSizeViewController.swift in Sources */,
 				8C547D001B404CCC009F6C71 /* SimpleCell.swift in Sources */,
 				8C547D0A1B4050DE009F6C71 /* CalendarEventCell.swift in Sources */,
 				8C547D041B404DD4009F6C71 /* SimpleHeaderView.swift in Sources */,
@@ -838,6 +866,7 @@
 				8C547CA51B4047EC009F6C71 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8C547CA61B4047EC009F6C71 /* Build configuration list for PBXNativeTarget "ExampleTests" */ = {
 			isa = XCConfigurationList;
@@ -846,6 +875,7 @@
 				8C547CA81B4047EC009F6C71 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8C547CC71B404809009F6C71 /* Build configuration list for PBXNativeTarget "Sapporo" */ = {
 			isa = XCConfigurationList;
@@ -854,6 +884,7 @@
 				8C547CC91B404809009F6C71 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8C547CCB1B404809009F6C71 /* Build configuration list for PBXNativeTarget "SapporoTests" */ = {
 			isa = XCConfigurationList;
@@ -862,6 +893,7 @@
 				8C547CCD1B404809009F6C71 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

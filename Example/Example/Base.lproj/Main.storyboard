@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="bLI-8X-dwr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="bLI-8X-dwr">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -35,12 +35,23 @@
                                     <segue destination="rmo-Lk-QBd" kind="show" id="b0g-3t-159"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xo3-TX-Zwr">
+                                <rect key="frame" x="253" y="319" width="93" height="30"/>
+                                <state key="normal" title="Dynamic Size">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="KmS-XS-WKM" kind="show" id="sRx-3k-wu3"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="2zM-VL-Nqe" secondAttribute="centerX" id="6cE-N5-ciU"/>
                             <constraint firstAttribute="centerX" secondItem="DNl-fA-Ea5" secondAttribute="centerX" id="Fm1-Wk-OaJ"/>
                             <constraint firstItem="2zM-VL-Nqe" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="100" id="MFq-rs-fKn"/>
+                            <constraint firstItem="xo3-TX-Zwr" firstAttribute="top" secondItem="DNl-fA-Ea5" secondAttribute="bottom" constant="45" id="No3-rt-9iz"/>
+                            <constraint firstAttribute="centerX" secondItem="xo3-TX-Zwr" secondAttribute="centerX" id="oRL-cc-dYp"/>
                             <constraint firstItem="DNl-fA-Ea5" firstAttribute="top" secondItem="2zM-VL-Nqe" secondAttribute="bottom" constant="50" id="zbv-cP-fTn"/>
                         </constraints>
                     </view>
@@ -49,6 +60,46 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1113" y="-192"/>
+        </scene>
+        <!--Dynamic Size View Controller-->
+        <scene sceneID="xbS-K6-Kca">
+            <objects>
+                <viewController id="KmS-XS-WKM" customClass="DynamicSizeViewController" customModule="Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wa3-iX-JeH"/>
+                        <viewControllerLayoutGuide type="bottom" id="huI-QV-BDx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6kF-pR-o6g">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="zo3-nq-Pct">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="jaB-Do-Bg3">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="zo3-nq-Pct" secondAttribute="trailing" id="08O-ZE-jnC"/>
+                            <constraint firstItem="huI-QV-BDx" firstAttribute="top" secondItem="zo3-nq-Pct" secondAttribute="bottom" id="GqN-SM-TlU"/>
+                            <constraint firstItem="zo3-nq-Pct" firstAttribute="leading" secondItem="6kF-pR-o6g" secondAttribute="leading" id="c54-ih-s0G"/>
+                            <constraint firstItem="zo3-nq-Pct" firstAttribute="top" secondItem="6kF-pR-o6g" secondAttribute="top" id="w2H-71-7Ej"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="zo3-nq-Pct" id="11B-aF-SBm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c0d-tl-CjT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1198" y="594"/>
         </scene>
         <!--Simple View Controller-->
         <scene sceneID="Ok2-zg-Z97">
@@ -63,7 +114,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lhZ-SE-dWe">
-                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="IUm-cO-lYw">
                                     <size key="itemSize" width="50" height="50"/>
@@ -76,10 +127,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="lhZ-SE-dWe" firstAttribute="leading" secondItem="Xjx-dU-0Jq" secondAttribute="leading" id="8Ef-oq-oI0"/>
-                            <constraint firstAttribute="bottom" secondItem="lhZ-SE-dWe" secondAttribute="bottom" id="MWw-gP-Djf"/>
-                            <constraint firstAttribute="trailing" secondItem="lhZ-SE-dWe" secondAttribute="trailing" id="Mxk-sJ-vtx"/>
-                            <constraint firstItem="lhZ-SE-dWe" firstAttribute="top" secondItem="4B9-NV-9TX" secondAttribute="bottom" id="SOa-R8-mEg"/>
+                            <constraint firstItem="lhZ-SE-dWe" firstAttribute="leading" secondItem="Xjx-dU-0Jq" secondAttribute="leading" id="E0T-b6-05Y"/>
+                            <constraint firstItem="lhZ-SE-dWe" firstAttribute="top" secondItem="Xjx-dU-0Jq" secondAttribute="top" id="Sx3-P5-vSl"/>
+                            <constraint firstItem="Aqz-OT-88l" firstAttribute="top" secondItem="lhZ-SE-dWe" secondAttribute="bottom" id="e1Y-Oi-RZH"/>
+                            <constraint firstAttribute="trailing" secondItem="lhZ-SE-dWe" secondAttribute="trailing" id="yom-je-GiD"/>
                         </constraints>
                     </view>
                     <connections>
