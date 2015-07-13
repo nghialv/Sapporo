@@ -11,7 +11,6 @@ import UIKit
 public class SAFlowLayout: UICollectionViewFlowLayout {
     public func collectionView(collectionView: UICollectionView, sizeForCellModel cellmodel: SACellModel) -> CGSize {
 		let size = cellmodel.size
-		println("final size: \(size)")
         return size
     }
     
