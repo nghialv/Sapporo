@@ -66,7 +66,7 @@ extension Sapporo: UICollectionViewDelegate {
     // Action
     public func collectionView(collectionView: UICollectionView, canPerformAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject!) -> Bool {
         // TODO: implement
-        return true
+        return false
     }
     
     public func collectionView(collectionView: UICollectionView, performAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject!) {
@@ -75,7 +75,7 @@ extension Sapporo: UICollectionViewDelegate {
     
     public func collectionView(collectionView: UICollectionView, shouldShowMenuForItemAtIndexPath indexPath: NSIndexPath) -> Bool {
         // TODO: implement
-        return true
+        return false
     }
     
     // Transition layout
@@ -83,5 +83,4 @@ extension Sapporo: UICollectionViewDelegate {
     public func collectionView(collectionView: UICollectionView, transitionLayoutForOldLayout fromLayout: UICollectionViewLayout, newLayout toLayout: UICollectionViewLayout) -> UICollectionViewTransitionLayout! {
         return delegate?.collectionView?(collectionView, transitionLayoutForOldLayout: fromLayout, newLayout: toLayout) ?? UICollectionViewTransitionLayout()
     }
-    
 }
