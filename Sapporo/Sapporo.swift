@@ -169,12 +169,26 @@ public extension Sapporo {
         collectionView.registerNibForClass(cellType)
         return self
     }
-    
+	
+	func registerNibForClasses<T: SACell>(cellTypes: T.Type...) -> Self {
+		for cellType in cellTypes {
+			registerNibForClass(cellType)
+		}
+		return self
+	}
+	
     func registerClass<T: SACell>(cellType: T.Type) -> Self {
         collectionView.registerClass(cellType)
         return self
     }
-    
+	
+	func registerClasses<T: SACell>(cellTypes: T.Type...) -> Self {
+		for cellType in cellTypes {
+			registerClass(cellType)
+		}
+		return self
+	}
+	
     func registerNibForSupplementaryClass<T: UICollectionReusableView>(type: T.Type, kind: String) -> Self {
         collectionView.registerNibForSupplementaryClass(type, kind: kind)
         return self
