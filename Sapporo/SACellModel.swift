@@ -13,7 +13,7 @@ protocol SACellModelDelegate: class {
 	func getOffscreenCell(identifier: String) -> SACell
 }
 
-public class SACellModel {
+public class SACellModel: NSObject {
     weak var delegate               : SACellModelDelegate?
     public let reuseIdentifier      : String
     public internal(set) var indexPath = NSIndexPath(forRow: 0, inSection: 0)
@@ -46,12 +46,14 @@ public class SACellModel {
         self.reuseIdentifier = cellType.reuseIdentifier
         self.estimatedSize = size
         self.selectionHandler = selectionHandler
+        super.init()
     }
     
     public init<T: SACell>(cellType: T.Type, selectionHandler: SASelectionHandler?) {
         self.reuseIdentifier = cellType.reuseIdentifier
         self.estimatedSize = CGSize.zeroSize
         self.selectionHandler = selectionHandler
+        super.init()
     }
 	
     func setup(indexPath: NSIndexPath, delegate: SACellModelDelegate) {
