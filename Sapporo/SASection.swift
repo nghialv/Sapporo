@@ -28,7 +28,8 @@ public class SASection {
     
     public var headerViewModel          : SAFlowLayoutSupplementaryViewModel?
     public var footerViewModel          : SAFlowLayoutSupplementaryViewModel?
-    
+	public var willBumpHandler			: (Int -> Void)?
+	
     public var itemsCount: Int {
         return cellmodels.count
     }
@@ -50,6 +51,7 @@ public class SASection {
     
     public func bump() {
         let type = bumpTracker.getSectionBumpType(index)
+		willBumpHandler?(itemsCount)
         delegate?.bumpMe(type)
         bumpTracker.didBump()
     }

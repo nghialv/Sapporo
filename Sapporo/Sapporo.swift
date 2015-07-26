@@ -18,7 +18,8 @@ final public class Sapporo: NSObject {
 	public var loadmoreHandler		: (() -> Void)?
 	public var loadmoreEnabled		= false
 	public var loadmoreThreshold	: CGFloat = 25
- 
+	public var willBumpHandler		: (Int -> Void)?
+	
     public var sectionsCount: Int {
         return sections.count
     }
@@ -53,6 +54,7 @@ final public class Sapporo: NSObject {
     }
     
     public func bump() -> Self {
+		willBumpHandler?(sectionsCount)
         let type = bumpTracker.getSaporoBumpType()
         switch type {
         case .Reload                : collectionView.reloadData()
@@ -74,6 +76,7 @@ extension Sapporo: SACellModelDelegate, SASectionDelegate {
     }
     
     func bumpMe(type: SectionBumpType) {
+		willBumpHandler?(sectionsCount)
         switch type {
         case .Reload(let indexset)  : collectionView.reloadSections(indexset)
         case .Insert(let indexPaths): collectionView.insertItemsAtIndexPaths(indexPaths)
