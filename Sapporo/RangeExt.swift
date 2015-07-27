@@ -9,8 +9,8 @@
 import Foundation
 
 extension NSRange {
-    init(range: Range<Int>) {
-        self.location = range.startIndex
-        self.length = range.endIndex - range.startIndex
-    }
+	init(range: Range<Int>) {
+		self.location = range.startIndex
+		self.length = range.endIndex - range.startIndex
+	}
 }

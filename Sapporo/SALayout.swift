@@ -9,17 +9,17 @@
 import UIKit
 
 public class SALayout: UICollectionViewLayout {
-    public func getCellModel(indexPath: NSIndexPath) -> SACellModel? {
-        if let sapporo = collectionView?.dataSource as? Sapporo {
-            return sapporo[indexPath]
-        }
-        return nil
-    }
-    
-    public func getCellModels(section: Int) -> [SACellModel] {
-        if let sapporo = collectionView?.dataSource as? Sapporo {
-            return sapporo.getSection(section)?.cellmodels ?? []
-        }
-        return []
-    }
+	public func getCellModel(indexPath: NSIndexPath) -> SACellModel? {
+		if let sapporo = collectionView?.dataSource as? Sapporo {
+			return sapporo[indexPath]
+		}
+		return nil
+	}
+	
+	public func getCellModels(section: Int) -> [SACellModel] {
+		if let sapporo = collectionView?.dataSource as? Sapporo {
+			return sapporo.getSection(section)?.cellmodels ?? []
+		}
+		return []
+	}
 }

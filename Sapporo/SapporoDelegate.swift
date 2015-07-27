@@ -9,22 +9,22 @@
 import UIKit
 
 @objc public protocol SapporoDelegate: class {
-    optional func scrollViewDidScroll(scrollView: UIScrollView)
-    
-    // Decelerating
-    optional func scrollViewWillBeginDecelerating(scrollView: UIScrollView)
-    optional func scrollViewDidEndDecelerating(scrollView: UIScrollView)
-    
-    // Draging
-    optional func scrollViewWillBeginDragging(scrollView: UIScrollView)
-    optional func scrollViewWillEndDragging(scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>)
-    optional func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool)
-    
-    optional func collectionView(collectionView: UICollectionView, transitionLayoutForOldLayout fromLayout: UICollectionViewLayout, newLayout toLayout: UICollectionViewLayout) -> UICollectionViewTransitionLayout
-    
-    optional func collectionView(collectionView: UICollectionView, willDisplaySupplementaryView view: UICollectionReusableView, forElementKind elementKind: String, atIndexPath indexPath: NSIndexPath)
-    
-    optional func collectionView(collectionView: UICollectionView, didEndDisplayingSupplementaryView view: UICollectionReusableView, forElementOfKind elementKind: String, atIndexPath indexPath: NSIndexPath)
-    
-    optional func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView
+	optional func scrollViewDidScroll(scrollView: UIScrollView)
+	
+	// Decelerating
+	optional func scrollViewWillBeginDecelerating(scrollView: UIScrollView)
+	optional func scrollViewDidEndDecelerating(scrollView: UIScrollView)
+	
+	// Draging
+	optional func scrollViewWillBeginDragging(scrollView: UIScrollView)
+	optional func scrollViewWillEndDragging(scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>)
+	optional func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool)
+	
+	optional func collectionView(collectionView: UICollectionView, transitionLayoutForOldLayout fromLayout: UICollectionViewLayout, newLayout toLayout: UICollectionViewLayout) -> UICollectionViewTransitionLayout
+	
+	optional func collectionView(collectionView: UICollectionView, willDisplaySupplementaryView view: UICollectionReusableView, forElementKind elementKind: String, atIndexPath indexPath: NSIndexPath)
+	
+	optional func collectionView(collectionView: UICollectionView, didEndDisplayingSupplementaryView view: UICollectionReusableView, forElementOfKind elementKind: String, atIndexPath indexPath: NSIndexPath)
+	
+	optional func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView
 }
