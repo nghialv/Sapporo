@@ -21,6 +21,7 @@ public class SACell: UICollectionViewCell {
 	}
 
 	public func configureForSizeCalculating(cellmodel: SACellModel) {
+		self.cellmodel = cellmodel
 	}
 	
 	public func willDisplay(collectionView: UICollectionView) {
