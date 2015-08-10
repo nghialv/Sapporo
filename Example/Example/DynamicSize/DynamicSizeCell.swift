@@ -35,6 +35,13 @@ class DynamicSizeCell: SACell {
 		}
 	}
 	
+	override func configureForSizeCalculating(cellmodel: SACellModel) {
+		super.configureForSizeCalculating(cellmodel)
+		if let cellmodel = cellmodel as? DynamicSizeCellModel {
+			desLabel.text   = cellmodel.des
+		}
+	}
+	
 	override func willDisplay(collectionView: UICollectionView) {
 		super.willDisplay(collectionView)
 	}

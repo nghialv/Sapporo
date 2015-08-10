@@ -87,7 +87,7 @@ public class SACellModel: NSObject {
 private extension SACellModel {
 	func calculateSize() -> CGSize? {
 		if let cell = delegate?.getOffscreenCell(reuseIdentifier) {
-			cell.configure(self)
+			cell.configureForSizeCalculating(self)
 			cell.bounds = CGRectMake(0, 0, width, cell.bounds.height)
 			cell.setNeedsLayout()
 			cell.layoutIfNeeded()
