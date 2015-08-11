@@ -37,7 +37,9 @@ public class SACellModel: NSObject {
 			if let size = calculatedSize {
 				return size
 			}
-			calculatedSize = calculateSize()
+			if let cell = delegate?.getOffscreenCell(reuseIdentifier) {
+				calculatedSize = calculateSize(cell)
+			}
 			return calculatedSize ?? estimatedSize
 		}
 	}
@@ -68,6 +70,12 @@ public class SACellModel: NSObject {
 	func didDeselect(cell: SACell) {
 		deselectHandler?(cell)
 	}
+
+	func preCalculateSize(cell: SACell) {
+		if dynamicSizeEnabled {
+			calculatedSize = calculateSize(cell)
+		}
+	}
 	
 	public func enableDynamicHeight(width: CGFloat) {
 		dynamicSizeEnabled = true
@@ -85,17 +93,14 @@ public class SACellModel: NSObject {
 }
 
 private extension SACellModel {
-	func calculateSize() -> CGSize? {
-		if let cell = delegate?.getOffscreenCell(reuseIdentifier) {
-			cell.configureForSizeCalculating(self)
-			cell.bounds = CGRectMake(0, 0, width, cell.bounds.height)
-			cell.setNeedsLayout()
-			cell.layoutIfNeeded()
+	func calculateSize(cell: SACell) -> CGSize {
+		cell.configureForSizeCalculating(self)
+		cell.bounds = CGRectMake(0, 0, width, cell.bounds.height)
+		cell.setNeedsLayout()
+		cell.layoutIfNeeded()
 			
-			var size = cell.contentView.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
-			size.width = width
-			return size
-		}
-		return nil
+		var size = cell.contentView.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
+		size.width = width
+		return size
 	}
 }

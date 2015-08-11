@@ -81,6 +81,13 @@ final public class Sapporo: NSObject {
 		
 		return self
 	}
+	
+	public func preCalculateSizeForCellmodels(cellmodels: [SACellModel]) {
+		for cellmodel in cellmodels {
+			let cell = getOffscreenCell(cellmodel.reuseIdentifier)
+			cellmodel.preCalculateSize(cell)
+		}
+	}
 }
 
 extension Sapporo: SACellModelDelegate, SASectionDelegate {
