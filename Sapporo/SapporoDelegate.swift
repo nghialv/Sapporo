@@ -16,6 +16,7 @@ import UIKit
 	optional func scrollViewDidEndDecelerating(scrollView: UIScrollView)
 	
 	optional func scrollViewDidEndScrollingAnimation(scrollView: UIScrollView)
+	optional func scrollViewDidScrollToTop(scrollView: UIScrollView)
 	
 	// Draging
 	optional func scrollViewWillBeginDragging(scrollView: UIScrollView)
