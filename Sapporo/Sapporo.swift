@@ -285,6 +285,10 @@ extension Sapporo {
 	public func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
 		delegate?.scrollViewDidEndDecelerating?(scrollView)
 	}
+	
+	public func scrollViewDidEndScrollingAnimation(scrollView: UIScrollView) {
+		delegate?.scrollViewDidEndScrollingAnimation?(scrollView)
+	}
 }
 
 // Private methods
