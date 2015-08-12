@@ -38,7 +38,7 @@ func classNameOf(aClass: AnyClass) -> String {
 	return NSStringFromClass(aClass).componentsSeparatedByString(".").last!
 }
 
-func preCalculateSizeForCellmodels(cellmodels: [SACellModel], offscreenCells: [String: SACell] = [:]) -> [String: SACell] {
+public func preCalculateSizeForCellmodels(cellmodels: [SACellModel], offscreenCells: [String: SACell] = [:]) -> [String: SACell] {
 	var cells: [String: SACell] = offscreenCells
 
 	func getOffscreenCell(identifier: String) -> SACell {
