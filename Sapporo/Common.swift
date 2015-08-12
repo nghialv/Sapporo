@@ -37,3 +37,23 @@ public enum ItemBumpType {
 func classNameOf(aClass: AnyClass) -> String {
 	return NSStringFromClass(aClass).componentsSeparatedByString(".").last!
 }
+
+func preCalculateSizeForCellmodels(cellmodels: [SACellModel], offscreenCells: [String: SACell] = [:]) -> [String: SACell] {
+	var cells: [String: SACell] = offscreenCells
+
+	func getOffscreenCell(identifier: String) -> SACell {
+		if let cell = cells[identifier] {
+			return cell
+		}
+		let cell = UINib(nibName: identifier, bundle: nil).instantiateWithOwner(nil, options: nil).first as! SACell
+		cells[identifier] = cell
+		return cell
+	}
+	
+	for cellmodel in cellmodels {
+		let cell = getOffscreenCell(cellmodel.reuseIdentifier)
+		cellmodel.preCalculateSize(cell)
+	}
+	
+	return cells
+}
