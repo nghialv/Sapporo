@@ -17,7 +17,7 @@ final public class Sapporo: NSObject {
 	public weak var delegate		: SapporoDelegate?
 	public var loadmoreHandler		: (() -> Void)?
 	public var loadmoreEnabled		= false
-	public var loadmoreThreshold	: CGFloat = 25
+	public var loadmoreDistanceThreshold: CGFloat = 50
 	public var willBumpHandler		: (Int -> Void)?
 	
 	public var sectionsCount: Int {
@@ -253,7 +253,7 @@ extension Sapporo {
 		let offset = scrollView.contentOffset
 		let y = offset.y + scrollView.bounds.height - scrollView.contentInset.bottom
 		let h = scrollView.contentSize.height
-		if y > h - loadmoreThreshold {
+		if y > h - loadmoreDistanceThreshold {
 			loadmoreEnabled = false
 			loadmoreHandler?()
 		}
