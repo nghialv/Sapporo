@@ -70,12 +70,6 @@ public class SACellModel: NSObject {
 	func didDeselect(cell: SACell) {
 		deselectHandler?(cell)
 	}
-
-	func preCalculateSize(cell: SACell) {
-		if dynamicSizeEnabled {
-			calculatedSize = calculateSize(cell)
-		}
-	}
 	
 	public func enableDynamicHeight(width: CGFloat) {
 		dynamicSizeEnabled = true
@@ -84,6 +78,10 @@ public class SACellModel: NSObject {
 	
 	public func disableDynamicHeight() {
 		dynamicSizeEnabled = false
+	}
+	
+	public func setPreCalculatedSize(size: CGSize) {
+		calculatedSize = size
 	}
 	
 	public func bump() {
