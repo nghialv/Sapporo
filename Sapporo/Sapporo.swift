@@ -67,6 +67,11 @@ final public class Sapporo: NSObject {
 		collectionView.dataSource = self
 		collectionView.delegate = self
 	}
+
+	deinit {
+		collectionView.dataSource = nil
+		collectionView.delegate = nil
+	}
 	
 	public func bump() -> Self {
 		willBumpHandler?(sectionsCount)
