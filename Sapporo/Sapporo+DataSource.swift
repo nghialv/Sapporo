@@ -20,9 +20,7 @@ extension Sapporo: UICollectionViewDataSource {
 	public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
 		if let cellmodel = self[indexPath]
 			, cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellmodel.reuseIdentifier, forIndexPath: indexPath) as? SACell {
-				if cell.cellmodel != cellmodel {
-					cell.configure(cellmodel)
-				}
+				cell.configure(cellmodel)
 				return cell
 		}
 		
