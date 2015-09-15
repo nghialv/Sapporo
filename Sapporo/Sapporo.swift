@@ -113,6 +113,10 @@ extension Sapporo: SACellModelDelegate, SASectionDelegate {
 		offscreenCells[identifier] = cell
 		return cell
 	}
+	
+	func deselectItem(indexPath: NSIndexPath, animated: Bool) {
+		collectionView.deselectItemAtIndexPath(indexPath, animated: animated)
+	}
 }
 
 // Reset, Insert, Move, Remove

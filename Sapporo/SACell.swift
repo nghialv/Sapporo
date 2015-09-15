@@ -14,7 +14,6 @@ public class SACell: UICollectionViewCell {
 	public var shouldSelect         = true
 	public var shouldDeselect       = true
 	public var shouldHighlight      = true
-	public var shouldUnhighlight    = true
 	
 	public func configure(cellmodel: SACellModel) {
 		self.cellmodel = cellmodel

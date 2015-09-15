@@ -11,6 +11,7 @@ import UIKit
 protocol SACellModelDelegate: class {
 	func bumpMe(type: ItemBumpType)
 	func getOffscreenCell(identifier: String) -> SACell
+	func deselectItem(indexPath: NSIndexPath, animated: Bool)
 }
 
 public class SACellModel: NSObject {
@@ -82,6 +83,10 @@ public class SACellModel: NSObject {
 	
 	public func setPreCalculatedSize(size: CGSize) {
 		calculatedSize = size
+	}
+	
+	public func deselect(animated: Bool) {
+		delegate?.deselectItem(indexPath, animated: animated)
 	}
 	
 	public func bump() {
