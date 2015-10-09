@@ -23,8 +23,8 @@ public class SASection {
 	public var inset                    = UIEdgeInsets()
 	public var minimumInteritemSpacing  : CGFloat = 0
 	public var minimumLineSpacing       : CGFloat = 0
-	public var headerReferenceSize      = CGSize.zeroSize
-	public var footerReferenceSize      = CGSize.zeroSize
+	public var headerReferenceSize      = CGSize.zero
+	public var footerReferenceSize      = CGSize.zero
 	
 	public var headerViewModel          : SAFlowLayoutSupplementaryViewModel?
 	public var footerViewModel          : SAFlowLayoutSupplementaryViewModel?
@@ -102,7 +102,7 @@ public extension SASection {
 	
 	// Remove
 	func remove(indexes: [Int]) -> Self {
-		let sortedIndexes = indexes.sorted(<).filter { $0 >= 0 && $0 < self.itemsCount }
+		let sortedIndexes = indexes.sort(<).filter { $0 >= 0 && $0 < self.itemsCount }
 		
 		var remainCellmodels: [SACellModel] = []
 		var i = 0

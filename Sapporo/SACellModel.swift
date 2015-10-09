@@ -23,7 +23,7 @@ public class SACellModel: NSObject {
 	public var deselectHandler      : SADeselectionHandler?
 	
 	private var dynamicSizeEnabled	= false
-	private var estimatedSize		= CGSize.zeroSize
+	private var estimatedSize		= CGSize.zero
 	private var calculatedSize		: CGSize?
 	
 	public var width				: CGFloat = 320
@@ -54,7 +54,7 @@ public class SACellModel: NSObject {
 	
 	public init<T: SACell>(cellType: T.Type, selectionHandler: SASelectionHandler?) {
 		self.reuseIdentifier = cellType.reuseIdentifier
-		self.estimatedSize = CGSize.zeroSize
+		self.estimatedSize = CGSize.zero
 		self.selectionHandler = selectionHandler
 		super.init()
 	}

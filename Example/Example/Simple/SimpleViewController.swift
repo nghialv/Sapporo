@@ -26,7 +26,7 @@ class SimpleViewController: UIViewController {
         sapporo.setLayout(layout)
 		sapporo.loadmoreEnabled = true
 		sapporo.loadmoreHandler = {
-			println("Loadmore")
+			print("Loadmore")
 		}
 		
         let section = sapporo[0]
@@ -37,7 +37,7 @@ class SimpleViewController: UIViewController {
         let cellmodels = (0...4).map { index -> SimpleCellModel in
             return SimpleCellModel(title: "cell \(index)", des: "section 0") { cell in
                 let indexPath = cell.cellmodel?.indexPath
-                println("Selected: indexPath: \(indexPath?.section), \(indexPath?.row)")
+                print("Selected: indexPath: \(indexPath?.section), \(indexPath?.row)")
             }
         }
         
@@ -47,31 +47,31 @@ class SimpleViewController: UIViewController {
         delay(2) {
             section.append([cellmodels[1], cellmodels[3], cellmodels[4]])
             section.bump()
-            println("bump")
+            print("bump")
         }
         
         delay(4) {
             section.insert(cellmodels[2], atIndex: 2)
                 .bump()
-            println("bump")
+            print("bump")
         }
         
         delay(6) {
             cellmodels[0].des = "changed"
             cellmodels[0].bump()
-            println("bump")
+            print("bump")
         }
         
         delay(8) {
             section.remove(1)
             section.bump()
-            println("bump")
+            print("bump")
         }
         
         delay(10) {
             section.move(fromIndex: 2, toIndex: 0)
             section.bump()
-            println("bump")
+            print("bump")
         }
         
         let newSection = SASection()
@@ -82,7 +82,7 @@ class SimpleViewController: UIViewController {
         let newCellmodels = (0...16).map { index -> SimpleCellModel in
             let cm = SimpleCellModel(title: "cell \(index)", des: "section 1") { cell in
                 let indexPath = cell.cellmodel?.indexPath
-                println("Selected: indexPath: \(indexPath?.section), \(indexPath?.row)")
+                print("Selected: indexPath: \(indexPath?.section), \(indexPath?.row)")
             }
             cm.size = CGSize(width: 170, height: 150)
             return cm

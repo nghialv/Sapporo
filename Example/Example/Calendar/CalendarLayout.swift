@@ -25,41 +25,41 @@ class CalendarLayout: SALayout {
         
         return CGSizeMake(contentWidth, contentHeight)
     }
-    
-    override func layoutAttributesForElementsInRect(rect: CGRect) -> [AnyObject]? {
+	
+	override func layoutAttributesForElementsInRect(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         var layoutAttributes = [UICollectionViewLayoutAttributes]()
         
         // Cells
         let visibleIndexPaths = indexPathsOfItemsInRect(rect)
-        layoutAttributes += visibleIndexPaths.map {
+        layoutAttributes += visibleIndexPaths.flatMap {
             self.layoutAttributesForItemAtIndexPath($0)
         }
         
         // Supplementary views
         let dayHeaderViewIndexPaths = indexPathsOfDayHeaderViewsInRect(rect)
-        layoutAttributes += dayHeaderViewIndexPaths.map {
+        layoutAttributes += dayHeaderViewIndexPaths.flatMap {
             self.layoutAttributesForSupplementaryViewOfKind(CalendarHeaderType.Day.rawValue, atIndexPath: $0)
         }
         
         let hourHeaderViewIndexPaths = indexPathsOfHourHeaderViewsInRect(rect)
-        layoutAttributes += hourHeaderViewIndexPaths.map {
+        layoutAttributes += hourHeaderViewIndexPaths.flatMap {
             self.layoutAttributesForSupplementaryViewOfKind(CalendarHeaderType.Hour.rawValue, atIndexPath: $0)
         }
         
         return layoutAttributes
     }
-    
-    override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes! {
-        var attributes = UICollectionViewLayoutAttributes(forCellWithIndexPath: indexPath)
+	
+	override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
+        let attributes = UICollectionViewLayoutAttributes(forCellWithIndexPath: indexPath)
         
         if let event = (getCellModel(indexPath) as? CalendarEventCellModel)?.event {
             attributes.frame = frameForEvent(event)
         }
         return attributes
     }
-    
-    override func layoutAttributesForSupplementaryViewOfKind(elementKind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes! {
-        var attributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: elementKind, withIndexPath: indexPath)
+	
+	override func layoutAttributesForSupplementaryViewOfKind(elementKind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
+        let attributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: elementKind, withIndexPath: indexPath)
         
         let totalWidth = collectionViewContentSize().width
         
