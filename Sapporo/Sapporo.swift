@@ -241,12 +241,9 @@ public extension Sapporo {
 		return collectionView.collectionViewLayout is SAFlowLayout
 	}
 	
-    var isVertical: Bool {
-		guard let layout = collectionView.collectionViewLayout as? SAFlowLayout else {
-			return true
-		}
-		
-		return layout.scrollDirection = .Vertical
+    var direction: UICollectionViewScrollDirection {
+		let layout = collectionView.collectionViewLayout as? SAFlowLayout
+		return layout?.scrollDirection ?? .Vertical
     }
 	
 	public func getSection(index: Int) -> SASection? {
@@ -268,8 +265,8 @@ extension Sapporo {
 		}
 		
 		let offset = scrollView.contentOffset
-		let y = isVertical ? offset.y + scrollView.bounds.height - scrollView.contentInset.bottom : offset.x + scrollView.bounds.width - scrollView.contentInset.right
-		let h = isVertical ? scrollView.contentSize.height : scrollVIew.contentSize.width
+		let y = direction == .Vertical ? offset.y + scrollView.bounds.height - scrollView.contentInset.bottom : offset.x + scrollView.bounds.width - scrollView.contentInset.right
+		let h = direction == .Vertical ? scrollView.contentSize.height : scrollVIew.contentSize.width
 		if y > h - loadmoreDistanceThreshold {
 			loadmoreEnabled = false
 			loadmoreHandler?()
