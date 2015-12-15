@@ -266,7 +266,7 @@ extension Sapporo {
 		
 		let offset = scrollView.contentOffset
 		let y = direction == .Vertical ? offset.y + scrollView.bounds.height - scrollView.contentInset.bottom : offset.x + scrollView.bounds.width - scrollView.contentInset.right
-		let h = direction == .Vertical ? scrollView.contentSize.height : scrollVIew.contentSize.width
+		let h = direction == .Vertical ? scrollView.contentSize.height : scrollView.contentSize.width
 		if y > h - loadmoreDistanceThreshold {
 			loadmoreEnabled = false
 			loadmoreHandler?()
