@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "Sapporo"
-  s.version      = "0.1.6.1"
+  s.version      = "0.1.6"
   s.summary      = "cellmodel-driven collectionview manager"
   s.homepage     = "https://github.com/nghialv/Sapporo"
   s.license      = { :type => "MIT", :file => "LICENSE" }

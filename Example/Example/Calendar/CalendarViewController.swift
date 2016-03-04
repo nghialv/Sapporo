@@ -44,7 +44,7 @@ class CalendarViewController: UIViewController {
         let cellmodels = (0...20).map { _ -> CalendarEventCellModel in
             let event = randomEvent()
             return CalendarEventCellModel(event: event) { _ in
-                println("Selected event: \(event.title)")
+                print("Selected event: \(event.title)")
             }
         }
         

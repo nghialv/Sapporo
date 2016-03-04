@@ -13,7 +13,7 @@ extension Sapporo: UICollectionViewDelegateFlowLayout {
 		if let cellmodel = self[indexPath], flowLayout = collectionViewLayout as? SAFlowLayout {
 			return flowLayout.collectionView(collectionView, sizeForCellModel: cellmodel)
 		}
-		return CGSize.zeroSize
+		return CGSize.zero
 	}
 	
 	public func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
@@ -41,13 +41,13 @@ extension Sapporo: UICollectionViewDelegateFlowLayout {
 		if let sec = getSection(section), flowLayout = collectionViewLayout as? SAFlowLayout {
 			return flowLayout.collectionView(collectionView, referenceSizeForFooterInSection: sec)
 		}
-		return CGSize.zeroSize
+		return CGSize.zero
 	}
 	
 	public func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
 		if let sec = getSection(section), flowLayout = collectionViewLayout as? SAFlowLayout {
 			return flowLayout.collectionView(collectionView, referenceSizeForHeaderInSection: sec)
 		}
-		return CGSize.zeroSize
+		return CGSize.zero
 	}
 }

@@ -12,7 +12,7 @@ public class SAFlowLayoutSupplementaryViewModel {
 	public let reuseIdentifier      : String
 	internal(set) var indexPath     = NSIndexPath(forRow: 0, inSection: 0)
 	
-	public var size                 = CGSize.zeroSize
+	public var size                 = CGSize.zero
 	
 	public init<T: SAFlowLayoutSupplementaryView>(viewType: T.Type, size: CGSize) {
 		self.reuseIdentifier = viewType.reuseIdentifier
@@ -21,7 +21,7 @@ public class SAFlowLayoutSupplementaryViewModel {
 	
 	public init<T: SAFlowLayoutSupplementaryView>(viewType: T.Type) {
 		self.reuseIdentifier = viewType.reuseIdentifier
-		self.size = CGSize.zeroSize
+		self.size = CGSize.zero
 	}
 	
 	func setup(indexPath: NSIndexPath) {
