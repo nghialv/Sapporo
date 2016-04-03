@@ -41,18 +41,23 @@ class SimpleViewController: UIViewController {
             }
         }
         
-        section.reset(cellmodels[0])
-        section.bump()
+        section
+            .reset(cellmodels[0])
+            .bump()
         
         delay(2) {
-            section.append([cellmodels[1], cellmodels[3], cellmodels[4]])
-            section.bump()
+            section
+                .append([cellmodels[1], cellmodels[3], cellmodels[4]])
+                .bump()
+            
             print("bump")
         }
         
         delay(4) {
-            section.insert(cellmodels[2], atIndex: 2)
+            section
+                .insert(cellmodels[2], atIndex: 2)
                 .bump()
+            
             print("bump")
         }
         
@@ -63,14 +68,18 @@ class SimpleViewController: UIViewController {
         }
         
         delay(8) {
-            section.remove(1)
-            section.bump()
+            section
+                .remove(1)
+                .bump()
+            
             print("bump")
         }
         
         delay(10) {
-            section.move(fromIndex: 2, toIndex: 0)
-            section.bump()
+            section
+                .move(fromIndex: 2, toIndex: 0)
+                .bump()
+            
             print("bump")
         }
         
@@ -90,7 +99,8 @@ class SimpleViewController: UIViewController {
         newSection.append(newCellmodels)
         
         delay(12) {
-            sapporo.insert(newSection, atIndex: 1)
+            self.sapporo
+                .insert(newSection, atIndex: 1)
                 .bump()
         }
     }
