@@ -19,14 +19,18 @@ class SimpleHeaderViewModel: SAFlowLayoutSupplementaryViewModel {
     }
 }
 
-class SimpleHeaderView: SAFlowLayoutSupplementaryView {
+class SimpleHeaderView: SAFlowLayoutSupplementaryView, SAFlowLayoutSupplementaryViewType {
+    typealias ViewModel = SimpleHeaderViewModel
+    
     @IBOutlet weak var titleLabel: UILabel!
     
-    override func configure(viewmodel: SAFlowLayoutSupplementaryViewModel) {
-        super.configure(viewmodel)
+    override func configure() {
+        super.configure()
         
-        if let viewmodel = viewmodel as? SimpleHeaderViewModel {
-            titleLabel.text = viewmodel.title
+        guard let viewmodel = viewmodel else {
+            return
         }
+        
+        titleLabel.text = viewmodel.title
     }
 }

@@ -51,6 +51,10 @@
 		8C547D0E1B405155009F6C71 /* CalendarEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C547D0D1B405155009F6C71 /* CalendarEvent.swift */; };
 		8C547D101B405165009F6C71 /* CalendarHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C547D0F1B405165009F6C71 /* CalendarHeaderView.xib */; };
 		8C547D121B405178009F6C71 /* CalendarEventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C547D111B405178009F6C71 /* CalendarEventCell.xib */; };
+		8C9E07971CB0FECC00DBE326 /* SACellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9E07951CB0FE6B00DBE326 /* SACellType.swift */; };
+		8C9E079A1CB0FF6D00DBE326 /* Sapporo+Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9E07981CB0FF6900DBE326 /* Sapporo+Registration.swift */; };
+		8C9E079D1CB1025B00DBE326 /* SAFlowLayoutSupplementaryViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9E079B1CB101F300DBE326 /* SAFlowLayoutSupplementaryViewType.swift */; };
+		8C9E07A01CB1074F00DBE326 /* Sapporo+UIScrollViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9E079E1CB1073000DBE326 /* Sapporo+UIScrollViewDelegate.swift */; };
 		8CCA36CA1B4ED5100053DB94 /* DynamicImageSizeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCA36C91B4ED5100053DB94 /* DynamicImageSizeCell.swift */; };
 		8CCA36CC1B4ED5210053DB94 /* DynamicImageSizeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CCA36CB1B4ED5210053DB94 /* DynamicImageSizeCell.xib */; };
 /* End PBXBuildFile section */
@@ -150,6 +154,10 @@
 		8C547D0D1B405155009F6C71 /* CalendarEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarEvent.swift; sourceTree = "<group>"; };
 		8C547D0F1B405165009F6C71 /* CalendarHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarHeaderView.xib; sourceTree = "<group>"; };
 		8C547D111B405178009F6C71 /* CalendarEventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarEventCell.xib; sourceTree = "<group>"; };
+		8C9E07951CB0FE6B00DBE326 /* SACellType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SACellType.swift; sourceTree = "<group>"; };
+		8C9E07981CB0FF6900DBE326 /* Sapporo+Registration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Sapporo+Registration.swift"; sourceTree = "<group>"; };
+		8C9E079B1CB101F300DBE326 /* SAFlowLayoutSupplementaryViewType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SAFlowLayoutSupplementaryViewType.swift; sourceTree = "<group>"; };
+		8C9E079E1CB1073000DBE326 /* Sapporo+UIScrollViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Sapporo+UIScrollViewDelegate.swift"; sourceTree = "<group>"; };
 		8CCA36C91B4ED5100053DB94 /* DynamicImageSizeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicImageSizeCell.swift; sourceTree = "<group>"; };
 		8CCA36CB1B4ED5210053DB94 /* DynamicImageSizeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DynamicImageSizeCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -301,22 +309,26 @@
 		8C547CCE1B4048F7009F6C71 /* Sapporo */ = {
 			isa = PBXGroup;
 			children = (
+				8C547CE91B4049D8009F6C71 /* Common.swift */,
+				8C547CE71B4049CF009F6C71 /* SABumpTracker.swift */,
+				8C9E07951CB0FE6B00DBE326 /* SACellType.swift */,
+				8C547CDD1B404982009F6C71 /* SACell.swift */,
+				8C547CDB1B404978009F6C71 /* SACellModel.swift */,
+				8C9E079B1CB101F300DBE326 /* SAFlowLayoutSupplementaryViewType.swift */,
+				8C547CE51B4049C5009F6C71 /* SAFlowLayoutSupplementaryView.swift */,
+				8C547CE31B4049AF009F6C71 /* SAFlowLayoutSupplementaryViewModel.swift */,
+				8C547CD91B40496C009F6C71 /* SASection.swift */,
 				8C547CCF1B40490F009F6C71 /* Sapporo.swift */,
+				8C9E07981CB0FF6900DBE326 /* Sapporo+Registration.swift */,
 				8C547CD11B40491E009F6C71 /* SapporoDelegate.swift */,
 				8C547CD31B40492E009F6C71 /* Sapporo+Delegate.swift */,
 				8C547CD51B40493B009F6C71 /* Sapporo+DataSource.swift */,
 				8C547CD71B404962009F6C71 /* Sapporo+DelegateFlowLayout.swift */,
-				8C547CD91B40496C009F6C71 /* SASection.swift */,
-				8C547CDB1B404978009F6C71 /* SACellModel.swift */,
-				8C547CDD1B404982009F6C71 /* SACell.swift */,
+				8C9E079E1CB1073000DBE326 /* Sapporo+UIScrollViewDelegate.swift */,
 				8C547CDF1B40498B009F6C71 /* SALayout.swift */,
 				8C547CE11B404995009F6C71 /* SAFlowLayout.swift */,
-				8C547CE31B4049AF009F6C71 /* SAFlowLayoutSupplementaryViewModel.swift */,
-				8C547CE51B4049C5009F6C71 /* SAFlowLayoutSupplementaryView.swift */,
-				8C547CE71B4049CF009F6C71 /* SABumpTracker.swift */,
-				8C547CE91B4049D8009F6C71 /* Common.swift */,
-				8C547CEB1B4049E5009F6C71 /* RangeExt.swift */,
 				8C547CED1B4049ED009F6C71 /* ArrayExt.swift */,
+				8C547CEB1B4049E5009F6C71 /* RangeExt.swift */,
 				8C547CEF1B4049F8009F6C71 /* UICollectionViewExt.swift */,
 				8C547CF31B404A1C009F6C71 /* UICollectionReusableViewExt.swift */,
 			);
@@ -558,16 +570,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C9E079D1CB1025B00DBE326 /* SAFlowLayoutSupplementaryViewType.swift in Sources */,
+				8C9E07971CB0FECC00DBE326 /* SACellType.swift in Sources */,
 				8C547CE81B4049CF009F6C71 /* SABumpTracker.swift in Sources */,
 				8C547CF01B4049F8009F6C71 /* UICollectionViewExt.swift in Sources */,
 				8C547CDC1B404978009F6C71 /* SACellModel.swift in Sources */,
 				8C547CE21B404995009F6C71 /* SAFlowLayout.swift in Sources */,
 				8C547CD81B404962009F6C71 /* Sapporo+DelegateFlowLayout.swift in Sources */,
+				8C9E07A01CB1074F00DBE326 /* Sapporo+UIScrollViewDelegate.swift in Sources */,
 				8C547CF71B404A2C009F6C71 /* Sapporo+Delegate.swift in Sources */,
 				8C547CF61B404A29009F6C71 /* SapporoDelegate.swift in Sources */,
 				8C547CDA1B40496C009F6C71 /* SASection.swift in Sources */,
 				8C547CF81B404A31009F6C71 /* Sapporo+DataSource.swift in Sources */,
 				8C547CEE1B4049ED009F6C71 /* ArrayExt.swift in Sources */,
+				8C9E079A1CB0FF6D00DBE326 /* Sapporo+Registration.swift in Sources */,
 				8C547CEC1B4049E5009F6C71 /* RangeExt.swift in Sources */,
 				8C547CE61B4049C5009F6C71 /* SAFlowLayoutSupplementaryView.swift in Sources */,
 				8C547CDE1B404982009F6C71 /* SACell.swift in Sources */,

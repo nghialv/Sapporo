@@ -11,9 +11,15 @@ import Foundation
 public typealias SASelectionHandler     = (SACell) -> Void
 public typealias SADeselectionHandler   = SASelectionHandler
 
+public protocol SASectionIndexType {
+    var intValue: Int { get }
+    static var count: Int { get }
+}
 
-public protocol SectionIndex {
-	var intValue: Int { get }
+public extension SASectionIndexType where Self: RawRepresentable, Self.RawValue == Int {
+    var intValue: Int {
+        return rawValue
+    }
 }
 
 public enum SapporoBumpType {

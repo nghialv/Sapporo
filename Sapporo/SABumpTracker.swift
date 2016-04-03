@@ -19,6 +19,13 @@ private enum UpdateState {
 final class SABumpTracker {
 	private var state = UpdateState.Begin
 	
+    var changed: Bool {
+        if case .Begin = state {
+            return false
+        }
+        return true
+    }
+    
 	func didBump() {
 		state = .Begin
 	}
@@ -31,6 +38,7 @@ final class SABumpTracker {
 		switch state {
 		case .Begin:
 			state = .Insert(indexes)
+            
 		default:
 			state = .Reload
 		}
@@ -40,6 +48,7 @@ final class SABumpTracker {
 		switch state {
 		case .Begin:
 			state = .Move(from, to)
+            
 		default:
 			state = .Reload
 		}
@@ -49,6 +58,7 @@ final class SABumpTracker {
 		switch state {
 		case .Begin:
 			state = .Remove(indexes)
+            
 		default:
 			state = .Reload
 		}
@@ -62,16 +72,19 @@ final class SABumpTracker {
 		switch state {
 		case .Insert(let indexes):
 			return .Insert(indexes.map(toIndexPath))
+            
 		case .Move(let from, let to):
 			return .Move(toIndexPath(from), toIndexPath(to))
+            
 		case .Remove(let indexes):
 			return .Delete(indexes.map(toIndexPath))
+            
 		default:
 			return .Reload(NSIndexSet(index: index))
 		}
 	}
 	
-	func getSaporoBumpType() -> SapporoBumpType {
+	func getSapporoBumpType() -> SapporoBumpType {
 		let toIndexSet = { (indexes: [Int]) -> NSIndexSet in
 			let indexSet = NSMutableIndexSet()
 			for index in indexes {
@@ -83,10 +96,13 @@ final class SABumpTracker {
 		switch state {
 		case .Insert(let indexes):
 			return .Insert(toIndexSet(indexes))
+            
 		case .Move(let from, let to):
 			return .Move(from, to)
+            
 		case .Remove(let indexes):
 			return .Delete(toIndexSet(indexes))
+            
 		default:
 			return .Reload
 		}

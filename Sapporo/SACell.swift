@@ -9,18 +9,22 @@
 import UIKit
 
 public class SACell: UICollectionViewCell {
-	public internal(set) weak var cellmodel: SACellModel?
+    public internal(set) weak var _cellmodel: SACellModel?
 	
 	public var shouldSelect         = true
 	public var shouldDeselect       = true
 	public var shouldHighlight      = true
 	
-	public func configure(cellmodel: SACellModel) {
-		self.cellmodel = cellmodel
+    func configure(cellmodel: SACellModel) {
+		_cellmodel = cellmodel
+        configure()
 	}
+    
+    public func configure() {
+    }
 
 	public func configureForSizeCalculating(cellmodel: SACellModel) {
-		self.cellmodel = cellmodel
+		self._cellmodel = cellmodel
 	}
 	
 	public func willDisplay(collectionView: UICollectionView) {

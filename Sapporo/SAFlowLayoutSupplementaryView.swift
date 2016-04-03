@@ -9,9 +9,13 @@
 import UIKit
 
 public class SAFlowLayoutSupplementaryView: UICollectionReusableView {
-	public internal(set) weak var viewmodel: SAFlowLayoutSupplementaryViewModel?
+	public internal(set) weak var _viewmodel: SAFlowLayoutSupplementaryViewModel?
 	
-	public func configure(viewmodel: SAFlowLayoutSupplementaryViewModel) {
-		self.viewmodel = viewmodel
+	func configure(viewmodel: SAFlowLayoutSupplementaryViewModel) {
+		_viewmodel = viewmodel
+        configure()
 	}
+    
+    public func configure() {
+    }
 }

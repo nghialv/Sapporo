@@ -20,23 +20,24 @@ class DynamicSizeViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		sapporo.registerNibForClass(DynamicSizeCell)
-		sapporo.registerNibForClass(DynamicImageSizeCell)
+		sapporo
+            .registerCellByNib(DynamicSizeCell)
+            .registerCellByNib(DynamicImageSizeCell)
 		
 		let layout = SAFlowLayout()
 		sapporo.setLayout(layout)
 		
-		let section = sapporo[0]
-		//sapporo.bump()
+		let section = SASection()
 		
 		let title = " title "
 		let des = " description "
-		
-		//let cellmodel = DynamicImageSizeCellModel(title: title)
 		let cellmodel = DynamicSizeCellModel(title: title, des: longDes)
 		
 		section.append(cellmodel)
-		sapporo.bump()
+        
+		sapporo
+            .reset(section)
+            .bump()
 		
 		delay(3) {
 			cellmodel.des = des

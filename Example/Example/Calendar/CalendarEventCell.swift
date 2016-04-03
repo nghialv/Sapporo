@@ -18,7 +18,9 @@ class CalendarEventCellModel: SACellModel {
     }
 }
 
-class CalendarEventCell: SACell {
+class CalendarEventCell: SACell, SACellType {
+    typealias CellModel = CalendarEventCellModel
+    
     @IBOutlet weak var titleLabel: UILabel!
     
     override func awakeFromNib() {
@@ -28,11 +30,13 @@ class CalendarEventCell: SACell {
         layer.borderColor = UIColor(red: 0, green: 0, blue: 0.7, alpha: 1).CGColor
     }
     
-    override func configure(cellmodel: SACellModel) {
-        super.configure(cellmodel)
+    override func configure() {
+        super.configure()
         
-        if let cellmodel = cellmodel as? CalendarEventCellModel {
-            titleLabel.text = cellmodel.event.title
+        guard let cellmodel = cellmodel else {
+            return
         }
+        
+        titleLabel.text = cellmodel.event.title
     }
 }
