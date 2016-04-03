@@ -24,7 +24,7 @@ final public class Sapporo: NSObject {
 		return sections.count
 	}
 	
-	public subscript(index: SectionIndex) -> SASection {
+	public subscript(index: SASectionIndexType) -> SASection {
 		get {
 			return self[index.intValue]
 		}
