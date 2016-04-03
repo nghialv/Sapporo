@@ -192,37 +192,23 @@ public extension Sapporo {
 
 // Registering
 public extension Sapporo {
-	func registerNibForClass<T: SACell>(cellType: T.Type) -> Self {
-		collectionView.registerNibForClass(cellType)
+	func registerCellByNib<T: SACell>(cellType: T.Type) -> Self {
+		collectionView.registerCellByNib(cellType)
 		return self
 	}
 	
-	func registerNibForClasses<T: SACell>(cellTypes: T.Type...) -> Self {
-		for cellType in cellTypes {
-			registerNibForClass(cellType)
-		}
+	func registerCell<T: SACell>(cellType: T.Type) -> Self {
+		collectionView.registerCell(cellType)
 		return self
 	}
 	
-	func registerClass<T: SACell>(cellType: T.Type) -> Self {
-		collectionView.registerClass(cellType)
+	func registerSupplementaryViewByNib<T: UICollectionReusableView>(type: T.Type, kind: String) -> Self {
+		collectionView.registerSupplementaryViewByNib(type, kind: kind)
 		return self
 	}
 	
-	func registerClasses<T: SACell>(cellTypes: T.Type...) -> Self {
-		for cellType in cellTypes {
-			registerClass(cellType)
-		}
-		return self
-	}
-	
-	func registerNibForSupplementaryClass<T: UICollectionReusableView>(type: T.Type, kind: String) -> Self {
-		collectionView.registerNibForSupplementaryClass(type, kind: kind)
-		return self
-	}
-	
-	func registerSupplementaryClass<T: UICollectionReusableView>(type: T.Type, kind: String) -> Self {
-		collectionView.registerSupplementaryClass(type, kind: kind)
+	func registerSupplementaryView<T: UICollectionReusableView>(type: T.Type, kind: String) -> Self {
+		collectionView.registerSupplementaryView(type, kind: kind)
 		return self
 	}
 }

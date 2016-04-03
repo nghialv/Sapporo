@@ -315,8 +315,8 @@
 				8C547CE51B4049C5009F6C71 /* SAFlowLayoutSupplementaryView.swift */,
 				8C547CE71B4049CF009F6C71 /* SABumpTracker.swift */,
 				8C547CE91B4049D8009F6C71 /* Common.swift */,
-				8C547CEB1B4049E5009F6C71 /* RangeExt.swift */,
 				8C547CED1B4049ED009F6C71 /* ArrayExt.swift */,
+				8C547CEB1B4049E5009F6C71 /* RangeExt.swift */,
 				8C547CEF1B4049F8009F6C71 /* UICollectionViewExt.swift */,
 				8C547CF31B404A1C009F6C71 /* UICollectionReusableViewExt.swift */,
 			);

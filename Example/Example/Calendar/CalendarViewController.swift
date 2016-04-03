@@ -23,9 +23,11 @@ class CalendarViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         sapporo.delegate = self
-        sapporo.registerNibForClass(CalendarEventCell)
-        sapporo.registerNibForSupplementaryClass(CalendarHeaderView.self, kind: CalendarHeaderType.Day.rawValue)
-        sapporo.registerNibForSupplementaryClass(CalendarHeaderView.self, kind: CalendarHeaderType.Hour.rawValue)
+        
+        sapporo
+            .registerCellByNib(CalendarEventCell)
+            .registerSupplementaryViewByNib(CalendarHeaderView.self, kind: CalendarHeaderType.Day.rawValue)
+            .registerSupplementaryViewByNib(CalendarHeaderView.self, kind: CalendarHeaderType.Hour.rawValue)
         
         let layout = CalendarLayout()
         sapporo.setLayout(layout)

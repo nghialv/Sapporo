@@ -18,8 +18,9 @@ class SimpleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        sapporo.registerNibForClass(SimpleCell)
-        sapporo.registerNibForSupplementaryClass(SimpleHeaderView.self, kind: UICollectionElementKindSectionHeader)
+        sapporo
+            .registerCellByNib(SimpleCell)
+            .registerSupplementaryViewByNib(SimpleHeaderView.self, kind: UICollectionElementKindSectionHeader)
         
         let layout = SAFlowLayout()
         //layout.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
