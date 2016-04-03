@@ -84,7 +84,7 @@ final class SABumpTracker {
 		}
 	}
 	
-	func getSaporoBumpType() -> SapporoBumpType {
+	func getSapporoBumpType() -> SapporoBumpType {
 		let toIndexSet = { (indexes: [Int]) -> NSIndexSet in
 			let indexSet = NSMutableIndexSet()
 			for index in indexes {

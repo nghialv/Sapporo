@@ -54,6 +54,7 @@
 		8C9E07971CB0FECC00DBE326 /* SACellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9E07951CB0FE6B00DBE326 /* SACellType.swift */; };
 		8C9E079A1CB0FF6D00DBE326 /* Sapporo+Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9E07981CB0FF6900DBE326 /* Sapporo+Registration.swift */; };
 		8C9E079D1CB1025B00DBE326 /* SAFlowLayoutSupplementaryViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9E079B1CB101F300DBE326 /* SAFlowLayoutSupplementaryViewType.swift */; };
+		8C9E07A01CB1074F00DBE326 /* Sapporo+UIScrollViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9E079E1CB1073000DBE326 /* Sapporo+UIScrollViewDelegate.swift */; };
 		8CCA36CA1B4ED5100053DB94 /* DynamicImageSizeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCA36C91B4ED5100053DB94 /* DynamicImageSizeCell.swift */; };
 		8CCA36CC1B4ED5210053DB94 /* DynamicImageSizeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CCA36CB1B4ED5210053DB94 /* DynamicImageSizeCell.xib */; };
 /* End PBXBuildFile section */
@@ -156,6 +157,7 @@
 		8C9E07951CB0FE6B00DBE326 /* SACellType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SACellType.swift; sourceTree = "<group>"; };
 		8C9E07981CB0FF6900DBE326 /* Sapporo+Registration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Sapporo+Registration.swift"; sourceTree = "<group>"; };
 		8C9E079B1CB101F300DBE326 /* SAFlowLayoutSupplementaryViewType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SAFlowLayoutSupplementaryViewType.swift; sourceTree = "<group>"; };
+		8C9E079E1CB1073000DBE326 /* Sapporo+UIScrollViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Sapporo+UIScrollViewDelegate.swift"; sourceTree = "<group>"; };
 		8CCA36C91B4ED5100053DB94 /* DynamicImageSizeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicImageSizeCell.swift; sourceTree = "<group>"; };
 		8CCA36CB1B4ED5210053DB94 /* DynamicImageSizeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DynamicImageSizeCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -315,13 +317,14 @@
 				8C9E079B1CB101F300DBE326 /* SAFlowLayoutSupplementaryViewType.swift */,
 				8C547CE51B4049C5009F6C71 /* SAFlowLayoutSupplementaryView.swift */,
 				8C547CE31B4049AF009F6C71 /* SAFlowLayoutSupplementaryViewModel.swift */,
+				8C547CD91B40496C009F6C71 /* SASection.swift */,
 				8C547CCF1B40490F009F6C71 /* Sapporo.swift */,
 				8C9E07981CB0FF6900DBE326 /* Sapporo+Registration.swift */,
 				8C547CD11B40491E009F6C71 /* SapporoDelegate.swift */,
 				8C547CD31B40492E009F6C71 /* Sapporo+Delegate.swift */,
 				8C547CD51B40493B009F6C71 /* Sapporo+DataSource.swift */,
 				8C547CD71B404962009F6C71 /* Sapporo+DelegateFlowLayout.swift */,
-				8C547CD91B40496C009F6C71 /* SASection.swift */,
+				8C9E079E1CB1073000DBE326 /* Sapporo+UIScrollViewDelegate.swift */,
 				8C547CDF1B40498B009F6C71 /* SALayout.swift */,
 				8C547CE11B404995009F6C71 /* SAFlowLayout.swift */,
 				8C547CED1B4049ED009F6C71 /* ArrayExt.swift */,
@@ -574,6 +577,7 @@
 				8C547CDC1B404978009F6C71 /* SACellModel.swift in Sources */,
 				8C547CE21B404995009F6C71 /* SAFlowLayout.swift in Sources */,
 				8C547CD81B404962009F6C71 /* Sapporo+DelegateFlowLayout.swift in Sources */,
+				8C9E07A01CB1074F00DBE326 /* Sapporo+UIScrollViewDelegate.swift in Sources */,
 				8C547CF71B404A2C009F6C71 /* Sapporo+Delegate.swift in Sources */,
 				8C547CF61B404A29009F6C71 /* SapporoDelegate.swift in Sources */,
 				8C547CDA1B40496C009F6C71 /* SASection.swift in Sources */,

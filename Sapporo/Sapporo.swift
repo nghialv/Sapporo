@@ -35,25 +35,11 @@ final public class Sapporo: NSObject {
 	
 	public subscript(index: Int) -> SASection {
 		get {
-			if let section = sections.get(index) {
-				return section
-			}
-			
-			let newSections = (sectionsCount...index).map { _ in SASection() }
-			setupForSections(newSections, fromIndex: sectionsCount)
-			
-			sections += newSections
-			return sections[index]
+            return sections[index]
 		}
 		set {
-			if index < sectionsCount {
-				sections[index] = newValue
-				setupForSections([newValue], fromIndex: index)
-			} else {
-				let newSections = (sectionsCount..<index).map { _ in SASection() } + [newValue]
-				setupForSections(newSections, fromIndex: sectionsCount)
-				sections += newSections
-			}
+            setupSections([newValue], fromIndex: index)
+            sections[index] = newValue
 		}
 	}
 	
@@ -61,6 +47,14 @@ final public class Sapporo: NSObject {
 		return self[indexPath.section][indexPath.row]
 	}
 	
+    public func getSection(index: Int) -> SASection? {
+        return sections.get(index)
+    }
+    
+    public func getSEction(index: SASectionIndexType) -> SASection? {
+        return getSection(index.intValue)
+    }
+    
 	public init(collectionView: UICollectionView) {
 		self.collectionView = collectionView
 		super.init()
@@ -73,20 +67,36 @@ final public class Sapporo: NSObject {
 		collectionView.delegate = nil
 	}
 	
-	public func bump() -> Self {
-		willBumpHandler?(sectionsCount)
-		let type = bumpTracker.getSaporoBumpType()
-		switch type {
-		case .Reload                : collectionView.reloadData()
-		case .Insert(let indexset)  : collectionView.insertSections(indexset)
-		case .Move(let ori, let new): collectionView.moveSection(ori, toSection: new)
-		case .Delete(let indexset)  : collectionView.deleteSections(indexset)
-		}
-		bumpTracker.didBump()
-		
-		return self
+    public func bump() -> Self {
+        willBumpHandler?(sectionsCount)
+        
+        let changedCount = sections.reduce(0) { $0 + ($1.changed ? 1 : 0) }
+        
+        if changedCount == 0 {
+            switch bumpTracker.getSapporoBumpType() {
+            case .Reload:
+                collectionView.reloadData()
+                
+            case let .Insert(indexSet):
+                collectionView.insertSections(indexSet)
+                
+            case let .Delete(indexSet):
+                collectionView.deleteSections(indexSet)
+                
+            case let .Move(from, to):
+                collectionView.moveSection(from, toSection: to)
+            }
+        } else {
+            collectionView.reloadData()
+            sections.forEach { $0.didReloadCollectionView() }
+        }
+        
+        bumpTracker.didBump()
+        return self
 	}
 }
+
+// MARK - SACellModelDelegate, SASectionDelegate
 
 extension Sapporo: SACellModelDelegate, SASectionDelegate {
 	func bumpMe(type: ItemBumpType) {
@@ -119,63 +129,146 @@ extension Sapporo: SACellModelDelegate, SASectionDelegate {
 	}
 }
 
-// Reset, Insert, Move, Remove
+// MARK - Public methods
+
 public extension Sapporo {
 	// Reset
+    
+    func reset(listType: SASectionIndexType.Type) -> Self {
+        let sections = (0..<listType.count).map { _ in SASection() }
+        return reset(sections)
+    }
+    
 	func reset() -> Self {
-		sections = []
-		
-		bumpTracker.didReset()
-		
-		return self
+        return reset([])
 	}
+    
+    func reset(section: SASection) -> Self {
+        return reset([section])
+    }
+    
+    func reset(sections: [SASection]) -> Self {
+        setupSections(sections, fromIndex: 0)
+        self.sections = sections
+        bumpTracker.didReset()
+        return self
+    }
 	
+    // Append
+    
+    func append(section: SASection) -> Self {
+        return append([section])
+    }
+    
+    func append(sections: [SASection]) -> Self {
+        return insert(sections, atIndex: sectionsCount)
+    }
+    
 	// Insert
+    
 	func insert(section: SASection, atIndex index: Int) -> Self {
 		return insert([section], atIndex: index)
 	}
 	
 	func insert(sections: [SASection], atIndex index: Int) -> Self {
-		self.sections.insert(sections, atIndex: index)
-		
-		let affectedSections = Array(self.sections[index..<sectionsCount])
-		setupForSections(affectedSections, fromIndex: index)
-		
-		let indexes = (index..<(index + sections.count)).map { $0 }
-		bumpTracker.didInsert(indexes)
-		
-		return self
-	}
-	
-	// Move
-	func move(fromIndex from: Int, toIndex to: Int) -> Self {
-		let moved = sections.move(fromIndex: from, toIndex: to)
-		
-		if moved {
-			let f = min(from, to)
-			let t = max(from, to)
-			let affectedSections = Array(sections[f...t])
-			setupForSections(affectedSections, fromIndex: f)
-			
-			bumpTracker.didMove(from, to: to)
-		}
+        guard sections.isNotEmpty else {
+            return self
+        }
+        
+        let sIndex = min(max(index, 0), sectionsCount)
+        setupSections(sections, fromIndex: sIndex)
+        let r = self.sections.insert(sections, atIndex: sIndex)
+        bumpTracker.didInsert(Array(r))
 		
 		return self
 	}
-	
+
+    func insertBeforeLast(section: SASection) -> Self {
+        return insertBeforeLast([section])
+    }
+    
+    func insertBeforeLast(sections: [SASection]) -> Self {
+        let index = max(sections.count - 1, 0)
+        return insert(sections, atIndex: index)
+    }
+    
 	// Remove
-	func remove(index: Int) -> Self {
-		sections.remove(index)
-		let affectedSections = Array(sections[index..<sectionsCount])
-		setupForSections(affectedSections, fromIndex: index)
-		
-		bumpTracker.didRemove([index])
-		
-		return self
-	}
+    
+    func remove(index: Int) -> Self {
+        return remove(indexes: [index])
+    }
+    
+    func remove(range: Range<Int>) -> Self {
+        let indexes = range.map { $0 }
+        return remove(indexes: indexes)
+    }
+    
+    func remove(indexes indexes: [Int]) -> Self {
+        guard indexes.isNotEmpty else {
+            return self
+        }
+        
+        let sortedIndexes = indexes
+            .sort(<)
+            .filter { $0 >= 0 && $0 < self.sectionsCount }
+        
+        var remainSections: [SASection] = []
+        var i = 0
+        
+        for j in 0..<sectionsCount {
+            if let k = sortedIndexes.get(i) where k == j {
+                i++
+            } else {
+                remainSections.append(sections[j])
+            }
+        }
+        
+        sections = remainSections
+        setupSections(sections, fromIndex: 0)
+        
+        bumpTracker.didRemove(sortedIndexes)
+        
+        return self
+    }
+    
+    func removeLast() -> Self {
+        let index = sectionsCount - 1
+        
+        guard index >= 0 else {
+            return self
+        }
+        
+        return remove(index)
+    }
+    
+    func remove(section: SASection) -> Self {
+        let index = section.index
+        
+        guard index >= 0 && index < sectionsCount else {
+            return self
+        }
+        
+        return remove(index)
+    }
+    
+    func removeAll() -> Self {
+        return reset()
+    }
+    
+    // Move
+    
+    func move(from: Int, to: Int) -> Self {
+        sections.move(fromIndex: from, toIndex: to)
+        setupSections([sections[from]], fromIndex: from)
+        setupSections([sections[to]], fromIndex: to)
+        
+        bumpTracker.didMove(from, to: to)
+        return self
+    }
 }
 
-// Layout
+// MARK - Layout
+
 public extension Sapporo {
 	public func setLayout(layout: UICollectionViewLayout) {
 		collectionView.collectionViewLayout = layout
@@ -190,7 +283,8 @@ public extension Sapporo {
 	}
 }
 
-// Utilities
+// MARK - Utilities
+
 public extension Sapporo {
 	var isEmpty: Bool {
 		return sections.isEmpty
@@ -209,68 +303,17 @@ public extension Sapporo {
 		return layout?.scrollDirection ?? .Vertical
     }
 	
-	public func getSection(index: Int) -> SASection? {
-		return sections.get(index)
-	}
-	
 	func cellAtIndexPath(indexPath: NSIndexPath) -> SACell? {
 		return collectionView.cellForItemAtIndexPath(indexPath) as? SACell
 	}
 }
 
-// UIScrollViewDelegate
-extension Sapporo {
-	public func scrollViewDidScroll(scrollView: UIScrollView) {
-		delegate?.scrollViewDidScroll?(scrollView)
-		
-		if !loadmoreEnabled {
-			return
-		}
-		
-		let offset = scrollView.contentOffset
-		let y = direction == .Vertical ? offset.y + scrollView.bounds.height - scrollView.contentInset.bottom : offset.x + scrollView.bounds.width - scrollView.contentInset.right
-		let h = direction == .Vertical ? scrollView.contentSize.height : scrollView.contentSize.width
-		if y > h - loadmoreDistanceThreshold {
-			loadmoreEnabled = false
-			loadmoreHandler?()
-		}
-	}
-	
-	public func scrollViewWillBeginDragging(scrollView: UIScrollView) {
-		delegate?.scrollViewWillBeginDragging?(scrollView)
-	}
-	
-	public func scrollViewWillEndDragging(scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-		delegate?.scrollViewWillEndDragging?(scrollView, withVelocity: velocity, targetContentOffset: targetContentOffset)
-	}
-	
-	public func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-		delegate?.scrollViewDidEndDragging?(scrollView, willDecelerate: decelerate)
-	}
-	
-	public func scrollViewWillBeginDecelerating(scrollView: UIScrollView) {
-		delegate?.scrollViewWillBeginDecelerating?(scrollView)
-	}
-	
-	public func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-		delegate?.scrollViewDidEndDecelerating?(scrollView)
-	}
-	
-	public func scrollViewDidEndScrollingAnimation(scrollView: UIScrollView) {
-		delegate?.scrollViewDidEndScrollingAnimation?(scrollView)
-	}
-	
-	public func scrollViewDidScrollToTop(scrollView: UIScrollView) {
-		delegate?.scrollViewDidScrollToTop?(scrollView)
-	}
-}
+// MARK - Private methods
 
-// Private methods
 private extension Sapporo {
-	func setupForSections(sections: [SASection], fromIndex start: Int) {
-		var start = start
-		for section in sections {
-			section.setup(start++, delegate: self)
-		}
+	func setupSections(sections: [SASection], var fromIndex start: Int) {
+        sections.forEach {
+            $0.setup(start++, delegate: self)
+        }
 	}
 }

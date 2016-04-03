@@ -28,10 +28,14 @@ class SimpleViewController: UIViewController {
 			print("Loadmore")
 		}
 		
-        let section = sapporo[0]
+        let section = SASection()
         section.inset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         section.minimumLineSpacing = 10
         section.headerViewModel = SimpleHeaderViewModel(title: "Section 0 header", height: 25)
+        
+        sapporo
+            .reset(section)
+            .bump()
         
         let cellmodels = (0...4).map { index -> SimpleCellModel in
             return SimpleCellModel(title: "cell \(index)", des: "section 0") { cell in

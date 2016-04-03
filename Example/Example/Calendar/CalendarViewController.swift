@@ -50,8 +50,13 @@ class CalendarViewController: UIViewController {
             }
         }
         
-        sapporo[0].append(cellmodels)
-        sapporo.bump()
+        let section = SASection()
+        section
+            .append(cellmodels)
+        
+        sapporo
+            .reset(section)
+            .bump()
     }
 }
 
