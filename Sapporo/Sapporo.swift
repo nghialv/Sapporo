@@ -190,29 +190,6 @@ public extension Sapporo {
 	}
 }
 
-// Registering
-public extension Sapporo {
-	func registerCellByNib<T: SACell>(cellType: T.Type) -> Self {
-		collectionView.registerCellByNib(cellType)
-		return self
-	}
-	
-	func registerCell<T: SACell>(cellType: T.Type) -> Self {
-		collectionView.registerCell(cellType)
-		return self
-	}
-	
-	func registerSupplementaryViewByNib<T: UICollectionReusableView>(type: T.Type, kind: String) -> Self {
-		collectionView.registerSupplementaryViewByNib(type, kind: kind)
-		return self
-	}
-	
-	func registerSupplementaryView<T: UICollectionReusableView>(type: T.Type, kind: String) -> Self {
-		collectionView.registerSupplementaryView(type, kind: kind)
-		return self
-	}
-}
-
 // Utilities
 public extension Sapporo {
 	var isEmpty: Bool {

@@ -20,17 +20,22 @@ class DynamicImageSizeCellModel: SACellModel {
 	}
 }
 
-class DynamicImageSizeCell: SACell {
+class DynamicImageSizeCell: SACell, SACellType {
+    typealias CellModel = DynamicImageSizeCellModel
+    
 	@IBOutlet weak var titleLabel: UILabel!
 	@IBOutlet weak var dynamicImageView: UIImageView!
 	
-	override func configure(cellmodel: SACellModel) {
-		super.configure(cellmodel)
+	override func configure() {
+		super.configure()
+        
+        guard let cellmodel = cellmodel else {
+            return
+        }
+        
 		contentView.backgroundColor = UIColor.lightGrayColor()
 		
-		if let cellmodel = cellmodel as? DynamicImageSizeCellModel {
-			titleLabel.text = cellmodel.title
-			dynamicImageView.image = UIImage(named: "image")
-		}
+        titleLabel.text = cellmodel.title
+        dynamicImageView.image = UIImage(named: "image")
 	}
 }

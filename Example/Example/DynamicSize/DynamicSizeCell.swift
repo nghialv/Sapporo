@@ -21,18 +21,22 @@ class DynamicSizeCellModel: SACellModel {
 	}
 }
 
-class DynamicSizeCell: SACell {
+class DynamicSizeCell: SACell, SACellType {
+    typealias CellModel = DynamicSizeCellModel
+    
 	@IBOutlet weak var titleLabel   : UILabel!
 	@IBOutlet weak var desLabel     : UILabel!
 	
-	override func configure(cellmodel: SACellModel) {
-		super.configure(cellmodel)
+	override func configure() {
+		super.configure()
+        guard let cellmodel = cellmodel else {
+            return
+        }
+        
 		contentView.backgroundColor = UIColor.lightGrayColor()
 		
-		if let cellmodel = cellmodel as? DynamicSizeCellModel {
-			titleLabel.text = cellmodel.title
-			desLabel.text   = cellmodel.des
-		}
+        titleLabel.text = cellmodel.title
+        desLabel.text   = cellmodel.des
 	}
 	
 	override func configureForSizeCalculating(cellmodel: SACellModel) {

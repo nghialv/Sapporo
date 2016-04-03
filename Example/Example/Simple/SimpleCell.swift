@@ -21,17 +21,21 @@ class SimpleCellModel: SACellModel {
     }
 }
 
-class SimpleCell: SACell {
+class SimpleCell: SACell, SACellType {
+    typealias CellModel = SimpleCellModel
+    
     @IBOutlet weak var titleLabel   : UILabel!
     @IBOutlet weak var desLabel     : UILabel!
     
-    override func configure(cellmodel: SACellModel) {
-        super.configure(cellmodel)
+    override func configure() {
+        super.configure()
         
-        if let cellmodel = cellmodel as? SimpleCellModel {
-            titleLabel.text = cellmodel.title
-            desLabel.text   = cellmodel.des
+        guard let cellmodel = cellmodel else {
+            return
         }
+        
+        titleLabel.text = cellmodel.title
+        desLabel.text   = cellmodel.des
     }
 	
 	override func willDisplay(collectionView: UICollectionView) {

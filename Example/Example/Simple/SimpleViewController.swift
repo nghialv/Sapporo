@@ -22,9 +22,7 @@ class SimpleViewController: UIViewController {
             .registerCellByNib(SimpleCell)
             .registerSupplementaryViewByNib(SimpleHeaderView.self, kind: UICollectionElementKindSectionHeader)
         
-        let layout = SAFlowLayout()
-        //layout.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
-        sapporo.setLayout(layout)
+        sapporo.setLayout(SAFlowLayout())
 		sapporo.loadmoreEnabled = true
 		sapporo.loadmoreHandler = {
 			print("Loadmore")
@@ -37,7 +35,7 @@ class SimpleViewController: UIViewController {
         
         let cellmodels = (0...4).map { index -> SimpleCellModel in
             return SimpleCellModel(title: "cell \(index)", des: "section 0") { cell in
-                let indexPath = cell.cellmodel?.indexPath
+                let indexPath = cell._cellmodel?.indexPath
                 print("Selected: indexPath: \(indexPath?.section), \(indexPath?.row)")
             }
         }
@@ -91,7 +89,7 @@ class SimpleViewController: UIViewController {
         
         let newCellmodels = (0...16).map { index -> SimpleCellModel in
             let cm = SimpleCellModel(title: "cell \(index)", des: "section 1") { cell in
-                let indexPath = cell.cellmodel?.indexPath
+                let indexPath = cell._cellmodel?.indexPath
                 print("Selected: indexPath: \(indexPath?.section), \(indexPath?.row)")
             }
             cm.size = CGSize(width: 170, height: 150)
