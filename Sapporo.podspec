@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "Sapporo"
-  s.version      = "1.0.0"
+  s.version      = "1.1"
   s.summary      = "cellmodel-driven collectionview manager"
   s.homepage     = "https://github.com/nghialv/Sapporo"
   s.license      = { :type => "MIT", :file => "LICENSE" }
@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
 
   s.platform     = :ios
   s.ios.deployment_target = "8.0"
-  s.source       = { :git => "https://github.com/nghialv/Sapporo.git", :tag => "1.0.0" }
+  s.source       = { :git => "https://github.com/nghialv/Sapporo.git", :tag => "1.1" }
   s.source_files  = "Sapporo/*"
   s.requires_arc = true
 end
