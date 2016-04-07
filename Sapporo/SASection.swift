@@ -162,7 +162,7 @@ public extension SASection {
 		
 		for j in 0..<itemsCount {
 			if let k = sortedIndexes.get(i) where k == j {
-				i++
+				i += 1
 			} else {
 				remainCellmodels.append(cellmodels[j])
 			}
@@ -219,14 +219,17 @@ extension SASection {
 // MARK - Private methods
 
 private extension SASection {
-	func setupCellmodels(cellmodels: [SACellModel], var indexFrom start: Int) {
+	func setupCellmodels(cellmodels: [SACellModel], indexFrom start: Int) {
         guard let delegate = delegate as? SACellModelDelegate else {
             return
         }
         
+        var start = start
+        
         cellmodels.forEach {
-            let indexPath = NSIndexPath(forRow: start++, inSection: index)
+            let indexPath = NSIndexPath(forRow: start, inSection: index)
             $0.setup(indexPath, delegate: delegate)
+            start += 1
         }
 	}
 }

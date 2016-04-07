@@ -51,7 +51,7 @@ final public class Sapporo: NSObject {
         return sections.get(index)
     }
     
-    public func getSEction(index: SASectionIndexType) -> SASection? {
+    public func getSection(index: SASectionIndexType) -> SASection? {
         return getSection(index.intValue)
     }
     
@@ -217,7 +217,7 @@ public extension Sapporo {
         
         for j in 0..<sectionsCount {
             if let k = sortedIndexes.get(i) where k == j {
-                i++
+                i += 1
             } else {
                 remainSections.append(sections[j])
             }
@@ -311,9 +311,12 @@ public extension Sapporo {
 // MARK - Private methods
 
 private extension Sapporo {
-	func setupSections(sections: [SASection], var fromIndex start: Int) {
+	func setupSections(sections: [SASection], fromIndex start: Int) {
+        var start = start
+        
         sections.forEach {
-            $0.setup(start++, delegate: self)
+            $0.setup(start, delegate: self)
+            start += 1
         }
 	}
 }
