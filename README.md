@@ -237,8 +237,14 @@ Installation
 	- Run `carthage update`
 
 * Using CocoaPods
-	- Insert `use_frameworks!` to your Podfile
-	- Insert `pod 'Sapporo'` to your Podfile
+	- Insert followings to your Podfile
+	```
+	use_frameworks!
+
+	target 'YOUR_TARGET_NAME' do
+	  pod 'Sapporo'
+	end
+	```
 	- Run `pod install`
 
 * Using submodule
@@ -246,7 +252,8 @@ Installation
 Requirements
 -----
 - iOS 8.0+
-- Swift 1.2
+- Xcode 8+
+- Swift 3
 
 License
 -----
