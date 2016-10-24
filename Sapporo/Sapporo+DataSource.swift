@@ -9,17 +9,17 @@
 import UIKit
 
 extension Sapporo: UICollectionViewDataSource {
-	public func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+	public func numberOfSections(in collectionView: UICollectionView) -> Int {
 		return sectionsCount
 	}
 	
-	public func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+	public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 		return self[section].itemsCount
 	}
 	
-	public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-		if let cellmodel = self[indexPath]
-			, cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellmodel.reuseIdentifier, forIndexPath: indexPath) as? SACell {
+	public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+		if let cellmodel = self[indexPath],
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellmodel.reuseIdentifier, for: indexPath) as? SACell {
 				cell.configure(cellmodel)
 				return cell
 		}
@@ -27,17 +27,17 @@ extension Sapporo: UICollectionViewDataSource {
 		return UICollectionViewCell()
 	}
 	
-	public func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+	public func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
 		if isFlowLayout, let section = getSection(indexPath.section) {
 			if kind == UICollectionElementKindSectionHeader, let viewmodel = section.headerViewModel {
-				if let view = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: viewmodel.reuseIdentifier, forIndexPath: indexPath) as? SAFlowLayoutSupplementaryView {
+				if let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: viewmodel.reuseIdentifier, for: indexPath) as? SAFlowLayoutSupplementaryView {
 					viewmodel.setup(indexPath)
 					view.configure(viewmodel)
 					return view
 				}
 			}
 			if kind == UICollectionElementKindSectionFooter, let viewmodel = section.footerViewModel {
-				if let view = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: viewmodel.reuseIdentifier, forIndexPath: indexPath) as? SAFlowLayoutSupplementaryView {
+				if let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: viewmodel.reuseIdentifier, for: indexPath) as? SAFlowLayoutSupplementaryView {
 					viewmodel.setup(indexPath)
 					view.configure(viewmodel)
 					return view

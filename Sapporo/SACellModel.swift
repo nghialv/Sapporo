@@ -9,25 +9,25 @@
 import UIKit
 
 protocol SACellModelDelegate: class {
-	func bumpMe(type: ItemBumpType)
-	func getOffscreenCell(identifier: String) -> SACell
-	func deselectItem(indexPath: NSIndexPath, animated: Bool)
+	func bumpMe(_ type: ItemBumpType)
+	func getOffscreenCell(_ identifier: String) -> SACell
+	func deselectItem(_ indexPath: IndexPath, animated: Bool)
 }
 
-public class SACellModel: NSObject {
+open class SACellModel: NSObject {
 	weak var delegate               : SACellModelDelegate?
-	public let reuseIdentifier      : String
-	public internal(set) var indexPath = NSIndexPath(forRow: 0, inSection: 0)
+	open let reuseIdentifier      : String
+	open internal(set) var indexPath = IndexPath(row: 0, section: 0)
 	
-	public var selectionHandler     : SASelectionHandler?
-	public var deselectHandler      : SADeselectionHandler?
+	open var selectionHandler     : SASelectionHandler?
+	open var deselectHandler      : SADeselectionHandler?
 	
 	private var dynamicSizeEnabled	= false
 	private var estimatedSize		= CGSize.zero
 	private var calculatedSize		: CGSize?
 	
-	public var width				: CGFloat = 320
-	public var size: CGSize {
+	open var width				: CGFloat = 320
+	open var size: CGSize {
 		set {
 			estimatedSize = newValue
 		}
@@ -59,50 +59,50 @@ public class SACellModel: NSObject {
 		super.init()
 	}
 	
-	func setup(indexPath: NSIndexPath, delegate: SACellModelDelegate) {
+	func setup(_ indexPath: IndexPath, delegate: SACellModelDelegate) {
 		self.indexPath = indexPath
 		self.delegate = delegate
 	}
 	
-	func didSelect(cell: SACell) {
+	func didSelect(_ cell: SACell) {
 		selectionHandler?(cell)
 	}
 	
-	func didDeselect(cell: SACell) {
+	func didDeselect(_ cell: SACell) {
 		deselectHandler?(cell)
 	}
 	
-	public func enableDynamicHeight(width: CGFloat) {
+	open func enableDynamicHeight(_ width: CGFloat) {
 		dynamicSizeEnabled = true
 		self.width = width
 	}
 	
-	public func disableDynamicHeight() {
+	open func disableDynamicHeight() {
 		dynamicSizeEnabled = false
 	}
 	
-	public func setPreCalculatedSize(size: CGSize) {
+	open func setPreCalculatedSize(_ size: CGSize) {
 		calculatedSize = size
 	}
 	
-	public func deselect(animated: Bool) {
+	open func deselect(_ animated: Bool) {
 		delegate?.deselectItem(indexPath, animated: animated)
 	}
 	
-	public func bump() {
+	open func bump() {
 		calculatedSize = nil
-		delegate?.bumpMe(ItemBumpType.Reload(indexPath))
+		delegate?.bumpMe(ItemBumpType.reload(indexPath))
 	}
 }
 
 private extension SACellModel {
-	func calculateSize(cell: SACell) -> CGSize {
+	func calculateSize(_ cell: SACell) -> CGSize {
 		cell.configureForSizeCalculating(self)
-		cell.bounds = CGRectMake(0, 0, width, cell.bounds.height)
+		cell.bounds = CGRect(x: 0, y: 0, width: width, height: cell.bounds.height)
 		cell.setNeedsLayout()
 		cell.layoutIfNeeded()
 			
-		var size = cell.contentView.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
+		var size = cell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
 		size.width = width
 		return size
 	}

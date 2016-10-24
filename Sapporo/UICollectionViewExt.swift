@@ -9,25 +9,25 @@
 import UIKit
 
 extension UICollectionView {
-	func registerCellByNib<T: UICollectionViewCell>(t: T.Type) {
+	func registerCellByNib<T: UICollectionViewCell>(_ t: T.Type) {
 		let nib = UINib(nibName: t.nibName, bundle: nil)
-		registerNib(nib, forCellWithReuseIdentifier: t.reuseIdentifier)
+		register(nib, forCellWithReuseIdentifier: t.reuseIdentifier)
 	}
 	
-	func registerCell<T: UICollectionViewCell>(t: T.Type) {
-		registerClass(t, forCellWithReuseIdentifier: t.reuseIdentifier)
+	func registerCell<T: UICollectionViewCell>(_ t: T.Type) {
+		register(t, forCellWithReuseIdentifier: t.reuseIdentifier)
 	}
 	
-	func registerSupplementaryViewByNib<T: UICollectionReusableView>(type: T.Type, kind: String) {
+	func registerSupplementaryViewByNib<T: UICollectionReusableView>(_ type: T.Type, kind: String) {
 		let nib = UINib(nibName: type.nibName, bundle: nil)
-		registerNib(nib, forSupplementaryViewOfKind: kind, withReuseIdentifier: type.reuseIdentifier)
+		register(nib, forSupplementaryViewOfKind: kind, withReuseIdentifier: type.reuseIdentifier)
 	}
 	
-	func registerSupplementaryView<T: UICollectionReusableView>(type: T.Type, kind: String) {
-		registerClass(type, forSupplementaryViewOfKind: kind, withReuseIdentifier: type.reuseIdentifier)
+	func registerSupplementaryView<T: UICollectionReusableView>(_ type: T.Type, kind: String) {
+		register(type, forSupplementaryViewOfKind: kind, withReuseIdentifier: type.reuseIdentifier)
 	}
 	
-	func dequeueCell<T: UICollectionViewCell>(t: T.Type, forIndexPath indexPath: NSIndexPath) -> T {
-		return dequeueReusableCellWithReuseIdentifier(t.reuseIdentifier, forIndexPath: indexPath) as! T
+	func dequeueCell<T: UICollectionViewCell>(_ t: T.Type, forIndexPath indexPath: IndexPath) -> T {
+		return dequeueReusableCell(withReuseIdentifier: t.reuseIdentifier, for: indexPath) as! T
 	}
 }

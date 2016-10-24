@@ -9,16 +9,16 @@
 import UIKit
 
 final public class Sapporo: NSObject {
-	private let bumpTracker				= SABumpTracker()
-	private var offscreenCells: [String: SACell] = [:]
-	public private(set) var sections	: [SASection] = []
+    fileprivate let bumpTracker				= SABumpTracker()
+	fileprivate var offscreenCells: [String: SACell] = [:]
+	public fileprivate(set) var sections	: [SASection] = []
 	
 	public let collectionView		: UICollectionView
 	public weak var delegate		: SapporoDelegate?
 	public var loadmoreHandler		: (() -> Void)?
 	public var loadmoreEnabled		= false
 	public var loadmoreDistanceThreshold: CGFloat = 50
-	public var willBumpHandler		: (Int -> Void)?
+	public var willBumpHandler		: ((Int) -> Void)?
 	
 	public var sectionsCount: Int {
 		return sections.count
@@ -43,15 +43,15 @@ final public class Sapporo: NSObject {
 		}
 	}
 	
-	public subscript(indexPath: NSIndexPath) -> SACellModel? {
-		return self[indexPath.section][indexPath.row]
+	public subscript(indexPath: IndexPath) -> SACellModel? {
+		return self[(indexPath as NSIndexPath).section][(indexPath as NSIndexPath).row]
 	}
 	
-    public func getSection(index: Int) -> SASection? {
+    public func getSection(_ index: Int) -> SASection? {
         return sections.get(index)
     }
     
-    public func getSection(index: SASectionIndexType) -> SASection? {
+    public func getSection(_ index: SASectionIndexType) -> SASection? {
         return getSection(index.intValue)
     }
     
@@ -74,16 +74,16 @@ final public class Sapporo: NSObject {
         
         if changedCount == 0 {
             switch bumpTracker.getSapporoBumpType() {
-            case .Reload:
+            case .reload:
                 collectionView.reloadData()
                 
-            case let .Insert(indexSet):
+            case let .insert(indexSet):
                 collectionView.insertSections(indexSet)
                 
-            case let .Delete(indexSet):
+            case let .delete(indexSet):
                 collectionView.deleteSections(indexSet)
                 
-            case let .Move(from, to):
+            case let .move(from, to):
                 collectionView.moveSection(from, toSection: to)
             }
         } else {
@@ -99,33 +99,33 @@ final public class Sapporo: NSObject {
 // MARK - SACellModelDelegate, SASectionDelegate
 
 extension Sapporo: SACellModelDelegate, SASectionDelegate {
-	func bumpMe(type: ItemBumpType) {
+	func bumpMe(_ type: ItemBumpType) {
 		switch type {
-		case .Reload(let indexPath): collectionView.reloadItemsAtIndexPaths([indexPath])
+		case .reload(let indexPath): collectionView.reloadItems(at: [indexPath])
 		}
 	}
 	
-	func bumpMe(type: SectionBumpType) {
+	func bumpMe(_ type: SectionBumpType) {
 		willBumpHandler?(sectionsCount)
 		switch type {
-		case .Reload(let indexset)  : collectionView.reloadSections(indexset)
-		case .Insert(let indexPaths): collectionView.insertItemsAtIndexPaths(indexPaths)
-		case .Move(let ori, let new): collectionView.moveItemAtIndexPath(ori, toIndexPath: new)
-		case .Delete(let indexPaths): collectionView.deleteItemsAtIndexPaths(indexPaths)
+		case .reload(let indexset)  : collectionView.reloadSections(indexset)
+		case .insert(let indexPaths): collectionView.insertItems(at: indexPaths)
+		case .move(let ori, let new): collectionView.moveItem(at: ori, to: new)
+		case .delete(let indexPaths): collectionView.deleteItems(at: indexPaths)
 		}
 	}
 	
-	func getOffscreenCell(identifier: String) -> SACell {
+	func getOffscreenCell(_ identifier: String) -> SACell {
 		if let cell = offscreenCells[identifier] {
 			return cell
 		}
-		let cell = UINib(nibName: identifier, bundle: nil).instantiateWithOwner(nil, options: nil).first as! SACell
+		let cell = UINib(nibName: identifier, bundle: nil).instantiate(withOwner: nil, options: nil).first as! SACell
 		offscreenCells[identifier] = cell
 		return cell
 	}
 	
-	func deselectItem(indexPath: NSIndexPath, animated: Bool) {
-		collectionView.deselectItemAtIndexPath(indexPath, animated: animated)
+	func deselectItem(_ indexPath: IndexPath, animated: Bool) {
+		collectionView.deselectItem(at: indexPath, animated: animated)
 	}
 }
 
@@ -134,7 +134,7 @@ extension Sapporo: SACellModelDelegate, SASectionDelegate {
 public extension Sapporo {
 	// Reset
     
-    func reset(listType: SASectionIndexType.Type) -> Self {
+    func reset(_ listType: SASectionIndexType.Type) -> Self {
         let sections = (0..<listType.count).map { _ in SASection() }
         return reset(sections)
     }
@@ -143,11 +143,11 @@ public extension Sapporo {
         return reset([])
 	}
     
-    func reset(section: SASection) -> Self {
+    func reset(_ section: SASection) -> Self {
         return reset([section])
     }
     
-    func reset(sections: [SASection]) -> Self {
+    func reset(_ sections: [SASection]) -> Self {
         setupSections(sections, fromIndex: 0)
         self.sections = sections
         bumpTracker.didReset()
@@ -156,21 +156,21 @@ public extension Sapporo {
 	
     // Append
     
-    func append(section: SASection) -> Self {
+    func append(_ section: SASection) -> Self {
         return append([section])
     }
     
-    func append(sections: [SASection]) -> Self {
+    func append(_ sections: [SASection]) -> Self {
         return insert(sections, atIndex: sectionsCount)
     }
     
 	// Insert
     
-	func insert(section: SASection, atIndex index: Int) -> Self {
+	func insert(_ section: SASection, atIndex index: Int) -> Self {
 		return insert([section], atIndex: index)
 	}
 	
-	func insert(sections: [SASection], atIndex index: Int) -> Self {
+	func insert(_ sections: [SASection], atIndex index: Int) -> Self {
         guard sections.isNotEmpty else {
             return self
         }
@@ -183,40 +183,45 @@ public extension Sapporo {
 		return self
 	}
 
-    func insertBeforeLast(section: SASection) -> Self {
+    func insertBeforeLast(_ section: SASection) -> Self {
         return insertBeforeLast([section])
     }
     
-    func insertBeforeLast(sections: [SASection]) -> Self {
+    func insertBeforeLast(_ sections: [SASection]) -> Self {
         let index = max(sections.count - 1, 0)
         return insert(sections, atIndex: index)
     }
     
 	// Remove
     
-    func remove(index: Int) -> Self {
+    func remove(_ index: Int) -> Self {
         return remove(indexes: [index])
     }
     
-    func remove(range: Range<Int>) -> Self {
-        let indexes = range.map { $0 }
+    func remove(_ range: CountableRange<Int>) -> Self {
+        let indexes = Array(range)
         return remove(indexes: indexes)
     }
     
-    func remove(indexes indexes: [Int]) -> Self {
+    func remove(_ range: CountableClosedRange<Int>) -> Self {
+        let indexes = Array(range)
+        return remove(indexes: indexes)
+    }
+    
+    func remove(indexes: [Int]) -> Self {
         guard indexes.isNotEmpty else {
             return self
         }
         
         let sortedIndexes = indexes
-            .sort(<)
+            .sorted(by: <)
             .filter { $0 >= 0 && $0 < self.sectionsCount }
         
         var remainSections: [SASection] = []
         var i = 0
         
         for j in 0..<sectionsCount {
-            if let k = sortedIndexes.get(i) where k == j {
+            if let k = sortedIndexes.get(i) , k == j {
                 i += 1
             } else {
                 remainSections.append(sections[j])
@@ -241,7 +246,7 @@ public extension Sapporo {
         return remove(index)
     }
     
-    func remove(section: SASection) -> Self {
+    func remove(_ section: SASection) -> Self {
         let index = section.index
         
         guard index >= 0 && index < sectionsCount else {
@@ -257,7 +262,7 @@ public extension Sapporo {
     
     // Move
     
-    func move(from: Int, to: Int) -> Self {
+    func move(_ from: Int, to: Int) -> Self {
         sections.move(fromIndex: from, toIndex: to)
         setupSections([sections[from]], fromIndex: from)
         setupSections([sections[to]], fromIndex: to)
@@ -270,15 +275,15 @@ public extension Sapporo {
 // MARK - Layout
 
 public extension Sapporo {
-	public func setLayout(layout: UICollectionViewLayout) {
+	public func setLayout(_ layout: UICollectionViewLayout) {
 		collectionView.collectionViewLayout = layout
 	}
 	
-	public func setLayout(layout: UICollectionViewLayout, animated: Bool) {
+	public func setLayout(_ layout: UICollectionViewLayout, animated: Bool) {
 		collectionView.setCollectionViewLayout(layout, animated: animated)
 	}
 	
-	public func setLayout(layout: UICollectionViewLayout, animated: Bool, completion: Bool -> Void) {
+    public func setLayout(_ layout: UICollectionViewLayout, animated: Bool, completion: ((Bool) -> Void)? = nil) {
 		collectionView.setCollectionViewLayout(layout, animated: animated, completion: completion)
 	}
 }
@@ -300,18 +305,18 @@ public extension Sapporo {
 	
     var direction: UICollectionViewScrollDirection {
 		let layout = collectionView.collectionViewLayout as? SAFlowLayout
-		return layout?.scrollDirection ?? .Vertical
+		return layout?.scrollDirection ?? .vertical
     }
 	
-	func cellAtIndexPath(indexPath: NSIndexPath) -> SACell? {
-		return collectionView.cellForItemAtIndexPath(indexPath) as? SACell
+	func cellAtIndexPath(_ indexPath: IndexPath) -> SACell? {
+		return collectionView.cellForItem(at: indexPath) as? SACell
 	}
 }
 
 // MARK - Private methods
 
 private extension Sapporo {
-	func setupSections(sections: [SASection], fromIndex start: Int) {
+	func setupSections(_ sections: [SASection], fromIndex start: Int) {
         var start = start
         
         sections.forEach {

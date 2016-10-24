@@ -9,28 +9,28 @@
 import UIKit
 
 protocol SASectionDelegate: class {
-	func bumpMe(type: SectionBumpType)
+	func bumpMe(_ type: SectionBumpType)
 }
 
 
-public class SASection {
+open class SASection {
 	weak var delegate                   : SASectionDelegate?
-	public private(set) var cellmodels  : [SACellModel] = []
-	private let bumpTracker             = SABumpTracker()
+	open fileprivate(set) var cellmodels  : [SACellModel] = []
+	fileprivate let bumpTracker             = SABumpTracker()
 	
 	internal(set) var index             : Int = 0
 	
-	public var inset                    = UIEdgeInsets()
-	public var minimumInteritemSpacing  : CGFloat = 0
-	public var minimumLineSpacing       : CGFloat = 0
-	public var headerReferenceSize      = CGSize.zero
-	public var footerReferenceSize      = CGSize.zero
+	open var inset                    = UIEdgeInsets()
+	open var minimumInteritemSpacing  : CGFloat = 0
+	open var minimumLineSpacing       : CGFloat = 0
+	open var headerReferenceSize      = CGSize.zero
+	open var footerReferenceSize      = CGSize.zero
 	
-	public var headerViewModel          : SAFlowLayoutSupplementaryViewModel?
-	public var footerViewModel          : SAFlowLayoutSupplementaryViewModel?
-	public var willBumpHandler			: (Int -> Void)?
+	open var headerViewModel          : SAFlowLayoutSupplementaryViewModel?
+	open var footerViewModel          : SAFlowLayoutSupplementaryViewModel?
+	open var willBumpHandler			: ((Int) -> Void)?
 	
-	public var itemsCount: Int {
+	open var itemsCount: Int {
 		return cellmodels.count
 	}
 	
@@ -41,13 +41,13 @@ public class SASection {
 	public init() {
 	}
 	
-	public subscript(index: Int) -> SACellModel? {
+	open subscript(index: Int) -> SACellModel? {
 		get {
 			return cellmodels.get(index)
 		}
 	}
 	
-	public func bump() {
+	open func bump() {
 		let type = bumpTracker.getSectionBumpType(index)
 		willBumpHandler?(itemsCount)
 		delegate?.bumpMe(type)
@@ -69,11 +69,11 @@ public extension SASection {
         return reset([])
     }
     
-    func reset(cellmodel: SACellModel) -> Self {
+    func reset(_ cellmodel: SACellModel) -> Self {
         return reset([cellmodel])
     }
     
-	func reset(cellmodels: [SACellModel]) -> Self {
+	func reset(_ cellmodels: [SACellModel]) -> Self {
 		setupCellmodels(cellmodels, indexFrom: 0)
 		self.cellmodels = cellmodels
 		bumpTracker.didReset()
@@ -82,30 +82,30 @@ public extension SASection {
 	
     // Append
     
-    func append(cellmodels: [SACellModel]) -> Self {
+    func append(_ cellmodels: [SACellModel]) -> Self {
         return insert(cellmodels, atIndex: itemsCount)
     }
     
-    func append(cellmodel: SACellModel) -> Self {
+    func append(_ cellmodel: SACellModel) -> Self {
         return append([cellmodel])
     }
     
 	// Insert
     
-    func insert(cellmodel: SACellModel, atIndex index: Int) -> Self {
+    func insert(_ cellmodel: SACellModel, atIndex index: Int) -> Self {
         return insert([cellmodel], atIndex: index)
     }
     
-    func insertBeforeLast(cellmodels: [SACellModel]) -> Self {
+    func insertBeforeLast(_ cellmodels: [SACellModel]) -> Self {
         let index = max(itemsCount - 1, 0)
         return insert(cellmodels, atIndex: index)
     }
     
-    func insertBeforeLast(cellmodel: SACellModel) -> Self {
+    func insertBeforeLast(_ cellmodel: SACellModel) -> Self {
         return insertBeforeLast([cellmodel])
     }
     
-	func insert(cellmodels: [SACellModel], atIndex index: Int) -> Self {
+	func insert(_ cellmodels: [SACellModel], atIndex index: Int) -> Self {
         guard cellmodels.isNotEmpty else {
             return self
         }
@@ -124,7 +124,7 @@ public extension SASection {
 		
 	// Remove
     
-    func remove(index: Int) -> Self {
+    func remove(_ index: Int) -> Self {
         return remove([index])
     }
     
@@ -133,13 +133,18 @@ public extension SASection {
         return index >= 0 ? remove([index]) : self
     }
     
-    func remove(range: Range<Int>) -> Self {
-        let indexes = range.map { $0 }
+    func remove(_ range: CountableRange<Int>) -> Self {
+        let indexes = Array(range)
         return remove(indexes)
     }
     
-    func remove(cellmodel: SACellModel) -> Self {
-        let index = cellmodels.indexOf { return $0 === cellmodel }
+    func remove(_ range: CountableClosedRange<Int>) -> Self {
+        let indexes = Array(range)
+        return remove(indexes)
+    }
+    
+    func remove(_ cellmodel: SACellModel) -> Self {
+        let index = cellmodels.index { return $0 === cellmodel }
         
         guard let i = index else {
             return self
@@ -148,20 +153,20 @@ public extension SASection {
         return remove(i)
     }
 
-	func remove(indexes: [Int]) -> Self {
+	func remove(_ indexes: [Int]) -> Self {
         guard indexes.isNotEmpty else {
             return self
         }
         
 		let sortedIndexes = indexes
-            .sort(<)
+            .sorted(by: <)
             .filter { $0 >= 0 && $0 < self.itemsCount }
 		
 		var remainCellmodels: [SACellModel] = []
 		var i = 0
 		
 		for j in 0..<itemsCount {
-			if let k = sortedIndexes.get(i) where k == j {
+			if let k = sortedIndexes.get(i) , k == j {
 				i += 1
 			} else {
 				remainCellmodels.append(cellmodels[j])
@@ -208,7 +213,7 @@ public extension SASection {
 // MARK - Internal methods
 
 extension SASection {
-    func setup(index: Int, delegate: SASectionDelegate) {
+    func setup(_ index: Int, delegate: SASectionDelegate) {
         self.delegate = delegate
         self.index = index
         
@@ -219,7 +224,7 @@ extension SASection {
 // MARK - Private methods
 
 private extension SASection {
-	func setupCellmodels(cellmodels: [SACellModel], indexFrom start: Int) {
+	func setupCellmodels(_ cellmodels: [SACellModel], indexFrom start: Int) {
         guard let delegate = delegate as? SACellModelDelegate else {
             return
         }
@@ -227,7 +232,7 @@ private extension SASection {
         var start = start
         
         cellmodels.forEach {
-            let indexPath = NSIndexPath(forRow: start, inSection: index)
+            let indexPath = IndexPath(row: start, section: index)
             $0.setup(indexPath, delegate: delegate)
             start += 1
         }

@@ -9,7 +9,7 @@
 import UIKit
 
 extension Sapporo {
-    public func scrollViewDidScroll(scrollView: UIScrollView) {
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         delegate?.scrollViewDidScroll?(scrollView)
         
         if !loadmoreEnabled {
@@ -17,39 +17,39 @@ extension Sapporo {
         }
         
         let offset = scrollView.contentOffset
-        let y = direction == .Vertical ? offset.y + scrollView.bounds.height - scrollView.contentInset.bottom : offset.x + scrollView.bounds.width - scrollView.contentInset.right
-        let h = direction == .Vertical ? scrollView.contentSize.height : scrollView.contentSize.width
+        let y = direction == .vertical ? offset.y + scrollView.bounds.height - scrollView.contentInset.bottom : offset.x + scrollView.bounds.width - scrollView.contentInset.right
+        let h = direction == .vertical ? scrollView.contentSize.height : scrollView.contentSize.width
         if y > h - loadmoreDistanceThreshold {
             loadmoreEnabled = false
             loadmoreHandler?()
         }
     }
     
-    public func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+    public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         delegate?.scrollViewWillBeginDragging?(scrollView)
     }
     
-    public func scrollViewWillEndDragging(scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+    public func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         delegate?.scrollViewWillEndDragging?(scrollView, withVelocity: velocity, targetContentOffset: targetContentOffset)
     }
     
-    public func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         delegate?.scrollViewDidEndDragging?(scrollView, willDecelerate: decelerate)
     }
     
-    public func scrollViewWillBeginDecelerating(scrollView: UIScrollView) {
+    public func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
         delegate?.scrollViewWillBeginDecelerating?(scrollView)
     }
     
-    public func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+    public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         delegate?.scrollViewDidEndDecelerating?(scrollView)
     }
     
-    public func scrollViewDidEndScrollingAnimation(scrollView: UIScrollView) {
+    public func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
         delegate?.scrollViewDidEndScrollingAnimation?(scrollView)
     }
     
-    public func scrollViewDidScrollToTop(scrollView: UIScrollView) {
+    public func scrollViewDidScrollToTop(_ scrollView: UIScrollView) {
         delegate?.scrollViewDidScrollToTop?(scrollView)
     }
 }

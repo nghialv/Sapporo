@@ -8,14 +8,14 @@
 
 import UIKit
 
-public class SAFlowLayoutSupplementaryView: UICollectionReusableView {
-	public internal(set) weak var _viewmodel: SAFlowLayoutSupplementaryViewModel?
+open class SAFlowLayoutSupplementaryView: UICollectionReusableView {
+	open internal(set) weak var _viewmodel: SAFlowLayoutSupplementaryViewModel?
 	
-	func configure(viewmodel: SAFlowLayoutSupplementaryViewModel) {
+	func configure(_ viewmodel: SAFlowLayoutSupplementaryViewModel) {
 		_viewmodel = viewmodel
         configure()
 	}
     
-    public func configure() {
+    open func configure() {
     }
 }
