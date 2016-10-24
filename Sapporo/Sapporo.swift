@@ -66,7 +66,8 @@ final public class Sapporo: NSObject {
 		collectionView.dataSource = nil
 		collectionView.delegate = nil
 	}
-	
+    
+    @discardableResult
     public func bump() -> Self {
         willBumpHandler?(sectionsCount)
         
@@ -134,19 +135,23 @@ extension Sapporo: SACellModelDelegate, SASectionDelegate {
 public extension Sapporo {
 	// Reset
     
+    @discardableResult
     func reset(_ listType: SASectionIndexType.Type) -> Self {
         let sections = (0..<listType.count).map { _ in SASection() }
         return reset(sections)
     }
     
+    @discardableResult
 	func reset() -> Self {
         return reset([])
 	}
     
+    @discardableResult
     func reset(_ section: SASection) -> Self {
         return reset([section])
     }
     
+    @discardableResult
     func reset(_ sections: [SASection]) -> Self {
         setupSections(sections, fromIndex: 0)
         self.sections = sections
@@ -156,20 +161,24 @@ public extension Sapporo {
 	
     // Append
     
+    @discardableResult
     func append(_ section: SASection) -> Self {
         return append([section])
     }
     
+    @discardableResult
     func append(_ sections: [SASection]) -> Self {
         return insert(sections, atIndex: sectionsCount)
     }
     
 	// Insert
     
+    @discardableResult
 	func insert(_ section: SASection, atIndex index: Int) -> Self {
 		return insert([section], atIndex: index)
 	}
-	
+    
+    @discardableResult
 	func insert(_ sections: [SASection], atIndex index: Int) -> Self {
         guard sections.isNotEmpty else {
             return self
@@ -182,11 +191,13 @@ public extension Sapporo {
 		
 		return self
 	}
-
+    
+    @discardableResult
     func insertBeforeLast(_ section: SASection) -> Self {
         return insertBeforeLast([section])
     }
     
+    @discardableResult
     func insertBeforeLast(_ sections: [SASection]) -> Self {
         let index = max(sections.count - 1, 0)
         return insert(sections, atIndex: index)
@@ -194,20 +205,24 @@ public extension Sapporo {
     
 	// Remove
     
+    @discardableResult
     func remove(_ index: Int) -> Self {
         return remove(indexes: [index])
     }
     
+    @discardableResult
     func remove(_ range: CountableRange<Int>) -> Self {
         let indexes = Array(range)
         return remove(indexes: indexes)
     }
     
+    @discardableResult
     func remove(_ range: CountableClosedRange<Int>) -> Self {
         let indexes = Array(range)
         return remove(indexes: indexes)
     }
     
+    @discardableResult
     func remove(indexes: [Int]) -> Self {
         guard indexes.isNotEmpty else {
             return self
@@ -236,6 +251,7 @@ public extension Sapporo {
         return self
     }
     
+    @discardableResult
     func removeLast() -> Self {
         let index = sectionsCount - 1
         
@@ -246,6 +262,7 @@ public extension Sapporo {
         return remove(index)
     }
     
+    @discardableResult
     func remove(_ section: SASection) -> Self {
         let index = section.index
         
@@ -262,6 +279,7 @@ public extension Sapporo {
     
     // Move
     
+    @discardableResult
     func move(_ from: Int, to: Int) -> Self {
         sections.move(fromIndex: from, toIndex: to)
         setupSections([sections[from]], fromIndex: from)

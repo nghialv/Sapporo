@@ -41,6 +41,5 @@ public enum ItemBumpType {
 }
 
 func classNameOf(_ aClass: AnyClass) -> String {
-    
 	return NSStringFromClass(aClass).components(separatedBy: ".").last!
 }

@@ -38,12 +38,14 @@ extension Array {
         return hasIndex(index) ? self[index] : nil
     }
     
+    @discardableResult
     mutating func append(_ newArray: Array) -> CountableRange<Int> {
         let range = count..<(count + newArray.count)
         self += newArray
         return range
     }
     
+    @discardableResult
     mutating func insert(_ newArray: Array, atIndex index: Int) -> CountableRange<Int> {
         let mIndex = Swift.max(0, index)
         let start = Swift.min(count, mIndex)
@@ -55,6 +57,7 @@ extension Array {
         return start..<end
     }
     
+    @discardableResult
     mutating func move(fromIndex from: Int, toIndex to: Int) -> Bool {
         if !hasIndex(from) || !hasIndex(to) || from == to {
             return false
@@ -68,6 +71,7 @@ extension Array {
         return false
     }
     
+    @discardableResult
     mutating func remove(_ index: Int) -> CountableRange<Int>? {
         if !hasIndex(index) {
             return nil
@@ -76,6 +80,7 @@ extension Array {
         return index..<(index + 1)
     }
     
+    @discardableResult
     mutating func remove(_ range: CountableRange<Int>) -> CountableRange<Int>? {
         if let sr = getSafeRange(range) {
             removeSubrange(sr)
@@ -84,6 +89,7 @@ extension Array {
         return nil
     }
     
+    @discardableResult
     mutating func remove(_ range: CountableClosedRange<Int>) -> CountableRange<Int>? {
         if let sr = getSafeRange(range) {
             removeSubrange(sr)
@@ -92,6 +98,7 @@ extension Array {
         return nil
     }
     
+    @discardableResult
     mutating func remove<T: AnyObject> (_ element: T) {
         let anotherSelf = self
         
@@ -104,6 +111,7 @@ extension Array {
         }
     }
     
+    @discardableResult
     mutating func removeLast() -> CountableRange<Int>? {
         return remove(count - 1)
     }

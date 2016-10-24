@@ -63,7 +63,7 @@ final class SABumpTracker {
 			state = .reload
 		}
 	}
-	
+    
 	func getSectionBumpType(_ index: Int) -> SectionBumpType {
 		let toIndexPath = { (row: Int) -> IndexPath in
 			return IndexPath(row: row, section: index)

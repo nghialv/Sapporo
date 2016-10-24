@@ -65,14 +65,17 @@ public extension SASection {
 	
 	// Reset
     
+    @discardableResult
     func reset() -> Self {
         return reset([])
     }
     
+    @discardableResult
     func reset(_ cellmodel: SACellModel) -> Self {
         return reset([cellmodel])
     }
     
+    @discardableResult
 	func reset(_ cellmodels: [SACellModel]) -> Self {
 		setupCellmodels(cellmodels, indexFrom: 0)
 		self.cellmodels = cellmodels
@@ -82,29 +85,35 @@ public extension SASection {
 	
     // Append
     
+    @discardableResult
     func append(_ cellmodels: [SACellModel]) -> Self {
         return insert(cellmodels, atIndex: itemsCount)
     }
     
+    @discardableResult
     func append(_ cellmodel: SACellModel) -> Self {
         return append([cellmodel])
     }
     
 	// Insert
     
+    @discardableResult
     func insert(_ cellmodel: SACellModel, atIndex index: Int) -> Self {
         return insert([cellmodel], atIndex: index)
     }
     
+    @discardableResult
     func insertBeforeLast(_ cellmodels: [SACellModel]) -> Self {
         let index = max(itemsCount - 1, 0)
         return insert(cellmodels, atIndex: index)
     }
     
+    @discardableResult
     func insertBeforeLast(_ cellmodel: SACellModel) -> Self {
         return insertBeforeLast([cellmodel])
     }
     
+    @discardableResult
 	func insert(_ cellmodels: [SACellModel], atIndex index: Int) -> Self {
         guard cellmodels.isNotEmpty else {
             return self
@@ -124,25 +133,30 @@ public extension SASection {
 		
 	// Remove
     
+    @discardableResult
     func remove(_ index: Int) -> Self {
         return remove([index])
     }
     
+    @discardableResult
     func removeLast() -> Self {
         let index = itemsCount - 1
         return index >= 0 ? remove([index]) : self
     }
     
+    @discardableResult
     func remove(_ range: CountableRange<Int>) -> Self {
         let indexes = Array(range)
         return remove(indexes)
     }
     
+    @discardableResult
     func remove(_ range: CountableClosedRange<Int>) -> Self {
         let indexes = Array(range)
         return remove(indexes)
     }
     
+    @discardableResult
     func remove(_ cellmodel: SACellModel) -> Self {
         let index = cellmodels.index { return $0 === cellmodel }
         
@@ -152,7 +166,8 @@ public extension SASection {
         
         return remove(i)
     }
-
+    
+    @discardableResult
 	func remove(_ indexes: [Int]) -> Self {
         guard indexes.isNotEmpty else {
             return self
@@ -182,6 +197,7 @@ public extension SASection {
     
     // Move
     
+    @discardableResult
     func move(fromIndex from: Int, toIndex to: Int) -> Self {
         let moved = cellmodels.move(fromIndex: from, toIndex: to)
         

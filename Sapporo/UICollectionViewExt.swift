@@ -11,9 +11,9 @@ import UIKit
 extension UICollectionView {
 	func registerCellByNib<T: UICollectionViewCell>(_ t: T.Type) {
 		let nib = UINib(nibName: t.nibName, bundle: nil)
-		register(nib, forCellWithReuseIdentifier: t.reuseIdentifier)
+        register(nib, forCellWithReuseIdentifier: t.reuseIdentifier)
 	}
-	
+    
 	func registerCell<T: UICollectionViewCell>(_ t: T.Type) {
 		register(t, forCellWithReuseIdentifier: t.reuseIdentifier)
 	}
