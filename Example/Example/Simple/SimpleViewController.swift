@@ -19,7 +19,7 @@ class SimpleViewController: UIViewController {
         super.viewDidLoad()
         
         sapporo
-            .registerCellByNib(SimpleCell)
+            .registerCellByNib(SimpleCell.self)
             .registerSupplementaryViewByNib(SimpleHeaderView.self, kind: UICollectionElementKindSectionHeader)
         
         sapporo.setLayout(SAFlowLayout())

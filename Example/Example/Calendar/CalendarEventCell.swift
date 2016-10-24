@@ -12,7 +12,7 @@ import Sapporo
 class CalendarEventCellModel: SACellModel {
     let event: CalendarEvent
     
-    init(event: CalendarEvent, selectionHandler: SASelectionHandler) {
+    init(event: CalendarEvent, selectionHandler: @escaping SASelectionHandler) {
         self.event = event
         super.init(cellType: CalendarEventCell.self, selectionHandler: selectionHandler)
     }
@@ -27,7 +27,7 @@ class CalendarEventCell: SACell, SACellType {
         super.awakeFromNib()
         layer.cornerRadius = 10
         layer.borderWidth = 1
-        layer.borderColor = UIColor(red: 0, green: 0, blue: 0.7, alpha: 1).CGColor
+        layer.borderColor = UIColor(red: 0, green: 0, blue: 0.7, alpha: 1).cgColor
     }
     
     override func configure() {

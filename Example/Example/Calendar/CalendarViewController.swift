@@ -25,7 +25,7 @@ class CalendarViewController: UIViewController {
         sapporo.delegate = self
         
         sapporo
-            .registerCellByNib(CalendarEventCell)
+            .registerCellByNib(CalendarEventCell.self)
             .registerSupplementaryViewByNib(CalendarHeaderView.self, kind: CalendarHeaderType.Day.rawValue)
             .registerSupplementaryViewByNib(CalendarHeaderView.self, kind: CalendarHeaderType.Hour.rawValue)
         
@@ -61,14 +61,14 @@ class CalendarViewController: UIViewController {
 }
 
 extension CalendarViewController: SapporoDelegate {
-    func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: IndexPath) -> UICollectionReusableView {
         if kind == CalendarHeaderType.Day.rawValue {
-            let view = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: CalendarHeaderView.reuseIdentifier, forIndexPath: indexPath) as! CalendarHeaderView
+            let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CalendarHeaderView.reuseIdentifier, for: indexPath) as! CalendarHeaderView
             view.titleLabel.text = "Day \(indexPath.item + 1)"
             return view
         }
         
-        let view = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: CalendarHeaderView.reuseIdentifier, forIndexPath: indexPath) as! CalendarHeaderView
+        let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CalendarHeaderView.reuseIdentifier, for: indexPath) as! CalendarHeaderView
         view.titleLabel.text = "Hour \(indexPath.item + 1)"
         return view
     }
