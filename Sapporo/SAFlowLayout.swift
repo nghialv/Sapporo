@@ -8,29 +8,29 @@
 
 import UIKit
 
-public class SAFlowLayout: UICollectionViewFlowLayout {
-	public func collectionView(collectionView: UICollectionView, sizeForCellModel cellmodel: SACellModel) -> CGSize {
+open class SAFlowLayout: UICollectionViewFlowLayout {
+	open func collectionView(_ collectionView: UICollectionView, sizeForCellModel cellmodel: SACellModel) -> CGSize {
 		let size = cellmodel.size
 		return size
 	}
 	
-	public func collectionView(collectionView: UICollectionView, insetForSection section: SASection) -> UIEdgeInsets {
+	open func collectionView(_ collectionView: UICollectionView, insetForSection section: SASection) -> UIEdgeInsets {
 		return section.inset
 	}
 	
-	public func collectionView(collectionView: UICollectionView, minimumInteritemSpacingForSection section: SASection) -> CGFloat {
+	open func collectionView(_ collectionView: UICollectionView, minimumInteritemSpacingForSection section: SASection) -> CGFloat {
 		return section.minimumInteritemSpacing
 	}
 	
-	public func collectionView(collectionView: UICollectionView, minimumLineSpacingForSection section: SASection) -> CGFloat {
+	open func collectionView(_ collectionView: UICollectionView, minimumLineSpacingForSection section: SASection) -> CGFloat {
 		return section.minimumLineSpacing
 	}
 	
-	public func collectionView(collectionView: UICollectionView, referenceSizeForHeaderInSection section: SASection) -> CGSize {
+	open func collectionView(_ collectionView: UICollectionView, referenceSizeForHeaderInSection section: SASection) -> CGSize {
 		return section.headerViewModel?.size ?? section.headerReferenceSize
 	}
 	
-	public func collectionView(collectionView: UICollectionView, referenceSizeForFooterInSection section: SASection) -> CGSize {
+	open func collectionView(_ collectionView: UICollectionView, referenceSizeForFooterInSection section: SASection) -> CGSize {
 		return section.footerViewModel?.size ?? section.footerReferenceSize
 	}
 }

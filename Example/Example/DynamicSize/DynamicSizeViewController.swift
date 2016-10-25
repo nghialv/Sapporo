@@ -21,8 +21,8 @@ class DynamicSizeViewController: UIViewController {
 		super.viewDidLoad()
 		
 		sapporo
-            .registerCellByNib(DynamicSizeCell)
-            .registerCellByNib(DynamicImageSizeCell)
+            .registerCellByNib(DynamicSizeCell.self)
+            .registerCellByNib(DynamicImageSizeCell.self)
 		
 		let layout = SAFlowLayout()
 		sapporo.setLayout(layout)

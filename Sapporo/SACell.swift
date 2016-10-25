@@ -8,34 +8,34 @@
 
 import UIKit
 
-public class SACell: UICollectionViewCell {
-    public internal(set) weak var _cellmodel: SACellModel?
+open class SACell: UICollectionViewCell {
+    open internal(set) weak var _cellmodel: SACellModel?
 	
-	public var shouldSelect         = true
-	public var shouldDeselect       = true
-	public var shouldHighlight      = true
+	open var shouldSelect         = true
+	open var shouldDeselect       = true
+	open var shouldHighlight      = true
 	
-    func configure(cellmodel: SACellModel) {
+    func configure(_ cellmodel: SACellModel) {
 		_cellmodel = cellmodel
         configure()
 	}
     
-    public func configure() {
+    open func configure() {
     }
 
-	public func configureForSizeCalculating(cellmodel: SACellModel) {
+	open func configureForSizeCalculating(_ cellmodel: SACellModel) {
 		self._cellmodel = cellmodel
 	}
 	
-	public func willDisplay(collectionView: UICollectionView) {
+	open func willDisplay(_ collectionView: UICollectionView) {
 	}
 	
-	public func didEndDisplaying(collectionView: UICollectionView) {
+	open func didEndDisplaying(_ collectionView: UICollectionView) {
 	}
 	
-	public func didHighlight(collectionView: UICollectionView) {
+	open func didHighlight(_ collectionView: UICollectionView) {
 	}
 	
-	public func didUnhighlight(collectionView: UICollectionView) {
+	open func didUnhighlight(_ collectionView: UICollectionView) {
 	}
 }

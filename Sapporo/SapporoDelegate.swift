@@ -9,25 +9,25 @@
 import UIKit
 
 @objc public protocol SapporoDelegate: class {
-	optional func scrollViewDidScroll(scrollView: UIScrollView)
+	@objc optional func scrollViewDidScroll(_ scrollView: UIScrollView)
 	
 	// Decelerating
-	optional func scrollViewWillBeginDecelerating(scrollView: UIScrollView)
-	optional func scrollViewDidEndDecelerating(scrollView: UIScrollView)
+	@objc optional func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView)
+	@objc optional func scrollViewDidEndDecelerating(_ scrollView: UIScrollView)
 	
-	optional func scrollViewDidEndScrollingAnimation(scrollView: UIScrollView)
-	optional func scrollViewDidScrollToTop(scrollView: UIScrollView)
+	@objc optional func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView)
+	@objc optional func scrollViewDidScrollToTop(_ scrollView: UIScrollView)
 	
 	// Draging
-	optional func scrollViewWillBeginDragging(scrollView: UIScrollView)
-	optional func scrollViewWillEndDragging(scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>)
-	optional func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool)
+	@objc optional func scrollViewWillBeginDragging(_ scrollView: UIScrollView)
+	@objc optional func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>)
+	@objc optional func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool)
 	
-	optional func collectionView(collectionView: UICollectionView, transitionLayoutForOldLayout fromLayout: UICollectionViewLayout, newLayout toLayout: UICollectionViewLayout) -> UICollectionViewTransitionLayout
+	@objc optional func collectionView(_ collectionView: UICollectionView, transitionLayoutForOldLayout fromLayout: UICollectionViewLayout, newLayout toLayout: UICollectionViewLayout) -> UICollectionViewTransitionLayout
 	
-	optional func collectionView(collectionView: UICollectionView, willDisplaySupplementaryView view: UICollectionReusableView, forElementKind elementKind: String, atIndexPath indexPath: NSIndexPath)
+	@objc optional func collectionView(_ collectionView: UICollectionView, willDisplaySupplementaryView view: UICollectionReusableView, forElementKind elementKind: String, atIndexPath indexPath: IndexPath)
 	
-	optional func collectionView(collectionView: UICollectionView, didEndDisplayingSupplementaryView view: UICollectionReusableView, forElementOfKind elementKind: String, atIndexPath indexPath: NSIndexPath)
+	@objc optional func collectionView(_ collectionView: UICollectionView, didEndDisplayingSupplementaryView view: UICollectionReusableView, forElementOfKind elementKind: String, atIndexPath indexPath: IndexPath)
 	
-	optional func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView
+	@objc optional func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: IndexPath) -> UICollectionReusableView
 }

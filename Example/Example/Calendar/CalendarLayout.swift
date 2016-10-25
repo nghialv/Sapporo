@@ -19,38 +19,38 @@ let DayHeaderHeight     : CGFloat = 40
 let HourHeaderWidth     : CGFloat = 100
 
 class CalendarLayout: SALayout {
-    override func collectionViewContentSize() -> CGSize {
+    override var collectionViewContentSize: CGSize {
         let contentWidth = collectionView!.bounds.size.width
         let contentHeight = CGFloat(DayHeaderHeight + (HeightPerHour * HoursPerDay))
         
-        return CGSizeMake(contentWidth, contentHeight)
+        return CGSize(width: contentWidth, height: contentHeight)
     }
 	
-	override func layoutAttributesForElementsInRect(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+	override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         var layoutAttributes = [UICollectionViewLayoutAttributes]()
         
         // Cells
         let visibleIndexPaths = indexPathsOfItemsInRect(rect)
         layoutAttributes += visibleIndexPaths.flatMap {
-            self.layoutAttributesForItemAtIndexPath($0)
+            self.layoutAttributesForItem(at: $0)
         }
         
         // Supplementary views
         let dayHeaderViewIndexPaths = indexPathsOfDayHeaderViewsInRect(rect)
         layoutAttributes += dayHeaderViewIndexPaths.flatMap {
-            self.layoutAttributesForSupplementaryViewOfKind(CalendarHeaderType.Day.rawValue, atIndexPath: $0)
+            self.layoutAttributesForSupplementaryView(ofKind: CalendarHeaderType.Day.rawValue, at: $0)
         }
         
         let hourHeaderViewIndexPaths = indexPathsOfHourHeaderViewsInRect(rect)
         layoutAttributes += hourHeaderViewIndexPaths.flatMap {
-            self.layoutAttributesForSupplementaryViewOfKind(CalendarHeaderType.Hour.rawValue, atIndexPath: $0)
+            self.layoutAttributesForSupplementaryView(ofKind: CalendarHeaderType.Hour.rawValue, at: $0)
         }
         
         return layoutAttributes
     }
 	
-	override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
-        let attributes = UICollectionViewLayoutAttributes(forCellWithIndexPath: indexPath)
+	override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+        let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
         
         if let event = (getCellModel(indexPath) as? CalendarEventCellModel)?.event {
             attributes.frame = frameForEvent(event)
@@ -58,37 +58,47 @@ class CalendarLayout: SALayout {
         return attributes
     }
 	
-	override func layoutAttributesForSupplementaryViewOfKind(elementKind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
-        let attributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: elementKind, withIndexPath: indexPath)
+	override func layoutAttributesForSupplementaryView(ofKind elementKind: String, at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+        let attributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: elementKind, with: indexPath)
         
-        let totalWidth = collectionViewContentSize().width
+        let totalWidth = collectionViewContentSize.width
         
         if elementKind == CalendarHeaderType.Day.rawValue {
             let availableWidth = totalWidth - HourHeaderWidth
             let widthPerDay = availableWidth / DaysPerWeek
-            attributes.frame = CGRectMake(HourHeaderWidth + (widthPerDay * CGFloat(indexPath.item)), 0, widthPerDay, DayHeaderHeight)
+            attributes.frame = CGRect(
+                x: HourHeaderWidth + (widthPerDay * CGFloat(indexPath.item)),
+                y: 0,
+                width: widthPerDay,
+                height: DayHeaderHeight
+            )
             attributes.zIndex = -10
         } else if elementKind == CalendarHeaderType.Hour.rawValue {
-            attributes.frame = CGRectMake(0, DayHeaderHeight + HeightPerHour * CGFloat(indexPath.item), totalWidth, HeightPerHour)
+            attributes.frame = CGRect(
+                x: 0,
+                y: DayHeaderHeight + HeightPerHour * CGFloat(indexPath.item),
+                width: totalWidth,
+                height: HeightPerHour
+            )
             attributes.zIndex = -10
         }
         return attributes
     }
     
-    override func shouldInvalidateLayoutForBoundsChange(newBounds: CGRect) -> Bool {
+    override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
         return true
     }
 }
 
 extension CalendarLayout {
-    func indexPathsOfEventsBetweenMinDayIndex(minDayIndex: Int, maxDayIndex: Int, minStartHour: Int, maxStartHour: Int) -> [NSIndexPath] {
-        var indexPaths = [NSIndexPath]()
+    func indexPathsOfEventsBetweenMinDayIndex(_ minDayIndex: Int, maxDayIndex: Int, minStartHour: Int, maxStartHour: Int) -> [IndexPath] {
+        var indexPaths = [IndexPath]()
         
         if let cellmodels = getCellModels(0) as? [CalendarEventCellModel] {
             for i in 0..<cellmodels.count {
                 let event = cellmodels[i].event
                 if event.day >= minDayIndex && event.day <= maxDayIndex && event.startHour >= minStartHour && event.startHour <= maxStartHour {
-                    let indexPath = NSIndexPath(forItem: i, inSection: 0)
+                    let indexPath = IndexPath(item: i, section: 0)
                     indexPaths.append(indexPath)
                 }
             }
@@ -96,65 +106,65 @@ extension CalendarLayout {
         return indexPaths
     }
     
-    func indexPathsOfItemsInRect(rect: CGRect) -> [NSIndexPath] {
-        let minVisibleDay = dayIndexFromXCoordinate(CGRectGetMinX(rect))
-        let maxVisibleDay = dayIndexFromXCoordinate(CGRectGetMaxX(rect))
-        let minVisibleHour = hourIndexFromYCoordinate(CGRectGetMinY(rect))
-        let maxVisibleHour = hourIndexFromYCoordinate(CGRectGetMaxY(rect))
+    func indexPathsOfItemsInRect(_ rect: CGRect) -> [IndexPath] {
+        let minVisibleDay = dayIndexFromXCoordinate(rect.minX)
+        let maxVisibleDay = dayIndexFromXCoordinate(rect.maxX)
+        let minVisibleHour = hourIndexFromYCoordinate(rect.minY)
+        let maxVisibleHour = hourIndexFromYCoordinate(rect.maxY)
         
         return indexPathsOfEventsBetweenMinDayIndex(minVisibleDay, maxDayIndex: maxVisibleDay, minStartHour: minVisibleHour, maxStartHour: maxVisibleHour)
     }
     
-    func dayIndexFromXCoordinate(xPosition: CGFloat) -> Int {
-        let contentWidth = collectionViewContentSize().width - HourHeaderWidth
+    func dayIndexFromXCoordinate(_ xPosition: CGFloat) -> Int {
+        let contentWidth = collectionViewContentSize.width - HourHeaderWidth
         let widthPerDay = contentWidth / DaysPerWeek
         
         let dayIndex = max(0, Int((xPosition - HourHeaderWidth) / widthPerDay))
         return dayIndex
     }
     
-    func hourIndexFromYCoordinate(yPosition: CGFloat) -> Int {
+    func hourIndexFromYCoordinate(_ yPosition: CGFloat) -> Int {
         let hourIndex = max(0, Int((yPosition - DayHeaderHeight) / HeightPerHour))
         return hourIndex
     }
     
-    func indexPathsOfDayHeaderViewsInRect(rect: CGRect) -> [NSIndexPath] {
-        if CGRectGetMinY(rect) > DayHeaderHeight {
+    func indexPathsOfDayHeaderViewsInRect(_ rect: CGRect) -> [IndexPath] {
+        if rect.minY > DayHeaderHeight {
             return []
         }
         
-        let minDayIndex = dayIndexFromXCoordinate(CGRectGetMinX(rect))
-        let maxDayIndex = dayIndexFromXCoordinate(CGRectGetMaxX(rect))
+        let minDayIndex = dayIndexFromXCoordinate(rect.minX)
+        let maxDayIndex = dayIndexFromXCoordinate(rect.maxX)
         
-        return (minDayIndex...maxDayIndex).map { index -> NSIndexPath in
-            NSIndexPath(forItem: index, inSection: 0)
+        return (minDayIndex...maxDayIndex).map { index -> IndexPath in
+            IndexPath(item: index, section: 0)
         }
     }
     
-    func indexPathsOfHourHeaderViewsInRect(rect: CGRect) -> [NSIndexPath] {
-        if CGRectGetMinX(rect) > HourHeaderWidth {
+    func indexPathsOfHourHeaderViewsInRect(_ rect: CGRect) -> [IndexPath] {
+        if rect.minX > HourHeaderWidth {
             return []
         }
         
-        let minHourIndex = hourIndexFromYCoordinate(CGRectGetMinY(rect))
-        let maxHourIndex = hourIndexFromYCoordinate(CGRectGetMaxY(rect))
+        let minHourIndex = hourIndexFromYCoordinate(rect.minY)
+        let maxHourIndex = hourIndexFromYCoordinate(rect.maxY)
         
-        return (minHourIndex...maxHourIndex).map { index -> NSIndexPath in
-            NSIndexPath(forItem: index, inSection: 0)
+        return (minHourIndex...maxHourIndex).map { index -> IndexPath in
+            IndexPath(item: index, section: 0)
         }
     }
     
-    func frameForEvent(event: CalendarEvent) -> CGRect {
-        let totalWidth = collectionViewContentSize().width - HourHeaderWidth
+    func frameForEvent(_ event: CalendarEvent) -> CGRect {
+        let totalWidth = collectionViewContentSize.width - HourHeaderWidth
         let widthPerDay = totalWidth / DaysPerWeek
         
-        var frame = CGRectZero
+        var frame = CGRect.zero
         frame.origin.x = HourHeaderWidth + widthPerDay * CGFloat(event.day)
         frame.origin.y = DayHeaderHeight + HeightPerHour * CGFloat(event.startHour)
         frame.size.width = widthPerDay
         frame.size.height = CGFloat(event.durationInHours) * HeightPerHour
         
-        frame = CGRectInset(frame, HorizontalSpacing/2.0, 0)
+        frame = frame.insetBy(dx: HorizontalSpacing/2.0, dy: 0)
         return frame
     }
 }

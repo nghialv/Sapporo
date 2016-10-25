@@ -33,7 +33,7 @@ class DynamicImageSizeCell: SACell, SACellType {
             return
         }
         
-		contentView.backgroundColor = UIColor.lightGrayColor()
+		contentView.backgroundColor = UIColor.lightGray
 		
         titleLabel.text = cellmodel.title
         dynamicImageView.image = UIImage(named: "image")

@@ -8,11 +8,11 @@
 
 import UIKit
 
-public class SAFlowLayoutSupplementaryViewModel {
-	public let reuseIdentifier      : String
-	internal(set) var indexPath     = NSIndexPath(forRow: 0, inSection: 0)
+open class SAFlowLayoutSupplementaryViewModel {
+	open let reuseIdentifier      : String
+	internal(set) var indexPath     = IndexPath(row: 0, section: 0)
 	
-	public var size                 = CGSize.zero
+	open var size                 = CGSize.zero
 	
 	public init<T: SAFlowLayoutSupplementaryView>(viewType: T.Type, size: CGSize) {
 		self.reuseIdentifier = viewType.reuseIdentifier
@@ -24,7 +24,7 @@ public class SAFlowLayoutSupplementaryViewModel {
 		self.size = CGSize.zero
 	}
 	
-	func setup(indexPath: NSIndexPath) {
+	func setup(_ indexPath: IndexPath) {
 		self.indexPath = indexPath
 	}
 }

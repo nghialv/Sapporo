@@ -33,20 +33,20 @@ class DynamicSizeCell: SACell, SACellType {
             return
         }
         
-		contentView.backgroundColor = UIColor.lightGrayColor()
+		contentView.backgroundColor = UIColor.lightGray
 		
         titleLabel.text = cellmodel.title
         desLabel.text   = cellmodel.des
 	}
 	
-	override func configureForSizeCalculating(cellmodel: SACellModel) {
+	override func configureForSizeCalculating(_ cellmodel: SACellModel) {
 		super.configureForSizeCalculating(cellmodel)
 		if let cellmodel = cellmodel as? DynamicSizeCellModel {
 			desLabel.text   = cellmodel.des
 		}
 	}
 	
-	override func willDisplay(collectionView: UICollectionView) {
+	override func willDisplay(_ collectionView: UICollectionView) {
 		super.willDisplay(collectionView)
 	}
 }
