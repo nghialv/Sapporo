@@ -25,60 +25,59 @@ Features
 ##### Quick example
 
 ``` swift
-	// viewController swift file
+// viewController swift file
 
-	let sapporo = Sapporo(collectionView: self.collectionView)
+let sapporo = Sapporo(collectionView: self.collectionView)
 
-	let cellmodel = YourCellModel(title: "Title", des: "description") {
-		println("Did select cell with title = \(title)")
-	}
+let cellmodel = YourCellModel(title: "Title", des: "description") {
+	println("Did select cell with title = \(title)")
+}
 
-	let topSection = SASection()
+let topSection = SASection()
 
-	sapporo
-		.reset(topSection)
-		.bump()
+sapporo
+	.reset(topSection)
+	.bump()
 
-	topSection
-		.append(cellmodel) 				// append a new cell model in datasource
-		.bump()							// show the new cell in the collection view
+topSection
+	.append(cellmodel)	// append a new cell model in datasource
+	.bump()	// show the new cell in the collection view
 
-	topSection
-		.remove(1...3)
-		.bump()
+topSection
+	.remove(1...3)
+	.bump()
 
-	topSection
-		.move(fromIndex: 0, toIndex: 3)
-		.bump()
+topSection
+	.move(fromIndex: 0, toIndex: 3)
+	.bump()
 ```
 ``` swift
-	// your cell swift file
+// your cell swift file
 
-	class YourCellModel : SACellModel {
-		let title: String
-		let des: String
+class YourCellModel : SACellModel {
+	let title: String
+	let des: String
 
-		init(title: String, des: String, selectionHandler: SASelectionHandler) {
-			self.title = title
-			self.des = des
-			super.init(cellType: YourCell.self, selectionHandler: selectionHandler)
-		}
+	init(title: String, des: String, selectionHandler: SASelectionHandler) {
+		self.title = title
+		self.des = des
+		super.init(cellType: YourCell.self, selectionHandler: selectionHandler)
 	}
+}
 
+class YourCell : SACell, SACellType {
+	typealias CellModel = YourCellModel
 
-	class YourCell : SACell, SACellType {
-		typealias CellModel = YourCellModel
+	@IBOutlet weak var titleLabel: UILabel!
 
-		@IBOutlet weak var titleLabel: UILabel!
+	override func configure() {
+		super.configure()
 
-		override func configure() {
-			super.configure()
+		guard let cellmodel = cellmodel else {
+			return
+		}
 
-			guard let cellmodel = cellmodel else {
-				return
-			}
-
-			titleLabel.text = cellmodel.title
+		titleLabel.text = cellmodel.title
       	}
 	}
 ```
@@ -89,117 +88,113 @@ Usage
 * Handling section
 
 ``` swift
-	// retrieve a section or create a new section if it doesn't already exist
-	let section = sapporo[0]
+// retrieve a section or create a new section if it doesn't already exist
+let section = sapporo[0]
+	
+// inserting
+sapporo.insert(section, atIndex: 1)
+	 .bump()
 
-	// inserting
-	sapporo.insert(section, atIndex: 1)
-		   .bump()
+// moving
+sapporo.move(fromIndex: 1, toIndex: 5)
+	.bump()
 
-	// moving
-	sapporo.move(fromIndex: 1, toIndex: 5)
-		   .bump()
+// removing
+sapporo.remove(index)
+	.bump()
 
-	// removing
-	sapporo.remove(index)
-	   	   .bump()
+sapporo.reset()	// remove all data
+	.bump()
 
-	sapporo.reset()		// remove all data
-		   .bump()
+// handing section index by enum
+enum Section : Int, SectionIndex {
+	case top = 0
+	case center
+	case bottom
 
+	var intValue: Int {
+		return self.rawValue
+    }
+}
 
-	// handing section index by enum
-	enum Section : Int, SectionIndex {
-		case Top = 0
-		case Center
-		case Bottom
-
-		var intValue: Int {
-			return self.rawValue
-    	}
-	}
-
-	let topSection = sapporo[Section.Top]
+let topSection = sapporo[Section.Top]
 ```
 
 * Handling cell
 
 ``` swift
-	// appending
-	sapporo[0]
-		.append(cellmodel)				// append a cellmodel
-		.bump()							// and bump to show the cell in the collection view
+// appending
+sapporo[0]
+	.append(cellmodel)	// append a cellmodel
+	.bump()	// and bump to show the cell in the collection view
 
-	sapporo[TopSection]
-		.append(cellmodels)		// append a list of cellmodels
-		.bump()					
+sapporo[TopSection]
+	.append(cellmodels)	// append a list of cellmodels
+	.bump()					
 
-	// by using section
-	let section = sapporo[Section.Top]
-	section
-		.append(cellmodel)
-		.bump()
+// by using section
+let section = sapporo[Section.Top]
+section
+	.append(cellmodel)
+	.bump()
 
+// 2. inserting
+section
+	.insert(cellmodels, atIndex: 1)
+	.bump()
 
-	// 2. inserting
-	section
-		.insert(cellmodels, atIndex: 1)
-		.bump()
+section
+	.insertBeforeLast(cellmodels)
+	.bump()
 
-	section
-		.insertBeforeLast(cellmodels)
-		.bump()
+// 3. reseting
+section
+	.reset(cellmodels)	// replace current data in section by the new data
+	.bump()
 
+section
+	.reset()	// or remove all data in section
+	.bump()
 
-	// 3. reseting
-	section
-		.reset(cellmodels)				// replace current data in section by the new data
-		.bump()
+// 4. moving
+section
+	.move(fromIndex: 5, toIndex: 1)
+	.bump()
 
-	section
-		.reset()							// or remove all data in section
-		.bump()
+// 5. removing
+section
+	.remove(1)
+	.bump()
 
+section
+	.remove(cellmodel)
+	.bump()
 
-	// 4. moving
-	section
-		.move(fromIndex: 5, toIndex: 1)
-		.bump()
+section
+	.remove(2...5)
+	.bump()
 
-	// 5. removing
-	section
-		.remove(1)
-		.bump()
+section
+	.removeLast()
+	.bump()
 
-	section
-		.remove(cellmodel)
-		.bump()
+// updating cell
+let cellmodel = section[1]
+cellmodel.property = newData
+cellmodel.bump()
 
-	section
-		.remove(2...5)
-		.bump()
-
-	section
-		.removeLast()
-		.bump()
-
-	// updating cell
-	let cellmodel = section[1]
-	cellmodel.property = newData
-	cellmodel.bump()
-
-	// able to retrieve a cellmodel by indexpath
-	let cellmodel = sapporo[indexpath]
+// able to retrieve a cellmodel by indexpath
+let cellmodel = sapporo[indexpath]
 ```
 
 
 * Registering cell, header, footer, reusable view
 
 ``` swift
-	sapporo
-		.registerCellByNib(CustomCell)
-		.registerCell(SimpleCell)
-		.registerSupplementaryViewByNib(HeaderView.self, kind: "SectionHeader")
+sapporo
+	.registerCellByNib(CustomCell)
+	.registerCell(SimpleCell)
+	.registerSupplementaryViewByNib(HeaderView.self, kind: "SectionHeader")
 ```
 
 * Customizing layout
@@ -207,28 +202,13 @@ Usage
 In case you want to customize the layout of collection view, just create a subclass of SALayout and call `setLayout` method to set the new layout instance.
 
 ``` swift
-	class CustomLayout: SALayout {
-		// the implementation for your layout
-	}
+class CustomLayout: SALayout {
+	// the implementation for your layout
+}
 
-	let layout = CustomLayout()
-	sapporo.setLayout(layout)
+let layout = CustomLayout()
+sapporo.setLayout(layout)
 ```
-
-Demo apps
------
-
-<p align="center">
-<img style="-webkit-user-select: none;" src="https://dl.dropboxusercontent.com/u/8556646/managing.gif" width="368" height="664">
-</p>
-
-Do you worry about the customizability when using `Sapporo`?
-This is the answer for you, a calendar app implemented by using `Sapporo`.
-
-<p align="center">
-<img style="-webkit-user-select: none;" src="https://dl.dropboxusercontent.com/u/8556646/calendar.gif" width="737" height="554">
-</p>
-
 
 Installation
 -----
@@ -251,9 +231,9 @@ Installation
 
 Requirements
 -----
-- iOS 8.0+
-- Xcode 8+
-- Swift 3
+- iOS 9.0+
+- Xcode 9+
+- Swift 4
 
 License
 -----
