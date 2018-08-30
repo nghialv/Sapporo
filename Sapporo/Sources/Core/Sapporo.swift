@@ -27,10 +27,10 @@ final public class Sapporo: NSObject {
     
     public subscript<T: RawRepresentable & SASectionIndexType>(index: T) -> SASection {
         get {
-            return self[index.intValue]
+            return self[index.rawValue]
         }
         set {
-            self[index.intValue] = newValue
+            self[index.rawValue] = newValue
         }
     }
     
@@ -53,7 +53,7 @@ final public class Sapporo: NSObject {
     }
     
     public func getSection<T: RawRepresentable & SASectionIndexType>(_ index: T) -> SASection? {
-        return getSection(index.intValue)
+        return getSection(index.rawValue)
     }
     
     public init(collectionView: UICollectionView) {

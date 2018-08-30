@@ -11,9 +11,3 @@ import Foundation
 public protocol SASectionIndexType: RawRepresentable where Self.RawValue == Int {
     static var count: Int { get }
 }
-
-public extension SASectionIndexType {
-    var intValue: Int {
-        return rawValue
-    }
-}
