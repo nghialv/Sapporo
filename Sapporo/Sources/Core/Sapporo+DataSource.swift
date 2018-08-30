@@ -19,6 +19,7 @@ extension Sapporo: UICollectionViewDataSource {
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cellmodel = self[indexPath], let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellmodel.reuseIdentifier, for: indexPath) as? SACell else {
+            assertionFailure("Could not dequeue cell with identifier: \(self[indexPath]?.reuseIdentifier ?? "cellmodel is nil")")
             return .init()
         }
         

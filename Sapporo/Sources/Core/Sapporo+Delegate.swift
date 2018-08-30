@@ -9,7 +9,6 @@
 import UIKit
 
 extension Sapporo: UICollectionViewDelegate {
-    
     // Selection
     public func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         return cellForRow(at: indexPath)?.shouldSelect ?? true
@@ -67,17 +66,15 @@ extension Sapporo: UICollectionViewDelegate {
     
     // Action
     public func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        // TODO: implement
-        return false
+        return delegate?.collectionView?(collectionView, canPerformAction: action, forItemAt: indexPath, withSender: sender) ?? false
     }
     
     public func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-        // TODO: implement
+        delegate?.collectionView?(collectionView, performAction: action, forItemAt: indexPath, withSender: sender)
     }
     
     public func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        // TODO: implement
-        return false
+        return delegate?.collectionView?(collectionView, shouldShowMenuForItemAt: indexPath) ?? false
     }
     
     // Transition layout

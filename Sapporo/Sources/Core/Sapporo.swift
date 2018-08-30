@@ -25,7 +25,7 @@ final public class Sapporo: NSObject {
         return sections.count
     }
     
-    public subscript(index: SASectionIndexType) -> SASection {
+    public subscript<T: RawRepresentable & SASectionIndexType>(index: T) -> SASection {
         get {
             return self[index.intValue]
         }
@@ -52,7 +52,7 @@ final public class Sapporo: NSObject {
         return sections.get(index)
     }
     
-    public func getSection(_ index: SASectionIndexType) -> SASection? {
+    public func getSection<T: RawRepresentable & SASectionIndexType>(_ index: T) -> SASection? {
         return getSection(index.intValue)
     }
     
@@ -148,7 +148,7 @@ public extension Sapporo {
     // Reset
     
     @discardableResult
-    func reset(_ listType: SASectionIndexType.Type) -> Self {
+    func reset<T: RawRepresentable & SASectionIndexType>(_ listType: T.Type) -> Self {
         let sections = (0..<listType.count).map { _ in SASection() }
         return reset(sections)
     }

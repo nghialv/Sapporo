@@ -19,8 +19,8 @@ open class SACellModel: NSObject {
     open let reuseIdentifier: String
     open internal(set) var indexPath: IndexPath = .init(row: 0, section: 0)
     
-    open var selectionHandler: SASelectionHandler?
-    open var deselectHandler: SADeselectionHandler?
+    open var selectionHandler: ((SACell) -> Void)?
+    open var deselectHandler: ((SACell) -> Void)?
     
     private var dynamicSizeEnabled = false
     private var estimatedSize: CGSize = .zero
@@ -45,14 +45,14 @@ open class SACellModel: NSObject {
         }
     }
     
-    public init<T: SACell>(cellType: T.Type, size: CGSize, selectionHandler: SASelectionHandler?) {
+    public init<T: SACell>(cellType: T.Type, size: CGSize, selectionHandler: ((SACell) -> Void)?) {
         self.reuseIdentifier = cellType.reuseIdentifier
         self.estimatedSize = size
         self.selectionHandler = selectionHandler
         super.init()
     }
     
-    public init<T: SACell>(cellType: T.Type, selectionHandler: SASelectionHandler?) {
+    public init<T: SACell>(cellType: T.Type, selectionHandler: ((SACell) -> Void)?) {
         self.reuseIdentifier = cellType.reuseIdentifier
         self.estimatedSize = .zero
         self.selectionHandler = selectionHandler

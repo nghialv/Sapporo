@@ -47,42 +47,43 @@ final class SimpleViewController: UIViewController {
             .reset(cellmodels[0])
             .bump()
         
-        delay(2) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             section
                 .append([cellmodels[1], cellmodels[3], cellmodels[4]])
                 .bump()
             
-            print("bump")
+            print("bump 1")
         }
         
-        delay(4) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
             section
                 .insert(cellmodels[2], atIndex: 2)
                 .bump()
             
-            print("bump")
+            print("bump 2")
         }
         
-        delay(6) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 6) {
             cellmodels[0].des = "changed"
             cellmodels[0].bump()
-            print("bump")
+            
+            print("bump 3")
         }
         
-        delay(8) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 8) {
             section
                 .remove(1)
                 .bump()
             
-            print("bump")
+            print("bump 4")
         }
         
-        delay(10) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
             section
                 .move(fromIndex: 2, toIndex: 0)
                 .bump()
             
-            print("bump")
+            print("bump 5")
         }
         
         let newSection = SASection()
@@ -100,10 +101,11 @@ final class SimpleViewController: UIViewController {
         }
         newSection.append(newCellmodels)
         
-        delay(12) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 12) {
             self.sapporo
                 .insert(newSection, atIndex: 1)
                 .bump()
+            print("bump 6")
         }
     }
 }

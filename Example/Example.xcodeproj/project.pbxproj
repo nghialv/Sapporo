@@ -53,11 +53,8 @@
 		8C9E079A1CB0FF6D00DBE326 /* Sapporo+Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9E07981CB0FF6900DBE326 /* Sapporo+Registration.swift */; };
 		8C9E079D1CB1025B00DBE326 /* SAFlowLayoutSupplementaryViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9E079B1CB101F300DBE326 /* SAFlowLayoutSupplementaryViewType.swift */; };
 		8C9E07A01CB1074F00DBE326 /* Sapporo+UIScrollViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9E079E1CB1073000DBE326 /* Sapporo+UIScrollViewDelegate.swift */; };
-		8CCA36CA1B4ED5100053DB94 /* DynamicImageSizeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCA36C91B4ED5100053DB94 /* DynamicImageSizeCell.swift */; };
-		8CCA36CC1B4ED5210053DB94 /* DynamicImageSizeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CCA36CB1B4ED5210053DB94 /* DynamicImageSizeCell.xib */; };
 		ABAB7F8A21217E12004418CF /* SASectionIndexType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAB7F8421217DA0004418CF /* SASectionIndexType.swift */; };
 		ABAB7F8B21217E15004418CF /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAB7F8821217DDD004418CF /* Utilities.swift */; };
-		ABAB7F8C21217E18004418CF /* Internal.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAB7F8621217DC1004418CF /* Internal.swift */; };
 		ABAB7F8D21217E1B004418CF /* BumpType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAB7F8221217D83004418CF /* BumpType.swift */; };
 /* End PBXBuildFile section */
 
@@ -158,11 +155,8 @@
 		8C9E07981CB0FF6900DBE326 /* Sapporo+Registration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Sapporo+Registration.swift"; sourceTree = "<group>"; };
 		8C9E079B1CB101F300DBE326 /* SAFlowLayoutSupplementaryViewType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SAFlowLayoutSupplementaryViewType.swift; sourceTree = "<group>"; };
 		8C9E079E1CB1073000DBE326 /* Sapporo+UIScrollViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Sapporo+UIScrollViewDelegate.swift"; sourceTree = "<group>"; };
-		8CCA36C91B4ED5100053DB94 /* DynamicImageSizeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicImageSizeCell.swift; sourceTree = "<group>"; };
-		8CCA36CB1B4ED5210053DB94 /* DynamicImageSizeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DynamicImageSizeCell.xib; sourceTree = "<group>"; };
 		ABAB7F8221217D83004418CF /* BumpType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BumpType.swift; sourceTree = "<group>"; };
 		ABAB7F8421217DA0004418CF /* SASectionIndexType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SASectionIndexType.swift; sourceTree = "<group>"; };
-		ABAB7F8621217DC1004418CF /* Internal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Internal.swift; sourceTree = "<group>"; };
 		ABAB7F8821217DDD004418CF /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -203,8 +197,6 @@
 		8C0EAFA01B4EB7950052557D /* DynamicSize */ = {
 			isa = PBXGroup;
 			children = (
-				8CCA36C91B4ED5100053DB94 /* DynamicImageSizeCell.swift */,
-				8CCA36CB1B4ED5210053DB94 /* DynamicImageSizeCell.xib */,
 				8C0EAFA31B4EB7B40052557D /* DynamicSizeCell.swift */,
 				8C0EAFA51B4EB7C00052557D /* DynamicSizeCell.xib */,
 				8C0EAFA11B4EB7A60052557D /* DynamicSizeViewController.swift */,
@@ -345,7 +337,6 @@
 		ABAB7F8E21217E5E004418CF /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				ABAB7F8621217DC1004418CF /* Internal.swift */,
 				ABAB7F8821217DDD004418CF /* Utilities.swift */,
 			);
 			path = Common;
@@ -596,7 +587,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8CCA36CC1B4ED5210053DB94 /* DynamicImageSizeCell.xib in Resources */,
 				8C547D061B404DDF009F6C71 /* SimpleHeaderView.xib in Resources */,
 				8C547C8F1B4047EC009F6C71 /* Main.storyboard in Resources */,
 				8C547D021B404CE1009F6C71 /* SimpleCell.xib in Resources */,
@@ -637,7 +627,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C0EAFA41B4EB7B40052557D /* DynamicSizeCell.swift in Sources */,
-				8CCA36CA1B4ED5100053DB94 /* DynamicImageSizeCell.swift in Sources */,
 				8C547D0E1B405155009F6C71 /* CalendarEvent.swift in Sources */,
 				8C547CFE1B404C63009F6C71 /* CalendarViewController.swift in Sources */,
 				8C547C8C1B4047EC009F6C71 /* ViewController.swift in Sources */,
@@ -675,7 +664,6 @@
 				8C547CD81B404962009F6C71 /* Sapporo+DelegateFlowLayout.swift in Sources */,
 				8C9E07A01CB1074F00DBE326 /* Sapporo+UIScrollViewDelegate.swift in Sources */,
 				ABAB7F8A21217E12004418CF /* SASectionIndexType.swift in Sources */,
-				ABAB7F8C21217E18004418CF /* Internal.swift in Sources */,
 				8C547CF71B404A2C009F6C71 /* Sapporo+Delegate.swift in Sources */,
 				8C547CF61B404A29009F6C71 /* SapporoDelegate.swift in Sources */,
 				8C547CDA1B40496C009F6C71 /* SASection.swift in Sources */,

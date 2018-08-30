@@ -13,7 +13,7 @@ final class SimpleCellModel: SACellModel {
     let title: String
     var des: String
     
-    init(title: String, des: String, selectionHandler: SASelectionHandler?) {
+    init(title: String, des: String, selectionHandler: ((SACell) -> Void)?) {
         self.title = title
         self.des = des
         

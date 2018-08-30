@@ -12,7 +12,7 @@ import Sapporo
 final class CalendarEventCellModel: SACellModel {
     let event: CalendarEvent
     
-    init(event: CalendarEvent, selectionHandler: @escaping SASelectionHandler) {
+    init(event: CalendarEvent, selectionHandler: @escaping (SACell) -> Void) {
         self.event = event
         super.init(cellType: CalendarEventCell.self, selectionHandler: selectionHandler)
     }

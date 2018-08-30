@@ -9,5 +9,5 @@
 import Foundation
 
 func classNameOf(_ aClass: AnyClass) -> String {
-    return NSStringFromClass(aClass).components(separatedBy: ".").last!
+    return String(describing: aClass)
 }

@@ -8,12 +8,11 @@
 
 import Foundation
 
-public protocol SASectionIndexType {
-    var intValue: Int { get }
+public protocol SASectionIndexType: RawRepresentable where Self.RawValue == Int {
     static var count: Int { get }
 }
 
-public extension SASectionIndexType where Self: RawRepresentable, Self.RawValue == Int {
+public extension SASectionIndexType {
     var intValue: Int {
         return rawValue
     }

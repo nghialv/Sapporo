@@ -21,7 +21,6 @@ final class DynamicSizeViewController: UIViewController {
         
         sapporo
             .registerCellByNib(DynamicSizeCell.self)
-            .registerCellByNib(DynamicImageSizeCell.self)
         
         let layout = SAFlowLayout()
         sapporo.setLayout(layout)
@@ -38,7 +37,7 @@ final class DynamicSizeViewController: UIViewController {
             .reset(section)
             .bump()
         
-        delay(3) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             cellmodel.des = des
             cellmodel.bump()
         }
