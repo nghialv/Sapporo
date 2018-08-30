@@ -30,7 +30,6 @@
 		8C547CE41B4049AF009F6C71 /* SAFlowLayoutSupplementaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C547CE31B4049AF009F6C71 /* SAFlowLayoutSupplementaryViewModel.swift */; };
 		8C547CE61B4049C5009F6C71 /* SAFlowLayoutSupplementaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C547CE51B4049C5009F6C71 /* SAFlowLayoutSupplementaryView.swift */; };
 		8C547CE81B4049CF009F6C71 /* SABumpTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C547CE71B4049CF009F6C71 /* SABumpTracker.swift */; };
-		8C547CEA1B4049D9009F6C71 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C547CE91B4049D8009F6C71 /* Common.swift */; };
 		8C547CEE1B4049ED009F6C71 /* ArrayExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C547CED1B4049ED009F6C71 /* ArrayExt.swift */; };
 		8C547CF01B4049F8009F6C71 /* UICollectionViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C547CEF1B4049F8009F6C71 /* UICollectionViewExt.swift */; };
 		8C547CF41B404A1C009F6C71 /* UICollectionReusableViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C547CF31B404A1C009F6C71 /* UICollectionReusableViewExt.swift */; };
@@ -54,8 +53,9 @@
 		8C9E079A1CB0FF6D00DBE326 /* Sapporo+Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9E07981CB0FF6900DBE326 /* Sapporo+Registration.swift */; };
 		8C9E079D1CB1025B00DBE326 /* SAFlowLayoutSupplementaryViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9E079B1CB101F300DBE326 /* SAFlowLayoutSupplementaryViewType.swift */; };
 		8C9E07A01CB1074F00DBE326 /* Sapporo+UIScrollViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9E079E1CB1073000DBE326 /* Sapporo+UIScrollViewDelegate.swift */; };
-		8CCA36CA1B4ED5100053DB94 /* DynamicImageSizeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCA36C91B4ED5100053DB94 /* DynamicImageSizeCell.swift */; };
-		8CCA36CC1B4ED5210053DB94 /* DynamicImageSizeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CCA36CB1B4ED5210053DB94 /* DynamicImageSizeCell.xib */; };
+		ABAB7F8A21217E12004418CF /* SASectionIndexType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAB7F8421217DA0004418CF /* SASectionIndexType.swift */; };
+		ABAB7F8B21217E15004418CF /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAB7F8821217DDD004418CF /* Utilities.swift */; };
+		ABAB7F8D21217E1B004418CF /* BumpType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAB7F8221217D83004418CF /* BumpType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -136,7 +136,6 @@
 		8C547CE31B4049AF009F6C71 /* SAFlowLayoutSupplementaryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SAFlowLayoutSupplementaryViewModel.swift; sourceTree = "<group>"; };
 		8C547CE51B4049C5009F6C71 /* SAFlowLayoutSupplementaryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SAFlowLayoutSupplementaryView.swift; sourceTree = "<group>"; };
 		8C547CE71B4049CF009F6C71 /* SABumpTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SABumpTracker.swift; sourceTree = "<group>"; };
-		8C547CE91B4049D8009F6C71 /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		8C547CED1B4049ED009F6C71 /* ArrayExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExt.swift; sourceTree = "<group>"; };
 		8C547CEF1B4049F8009F6C71 /* UICollectionViewExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewExt.swift; sourceTree = "<group>"; };
 		8C547CF31B404A1C009F6C71 /* UICollectionReusableViewExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionReusableViewExt.swift; sourceTree = "<group>"; };
@@ -156,8 +155,9 @@
 		8C9E07981CB0FF6900DBE326 /* Sapporo+Registration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Sapporo+Registration.swift"; sourceTree = "<group>"; };
 		8C9E079B1CB101F300DBE326 /* SAFlowLayoutSupplementaryViewType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SAFlowLayoutSupplementaryViewType.swift; sourceTree = "<group>"; };
 		8C9E079E1CB1073000DBE326 /* Sapporo+UIScrollViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Sapporo+UIScrollViewDelegate.swift"; sourceTree = "<group>"; };
-		8CCA36C91B4ED5100053DB94 /* DynamicImageSizeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicImageSizeCell.swift; sourceTree = "<group>"; };
-		8CCA36CB1B4ED5210053DB94 /* DynamicImageSizeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DynamicImageSizeCell.xib; sourceTree = "<group>"; };
+		ABAB7F8221217D83004418CF /* BumpType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BumpType.swift; sourceTree = "<group>"; };
+		ABAB7F8421217DA0004418CF /* SASectionIndexType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SASectionIndexType.swift; sourceTree = "<group>"; };
+		ABAB7F8821217DDD004418CF /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,11 +197,9 @@
 		8C0EAFA01B4EB7950052557D /* DynamicSize */ = {
 			isa = PBXGroup;
 			children = (
-				8C0EAFA11B4EB7A60052557D /* DynamicSizeViewController.swift */,
 				8C0EAFA31B4EB7B40052557D /* DynamicSizeCell.swift */,
 				8C0EAFA51B4EB7C00052557D /* DynamicSizeCell.xib */,
-				8CCA36C91B4ED5100053DB94 /* DynamicImageSizeCell.swift */,
-				8CCA36CB1B4ED5210053DB94 /* DynamicImageSizeCell.xib */,
+				8C0EAFA11B4EB7A60052557D /* DynamicSizeViewController.swift */,
 			);
 			path = DynamicSize;
 			sourceTree = "<group>";
@@ -232,14 +230,10 @@
 		8C547C861B4047EC009F6C71 /* Example */ = {
 			isa = PBXGroup;
 			children = (
-				8C0EAFA01B4EB7950052557D /* DynamicSize */,
-				8C547CF91B404C4B009F6C71 /* Calendar */,
-				8C547CFA1B404C4B009F6C71 /* Simple */,
 				8C547C891B4047EC009F6C71 /* AppDelegate.swift */,
-				8C547C8B1B4047EC009F6C71 /* ViewController.swift */,
-				8C547C8D1B4047EC009F6C71 /* Main.storyboard */,
 				8C547C901B4047EC009F6C71 /* Images.xcassets */,
 				8C547C921B4047EC009F6C71 /* LaunchScreen.xib */,
+				ABAB7F9721217F92004418CF /* Source */,
 				8C547C871B4047EC009F6C71 /* Supporting Files */,
 			);
 			path = Example;
@@ -307,27 +301,8 @@
 		8C547CCE1B4048F7009F6C71 /* Sapporo */ = {
 			isa = PBXGroup;
 			children = (
-				8C547CE91B4049D8009F6C71 /* Common.swift */,
-				8C547CE71B4049CF009F6C71 /* SABumpTracker.swift */,
-				8C9E07951CB0FE6B00DBE326 /* SACellType.swift */,
-				8C547CDD1B404982009F6C71 /* SACell.swift */,
-				8C547CDB1B404978009F6C71 /* SACellModel.swift */,
-				8C9E079B1CB101F300DBE326 /* SAFlowLayoutSupplementaryViewType.swift */,
-				8C547CE51B4049C5009F6C71 /* SAFlowLayoutSupplementaryView.swift */,
-				8C547CE31B4049AF009F6C71 /* SAFlowLayoutSupplementaryViewModel.swift */,
-				8C547CD91B40496C009F6C71 /* SASection.swift */,
-				8C547CCF1B40490F009F6C71 /* Sapporo.swift */,
-				8C9E07981CB0FF6900DBE326 /* Sapporo+Registration.swift */,
-				8C547CD11B40491E009F6C71 /* SapporoDelegate.swift */,
-				8C547CD31B40492E009F6C71 /* Sapporo+Delegate.swift */,
-				8C547CD51B40493B009F6C71 /* Sapporo+DataSource.swift */,
-				8C547CD71B404962009F6C71 /* Sapporo+DelegateFlowLayout.swift */,
-				8C9E079E1CB1073000DBE326 /* Sapporo+UIScrollViewDelegate.swift */,
-				8C547CDF1B40498B009F6C71 /* SALayout.swift */,
-				8C547CE11B404995009F6C71 /* SAFlowLayout.swift */,
-				8C547CED1B4049ED009F6C71 /* ArrayExt.swift */,
-				8C547CEF1B4049F8009F6C71 /* UICollectionViewExt.swift */,
-				8C547CF31B404A1C009F6C71 /* UICollectionReusableViewExt.swift */,
+				ABAB7F9321217ED4004418CF /* Extension */,
+				ABAB7F9421217EF4004418CF /* Sources */,
 			);
 			name = Sapporo;
 			path = ../Sapporo;
@@ -336,13 +311,13 @@
 		8C547CF91B404C4B009F6C71 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
-				8C547CFD1B404C63009F6C71 /* CalendarViewController.swift */,
-				8C547D071B4050C1009F6C71 /* CalendarHeaderView.swift */,
-				8C547D0F1B405165009F6C71 /* CalendarHeaderView.xib */,
+				8C547D0D1B405155009F6C71 /* CalendarEvent.swift */,
 				8C547D091B4050DE009F6C71 /* CalendarEventCell.swift */,
 				8C547D111B405178009F6C71 /* CalendarEventCell.xib */,
+				8C547D071B4050C1009F6C71 /* CalendarHeaderView.swift */,
+				8C547D0F1B405165009F6C71 /* CalendarHeaderView.xib */,
 				8C547D0B1B4050EC009F6C71 /* CalendarLayout.swift */,
-				8C547D0D1B405155009F6C71 /* CalendarEvent.swift */,
+				8C547CFD1B404C63009F6C71 /* CalendarViewController.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -350,13 +325,118 @@
 		8C547CFA1B404C4B009F6C71 /* Simple */ = {
 			isa = PBXGroup;
 			children = (
-				8C547CFB1B404C57009F6C71 /* SimpleViewController.swift */,
 				8C547CFF1B404CCC009F6C71 /* SimpleCell.swift */,
 				8C547D011B404CE1009F6C71 /* SimpleCell.xib */,
 				8C547D031B404DD4009F6C71 /* SimpleHeaderView.swift */,
 				8C547D051B404DDF009F6C71 /* SimpleHeaderView.xib */,
+				8C547CFB1B404C57009F6C71 /* SimpleViewController.swift */,
 			);
 			path = Simple;
+			sourceTree = "<group>";
+		};
+		ABAB7F8E21217E5E004418CF /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				ABAB7F8821217DDD004418CF /* Utilities.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		ABAB7F8F21217E96004418CF /* Bump */ = {
+			isa = PBXGroup;
+			children = (
+				ABAB7F8221217D83004418CF /* BumpType.swift */,
+				8C547CE71B4049CF009F6C71 /* SABumpTracker.swift */,
+			);
+			path = Bump;
+			sourceTree = "<group>";
+		};
+		ABAB7F9021217E9F004418CF /* Section */ = {
+			isa = PBXGroup;
+			children = (
+				8C547CD91B40496C009F6C71 /* SASection.swift */,
+				ABAB7F8421217DA0004418CF /* SASectionIndexType.swift */,
+			);
+			path = Section;
+			sourceTree = "<group>";
+		};
+		ABAB7F9121217EB5004418CF /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				8C547CDD1B404982009F6C71 /* SACell.swift */,
+				8C547CDB1B404978009F6C71 /* SACellModel.swift */,
+				8C9E07951CB0FE6B00DBE326 /* SACellType.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		ABAB7F9221217EC6004418CF /* SupplementaryView */ = {
+			isa = PBXGroup;
+			children = (
+				8C547CE51B4049C5009F6C71 /* SAFlowLayoutSupplementaryView.swift */,
+				8C547CE31B4049AF009F6C71 /* SAFlowLayoutSupplementaryViewModel.swift */,
+				8C9E079B1CB101F300DBE326 /* SAFlowLayoutSupplementaryViewType.swift */,
+			);
+			path = SupplementaryView;
+			sourceTree = "<group>";
+		};
+		ABAB7F9321217ED4004418CF /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				8C547CED1B4049ED009F6C71 /* ArrayExt.swift */,
+				8C547CEF1B4049F8009F6C71 /* UICollectionViewExt.swift */,
+				8C547CF31B404A1C009F6C71 /* UICollectionReusableViewExt.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		ABAB7F9421217EF4004418CF /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				ABAB7F8F21217E96004418CF /* Bump */,
+				ABAB7F9121217EB5004418CF /* Cell */,
+				ABAB7F8E21217E5E004418CF /* Common */,
+				ABAB7F9521217F03004418CF /* Core */,
+				ABAB7F9621217F0C004418CF /* Layout */,
+				ABAB7F9021217E9F004418CF /* Section */,
+				ABAB7F9221217EC6004418CF /* SupplementaryView */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		ABAB7F9521217F03004418CF /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				8C547CCF1B40490F009F6C71 /* Sapporo.swift */,
+				8C547CD51B40493B009F6C71 /* Sapporo+DataSource.swift */,
+				8C547CD31B40492E009F6C71 /* Sapporo+Delegate.swift */,
+				8C547CD71B404962009F6C71 /* Sapporo+DelegateFlowLayout.swift */,
+				8C9E07981CB0FF6900DBE326 /* Sapporo+Registration.swift */,
+				8C9E079E1CB1073000DBE326 /* Sapporo+UIScrollViewDelegate.swift */,
+				8C547CD11B40491E009F6C71 /* SapporoDelegate.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		ABAB7F9621217F0C004418CF /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				8C547CE11B404995009F6C71 /* SAFlowLayout.swift */,
+				8C547CDF1B40498B009F6C71 /* SALayout.swift */,
+			);
+			path = Layout;
+			sourceTree = "<group>";
+		};
+		ABAB7F9721217F92004418CF /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				8C547CF91B404C4B009F6C71 /* Calendar */,
+				8C0EAFA01B4EB7950052557D /* DynamicSize */,
+				8C547CFA1B404C4B009F6C71 /* Simple */,
+				8C547C8D1B4047EC009F6C71 /* Main.storyboard */,
+				8C547C8B1B4047EC009F6C71 /* ViewController.swift */,
+			);
+			path = Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -454,7 +534,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Le Van Nghia";
 				TargetAttributes = {
 					8C547C831B4047EC009F6C71 = {
@@ -464,18 +544,18 @@
 					};
 					8C547C981B4047EC009F6C71 = {
 						CreatedOnToolsVersion = 6.3.2;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0940;
 						ProvisioningStyle = Manual;
 						TestTargetID = 8C547C831B4047EC009F6C71;
 					};
 					8C547CAD1B404809009F6C71 = {
 						CreatedOnToolsVersion = 6.3.2;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0940;
 						ProvisioningStyle = Manual;
 					};
 					8C547CB71B404809009F6C71 = {
 						CreatedOnToolsVersion = 6.3.2;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0940;
 						ProvisioningStyle = Manual;
 						TestTargetID = 8C547C831B4047EC009F6C71;
 					};
@@ -507,7 +587,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8CCA36CC1B4ED5210053DB94 /* DynamicImageSizeCell.xib in Resources */,
 				8C547D061B404DDF009F6C71 /* SimpleHeaderView.xib in Resources */,
 				8C547C8F1B4047EC009F6C71 /* Main.storyboard in Resources */,
 				8C547D021B404CE1009F6C71 /* SimpleCell.xib in Resources */,
@@ -548,7 +627,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C0EAFA41B4EB7B40052557D /* DynamicSizeCell.swift in Sources */,
-				8CCA36CA1B4ED5100053DB94 /* DynamicImageSizeCell.swift in Sources */,
 				8C547D0E1B405155009F6C71 /* CalendarEvent.swift in Sources */,
 				8C547CFE1B404C63009F6C71 /* CalendarViewController.swift in Sources */,
 				8C547C8C1B4047EC009F6C71 /* ViewController.swift in Sources */,
@@ -577,12 +655,15 @@
 			files = (
 				8C9E079D1CB1025B00DBE326 /* SAFlowLayoutSupplementaryViewType.swift in Sources */,
 				8C9E07971CB0FECC00DBE326 /* SACellType.swift in Sources */,
+				ABAB7F8B21217E15004418CF /* Utilities.swift in Sources */,
 				8C547CE81B4049CF009F6C71 /* SABumpTracker.swift in Sources */,
 				8C547CF01B4049F8009F6C71 /* UICollectionViewExt.swift in Sources */,
 				8C547CDC1B404978009F6C71 /* SACellModel.swift in Sources */,
 				8C547CE21B404995009F6C71 /* SAFlowLayout.swift in Sources */,
+				ABAB7F8D21217E1B004418CF /* BumpType.swift in Sources */,
 				8C547CD81B404962009F6C71 /* Sapporo+DelegateFlowLayout.swift in Sources */,
 				8C9E07A01CB1074F00DBE326 /* Sapporo+UIScrollViewDelegate.swift in Sources */,
+				ABAB7F8A21217E12004418CF /* SASectionIndexType.swift in Sources */,
 				8C547CF71B404A2C009F6C71 /* Sapporo+Delegate.swift in Sources */,
 				8C547CF61B404A29009F6C71 /* SapporoDelegate.swift in Sources */,
 				8C547CDA1B40496C009F6C71 /* SASection.swift in Sources */,
@@ -594,7 +675,6 @@
 				8C547CF41B404A1C009F6C71 /* UICollectionReusableViewExt.swift in Sources */,
 				8C547CF51B404A25009F6C71 /* Sapporo.swift in Sources */,
 				8C547CE01B40498B009F6C71 /* SALayout.swift in Sources */,
-				8C547CEA1B4049D9009F6C71 /* Common.swift in Sources */,
 				8C547CE41B4049AF009F6C71 /* SAFlowLayoutSupplementaryViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -660,14 +740,22 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -691,7 +779,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -708,14 +796,22 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -732,7 +828,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -748,11 +844,11 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Example/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nghialv.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -763,11 +859,11 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Example/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nghialv.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -786,7 +882,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nghialv.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Example.app/Example";
 			};
 			name = Debug;
@@ -801,7 +898,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nghialv.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Example.app/Example";
 			};
 			name = Release;
@@ -830,7 +928,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -855,7 +954,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nghialv.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -874,7 +974,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nghialv.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Example.app/Example";
 			};
 			name = Debug;
@@ -888,7 +989,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nghialv.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Example.app/Example";
 			};
 			name = Release;

@@ -1,0 +1,74 @@
+//
+//  CalendarViewController.swift
+//  Example
+//
+//  Created by Le VanNghia on 6/29/15.
+//  Copyright (c) 2015 Le Van Nghia. All rights reserved.
+//
+
+import UIKit
+import Sapporo
+
+enum CalendarHeaderType: String {
+    case day = "DayHeaderView"
+    case hour = "HourHeaderView"
+}
+
+final class CalendarViewController: UIViewController {
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+    lazy var sapporo: Sapporo = .init(collectionView: collectionView)
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        sapporo.delegate = self
+        
+        sapporo
+            .registerCellByNib(CalendarEventCell.self)
+            .registerSupplementaryViewByNib(CalendarHeaderView.self, kind: CalendarHeaderType.day.rawValue)
+            .registerSupplementaryViewByNib(CalendarHeaderView.self, kind: CalendarHeaderType.hour.rawValue)
+        
+        let layout = CalendarLayout()
+        sapporo.setLayout(layout)
+        
+        let randomEvent = { () -> CalendarEvent in
+            let randomID = arc4random_uniform(10000)
+            let title = "Event \(randomID)"
+            
+            let randomDay = Int(arc4random_uniform(7))
+            let randomStartHour = Int(arc4random_uniform(20))
+            let randomDuration = Int(arc4random_uniform(5) + 1)
+            
+            return CalendarEvent(title: title, day: randomDay, startHour: randomStartHour, durationInHours: randomDuration)
+        }
+        
+        let cellmodels = (0...20).map { _ -> CalendarEventCellModel in
+            let event = randomEvent()
+            return CalendarEventCellModel(event: event) { _ in
+                print("Selected event: \(event.title)")
+            }
+        }
+        
+        let section = SASection()
+        section
+            .append(cellmodels)
+        
+        sapporo
+            .reset(section)
+            .bump()
+    }
+}
+
+extension CalendarViewController: SapporoDelegate {
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: IndexPath) -> UICollectionReusableView {
+        if kind == CalendarHeaderType.day.rawValue {
+            let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CalendarHeaderView.reuseIdentifier, for: indexPath) as! CalendarHeaderView
+            view.titleLabel.text = "Day \(indexPath.item + 1)"
+            return view
+        }
+        
+        let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CalendarHeaderView.reuseIdentifier, for: indexPath) as! CalendarHeaderView
+        view.titleLabel.text = "Hour \(indexPath.item + 1)"
+        return view
+    }
+}
