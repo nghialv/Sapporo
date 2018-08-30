@@ -10,6 +10,6 @@ Pod::Spec.new do |s|
   s.platform     = :ios
   s.ios.deployment_target = "9.0"
   s.source       = { :git => "https://github.com/nghialv/Sapporo.git", :tag => s.version.to_s }
-  s.source_files  = "Sapporo/*"
+  s.source_files  = "Sapporo/**/*.swift"
   s.requires_arc = true
 end
