@@ -58,7 +58,7 @@ class YourCellModel : SACellModel {
 	let title: String
 	let des: String
 
-	init(title: String, des: String, selectionHandler: SASelectionHandler) {
+	init(title: String, des: String, selectionHandler: (SACell) -> Void) {
 		self.title = title
 		self.des = des
 		super.init(cellType: YourCell.self, selectionHandler: selectionHandler)
@@ -103,18 +103,17 @@ sapporo.move(fromIndex: 1, toIndex: 5)
 sapporo.remove(index)
 	.bump()
 
-sapporo.reset()	// remove all data
+// remove all data
+sapporo.reset()
 	.bump()
 
 // handing section index by enum
-enum Section : Int, SectionIndex {
-	case top = 0
+enum Section: Int, SASectionIndexType {
+	case top
 	case center
 	case bottom
 
-	var intValue: Int {
-		return self.rawValue
-    }
+	static let count = 3
 }
 
 let topSection = sapporo[Section.Top]
