@@ -16,7 +16,7 @@ protocol SACellModelDelegate: class {
 
 open class SACellModel: NSObject {
     weak var delegate: SACellModelDelegate?
-    open let reuseIdentifier: String
+    public let reuseIdentifier: String
     open internal(set) var indexPath: IndexPath = .init(row: 0, section: 0)
     
     open var selectionHandler: ((SACell) -> Void)?

@@ -9,7 +9,7 @@
 import UIKit
 
 open class SAFlowLayoutSupplementaryViewModel {
-    open let reuseIdentifier: String
+    public let reuseIdentifier: String
     internal(set) var indexPath: IndexPath = .init(row: 0, section: 0)
     
     open var size: CGSize = .zero
