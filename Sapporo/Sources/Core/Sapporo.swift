@@ -149,7 +149,7 @@ public extension Sapporo {
     
     @discardableResult
     func reset<T: RawRepresentable & SASectionIndexType>(_ listType: T.Type) -> Self {
-        let sections = (0..<listType.count).map { _ in SASection() }
+        let sections = (0..<listType.allCases.count).map { _ in SASection() }
         return reset(sections)
     }
     
@@ -333,7 +333,7 @@ public extension Sapporo {
         return collectionView.collectionViewLayout is SAFlowLayout
     }
     
-    var direction: UICollectionViewScrollDirection {
+    var direction: UICollectionView.ScrollDirection {
         let layout = collectionView.collectionViewLayout as? SAFlowLayout
         return layout?.scrollDirection ?? .vertical
     }
