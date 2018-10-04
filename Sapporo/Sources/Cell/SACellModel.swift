@@ -102,7 +102,7 @@ private extension SACellModel {
         cell.setNeedsLayout()
         cell.layoutIfNeeded()
         
-        var size = cell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
+        var size = cell.contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
         size.width = width
         return size
     }

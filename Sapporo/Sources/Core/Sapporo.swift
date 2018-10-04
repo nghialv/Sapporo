@@ -333,7 +333,7 @@ public extension Sapporo {
         return collectionView.collectionViewLayout is SAFlowLayout
     }
     
-    var direction: UICollectionViewScrollDirection {
+    var direction: UICollectionView.ScrollDirection {
         let layout = collectionView.collectionViewLayout as? SAFlowLayout
         return layout?.scrollDirection ?? .vertical
     }

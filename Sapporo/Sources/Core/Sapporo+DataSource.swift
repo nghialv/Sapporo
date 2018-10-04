@@ -29,7 +29,7 @@ extension Sapporo: UICollectionViewDataSource {
     
     public func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if isFlowLayout, let section = getSection(indexPath.section) {
-            if kind == UICollectionElementKindSectionHeader,
+            if kind == UICollectionView.elementKindSectionHeader,
                 let viewmodel = section.headerViewModel,
                 let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: viewmodel.reuseIdentifier, for: indexPath) as? SAFlowLayoutSupplementaryView {
                 
@@ -37,7 +37,7 @@ extension Sapporo: UICollectionViewDataSource {
                 view.configure(viewmodel)
                 return view
             }
-            if kind == UICollectionElementKindSectionFooter,
+            if kind == UICollectionView.elementKindSectionFooter,
                 let viewmodel = section.footerViewModel,
                 let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: viewmodel.reuseIdentifier, for: indexPath) as? SAFlowLayoutSupplementaryView  {
                 
