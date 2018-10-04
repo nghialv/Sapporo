@@ -112,8 +112,6 @@ enum Section: Int, SASectionIndexType {
 	case top
 	case center
 	case bottom
-
-	static let count = 3
 }
 
 let topSection = sapporo[Section.Top]
@@ -231,8 +229,8 @@ Installation
 Requirements
 -----
 - iOS 9.0+
-- Xcode 9+
-- Swift 4
+- Xcode 10+
+- Swift 4.2
 
 License
 -----
