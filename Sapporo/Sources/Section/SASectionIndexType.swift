@@ -8,6 +8,4 @@
 
 import Foundation
 
-public protocol SASectionIndexType: RawRepresentable where Self.RawValue == Int {
-    static var count: Int { get }
-}
+public protocol SASectionIndexType: CaseIterable, RawRepresentable where Self.RawValue == Int {}
